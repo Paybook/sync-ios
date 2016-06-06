@@ -1,0 +1,687 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		031CED483945E9296545284BE5F4FABD /* Pods-PaybookSync_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F23DB019818B77DAA6F0C46F42336 /* Pods-PaybookSync_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18A00A58E67532322CC2EEF6F587B34A /* Pods-PaybookSync_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFF1DB327766F4E01BB4A19E43E6CE7 /* Pods-PaybookSync_Example-dummy.m */; };
+		2A3C076D138CB7EFEF02C13BCDCFCC57 /* Pods-PaybookSync_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E250539C2503D85455BA5BF8F39CEDD /* Pods-PaybookSync_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E04D2A127888851148912FA5B683264 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		2FDBF0916477F405D7DFD7CA08868F6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		3F5417728B4653102AEA9E4E2ECED079 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF0CE36B3A53AFD6B83FB49C0FBDE8 /* ReplaceMe.swift */; };
+		41EE198732632BDA37D8FD7EB8731C06 /* PaybookSync-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C9F1BB6CFE9E1A2F1222CAE5542B44 /* PaybookSync-dummy.m */; };
+		632D2C0BFE6C14B2638F82641130FDD7 /* PaybookSync-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62D26291ADC0D21EC2D3EEC69D89CF33 /* PaybookSync-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		67B5D3591BBF99E5FC9073D90F8C3F2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		C611AFD14B185A9EF377A502B399D7B3 /* Pods-PaybookSync_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DAA793F5E93F5162F3318E96132415 /* Pods-PaybookSync_Tests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B0F73895622B86F96E01B1B0B8D54BDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8E48BF7A61B14CBDE483E1EBBC1FDE4A;
+			remoteInfo = PaybookSync;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		360E59F8C2F909E6E3D99E68BCAF69C2 /* Pods-PaybookSync_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PaybookSync_Example-resources.sh"; sourceTree = "<group>"; };
+		40D3F7310C537E5C069E6ED454B83FA0 /* PaybookSync-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PaybookSync-prefix.pch"; sourceTree = "<group>"; };
+		425F23DB019818B77DAA6F0C46F42336 /* Pods-PaybookSync_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PaybookSync_Example-umbrella.h"; sourceTree = "<group>"; };
+		440BAF0C5A04A7C61D2EBEB32C0C446A /* PaybookSync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PaybookSync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4425A166C68ED3EDA4A919A1DF264FFA /* PaybookSync.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PaybookSync.modulemap; sourceTree = "<group>"; };
+		44DAA793F5E93F5162F3318E96132415 /* Pods-PaybookSync_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PaybookSync_Tests-dummy.m"; sourceTree = "<group>"; };
+		47E58A095EB11A1A46BF71FF81327AE4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		511211DFB74020AC00FE07E113376FE2 /* Pods-PaybookSync_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PaybookSync_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5DCF0CE36B3A53AFD6B83FB49C0FBDE8 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
+		62D26291ADC0D21EC2D3EEC69D89CF33 /* PaybookSync-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PaybookSync-umbrella.h"; sourceTree = "<group>"; };
+		72DFE25E68B4C07F9806E40CFD9A7CF7 /* Pods-PaybookSync_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PaybookSync_Example.modulemap"; sourceTree = "<group>"; };
+		9295F7492585DC1BB817BD04A2E6326A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9800854C70FDB0C2CFD0578AFC26F91E /* Pods-PaybookSync_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaybookSync_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9E250539C2503D85455BA5BF8F39CEDD /* Pods-PaybookSync_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PaybookSync_Tests-umbrella.h"; sourceTree = "<group>"; };
+		A04D8E2A0BD77A96275318F3368DB9F5 /* Pods_PaybookSync_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaybookSync_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA90AF552CECE93D7DB1D14123D539B0 /* Pods_PaybookSync_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaybookSync_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E2384AA7B4A53D9709ED2551B884F9 /* Pods-PaybookSync_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PaybookSync_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		C90BADB4DC1F1C6A3C8CCE99A6076FD5 /* Pods-PaybookSync_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaybookSync_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		CC812FE121C6E74ED9ED3D6A48F0C95B /* Pods-PaybookSync_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PaybookSync_Tests.modulemap"; sourceTree = "<group>"; };
+		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CF839AA0FF1F51DA5D9912EB7CBFC857 /* Pods-PaybookSync_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PaybookSync_Tests-resources.sh"; sourceTree = "<group>"; };
+		D1C9F1BB6CFE9E1A2F1222CAE5542B44 /* PaybookSync-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PaybookSync-dummy.m"; sourceTree = "<group>"; };
+		D41E33103E3DD2A75E5EFC44EDE4D088 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D70A6DECD5EF868A7B35B796B7805621 /* PaybookSync.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PaybookSync.xcconfig; sourceTree = "<group>"; };
+		D82085DFB22FCA7BE2D67630D8982885 /* Pods-PaybookSync_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PaybookSync_Example-frameworks.sh"; sourceTree = "<group>"; };
+		DD1E59E70E8FC32F2BAD20F93578A9C2 /* Pods-PaybookSync_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PaybookSync_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		E0BAD5F65B5D1C7595B65A68C0766B9C /* Pods-PaybookSync_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaybookSync_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E0CC16188074A9F15414DE34A111577A /* Pods-PaybookSync_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaybookSync_Example.release.xcconfig"; sourceTree = "<group>"; };
+		EA09C8F6C52FFC60E5AA22C0A395B9CA /* Pods-PaybookSync_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PaybookSync_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FBFF1DB327766F4E01BB4A19E43E6CE7 /* Pods-PaybookSync_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PaybookSync_Example-dummy.m"; sourceTree = "<group>"; };
+		FC9343D1BECEAF744F29443F3424193E /* Pods-PaybookSync_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PaybookSync_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F7E33AEACD593369DE35EF958F6DE57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E04D2A127888851148912FA5B683264 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		456C2C1C6962F8F0E47F084F98BB3C7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67B5D3591BBF99E5FC9073D90F8C3F2F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A938E1191A0E260D20CCD438D79C4204 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2FDBF0916477F405D7DFD7CA08868F6A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		248E419E4334EBD5831F01E69C1DD8B3 /* Pods-PaybookSync_Example */ = {
+			isa = PBXGroup;
+			children = (
+				9295F7492585DC1BB817BD04A2E6326A /* Info.plist */,
+				72DFE25E68B4C07F9806E40CFD9A7CF7 /* Pods-PaybookSync_Example.modulemap */,
+				511211DFB74020AC00FE07E113376FE2 /* Pods-PaybookSync_Example-acknowledgements.markdown */,
+				DD1E59E70E8FC32F2BAD20F93578A9C2 /* Pods-PaybookSync_Example-acknowledgements.plist */,
+				FBFF1DB327766F4E01BB4A19E43E6CE7 /* Pods-PaybookSync_Example-dummy.m */,
+				D82085DFB22FCA7BE2D67630D8982885 /* Pods-PaybookSync_Example-frameworks.sh */,
+				360E59F8C2F909E6E3D99E68BCAF69C2 /* Pods-PaybookSync_Example-resources.sh */,
+				425F23DB019818B77DAA6F0C46F42336 /* Pods-PaybookSync_Example-umbrella.h */,
+				C90BADB4DC1F1C6A3C8CCE99A6076FD5 /* Pods-PaybookSync_Example.debug.xcconfig */,
+				E0CC16188074A9F15414DE34A111577A /* Pods-PaybookSync_Example.release.xcconfig */,
+			);
+			name = "Pods-PaybookSync_Example";
+			path = "Target Support Files/Pods-PaybookSync_Example";
+			sourceTree = "<group>";
+		};
+		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		494CD857D6E9FEBA313462280A45E1F4 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2AB06608E2FC0C7599743E1B3F93DB8 /* PaybookSync */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		51D21580FFFCA490EBE338258B222DE4 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				47E58A095EB11A1A46BF71FF81327AE4 /* Info.plist */,
+				4425A166C68ED3EDA4A919A1DF264FFA /* PaybookSync.modulemap */,
+				D70A6DECD5EF868A7B35B796B7805621 /* PaybookSync.xcconfig */,
+				D1C9F1BB6CFE9E1A2F1222CAE5542B44 /* PaybookSync-dummy.m */,
+				40D3F7310C537E5C069E6ED454B83FA0 /* PaybookSync-prefix.pch */,
+				62D26291ADC0D21EC2D3EEC69D89CF33 /* PaybookSync-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/PaybookSync";
+			sourceTree = "<group>";
+		};
+		690ACA3FB3E704C33B7DEA34749632C3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5DCF0CE36B3A53AFD6B83FB49C0FBDE8 /* ReplaceMe.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				494CD857D6E9FEBA313462280A45E1F4 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				AFD119C92F189EDD7BB2E80A8F438F36 /* Products */,
+				C3A12FBD6D855B8B816EA2FD7E03173B /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		AFD119C92F189EDD7BB2E80A8F438F36 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				440BAF0C5A04A7C61D2EBEB32C0C446A /* PaybookSync.framework */,
+				AA90AF552CECE93D7DB1D14123D539B0 /* Pods_PaybookSync_Example.framework */,
+				A04D8E2A0BD77A96275318F3368DB9F5 /* Pods_PaybookSync_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3A12FBD6D855B8B816EA2FD7E03173B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				248E419E4334EBD5831F01E69C1DD8B3 /* Pods-PaybookSync_Example */,
+				D39CD535A4756B6CD72B44FBF3869B6D /* Pods-PaybookSync_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D39CD535A4756B6CD72B44FBF3869B6D /* Pods-PaybookSync_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D41E33103E3DD2A75E5EFC44EDE4D088 /* Info.plist */,
+				CC812FE121C6E74ED9ED3D6A48F0C95B /* Pods-PaybookSync_Tests.modulemap */,
+				EA09C8F6C52FFC60E5AA22C0A395B9CA /* Pods-PaybookSync_Tests-acknowledgements.markdown */,
+				FC9343D1BECEAF744F29443F3424193E /* Pods-PaybookSync_Tests-acknowledgements.plist */,
+				44DAA793F5E93F5162F3318E96132415 /* Pods-PaybookSync_Tests-dummy.m */,
+				C5E2384AA7B4A53D9709ED2551B884F9 /* Pods-PaybookSync_Tests-frameworks.sh */,
+				CF839AA0FF1F51DA5D9912EB7CBFC857 /* Pods-PaybookSync_Tests-resources.sh */,
+				9E250539C2503D85455BA5BF8F39CEDD /* Pods-PaybookSync_Tests-umbrella.h */,
+				9800854C70FDB0C2CFD0578AFC26F91E /* Pods-PaybookSync_Tests.debug.xcconfig */,
+				E0BAD5F65B5D1C7595B65A68C0766B9C /* Pods-PaybookSync_Tests.release.xcconfig */,
+			);
+			name = "Pods-PaybookSync_Tests";
+			path = "Target Support Files/Pods-PaybookSync_Tests";
+			sourceTree = "<group>";
+		};
+		F2AB06608E2FC0C7599743E1B3F93DB8 /* PaybookSync */ = {
+			isa = PBXGroup;
+			children = (
+				F88635A3C35A6C700B274E34A682F969 /* PaybookSync */,
+				51D21580FFFCA490EBE338258B222DE4 /* Support Files */,
+			);
+			name = PaybookSync;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		F88635A3C35A6C700B274E34A682F969 /* PaybookSync */ = {
+			isa = PBXGroup;
+			children = (
+				690ACA3FB3E704C33B7DEA34749632C3 /* Classes */,
+			);
+			path = PaybookSync;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4A1E3C576B6C67560F4A07C01CB56E17 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				632D2C0BFE6C14B2638F82641130FDD7 /* PaybookSync-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC57D78B35CDBAF3CD0D790C1B6E0EEE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				031CED483945E9296545284BE5F4FABD /* Pods-PaybookSync_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFFBE8A1DDEF832CB8D520DB6AA1C129 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A3C076D138CB7EFEF02C13BCDCFCC57 /* Pods-PaybookSync_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		773F52DC1EC0BFE90470A27C4B4C38D0 /* Pods-PaybookSync_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D9D42CA9BDB21D78F66DFDC0DFB819D /* Build configuration list for PBXNativeTarget "Pods-PaybookSync_Tests" */;
+			buildPhases = (
+				0E4025DA227E09D10FC90BD9C8368919 /* Sources */,
+				A938E1191A0E260D20CCD438D79C4204 /* Frameworks */,
+				BFFBE8A1DDEF832CB8D520DB6AA1C129 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-PaybookSync_Tests";
+			productName = "Pods-PaybookSync_Tests";
+			productReference = A04D8E2A0BD77A96275318F3368DB9F5 /* Pods_PaybookSync_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8E48BF7A61B14CBDE483E1EBBC1FDE4A /* PaybookSync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9FCA548BBF746DB826B6ECFF8A88E59 /* Build configuration list for PBXNativeTarget "PaybookSync" */;
+			buildPhases = (
+				278310EFBD6BC64CF7D1DD434414C794 /* Sources */,
+				3F7E33AEACD593369DE35EF958F6DE57 /* Frameworks */,
+				4A1E3C576B6C67560F4A07C01CB56E17 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PaybookSync;
+			productName = PaybookSync;
+			productReference = 440BAF0C5A04A7C61D2EBEB32C0C446A /* PaybookSync.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DC68E93A50A202E528F5173E235E5004 /* Pods-PaybookSync_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 598EDCAA1AC5B6D88787D23C2EB93B5E /* Build configuration list for PBXNativeTarget "Pods-PaybookSync_Example" */;
+			buildPhases = (
+				CAEE7B8A0DEF0E2D3309698E0502E95C /* Sources */,
+				456C2C1C6962F8F0E47F084F98BB3C7C /* Frameworks */,
+				AC57D78B35CDBAF3CD0D790C1B6E0EEE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E94BC0D6E7A000FB7B816AFEA5BB1604 /* PBXTargetDependency */,
+			);
+			name = "Pods-PaybookSync_Example";
+			productName = "Pods-PaybookSync_Example";
+			productReference = AA90AF552CECE93D7DB1D14123D539B0 /* Pods_PaybookSync_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = AFD119C92F189EDD7BB2E80A8F438F36 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E48BF7A61B14CBDE483E1EBBC1FDE4A /* PaybookSync */,
+				DC68E93A50A202E528F5173E235E5004 /* Pods-PaybookSync_Example */,
+				773F52DC1EC0BFE90470A27C4B4C38D0 /* Pods-PaybookSync_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E4025DA227E09D10FC90BD9C8368919 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C611AFD14B185A9EF377A502B399D7B3 /* Pods-PaybookSync_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		278310EFBD6BC64CF7D1DD434414C794 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41EE198732632BDA37D8FD7EB8731C06 /* PaybookSync-dummy.m in Sources */,
+				3F5417728B4653102AEA9E4E2ECED079 /* ReplaceMe.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAEE7B8A0DEF0E2D3309698E0502E95C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18A00A58E67532322CC2EEF6F587B34A /* Pods-PaybookSync_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E94BC0D6E7A000FB7B816AFEA5BB1604 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PaybookSync;
+			target = 8E48BF7A61B14CBDE483E1EBBC1FDE4A /* PaybookSync */;
+			targetProxy = B0F73895622B86F96E01B1B0B8D54BDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2AA4E3A0BAF1C257DCEE6686789B33F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0CC16188074A9F15414DE34A111577A /* Pods-PaybookSync_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PaybookSync_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PaybookSync_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		397286341221AB6452E6CA9FAF050C22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9800854C70FDB0C2CFD0578AFC26F91E /* Pods-PaybookSync_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PaybookSync_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PaybookSync_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8C9FF2393926CFF33DAF6C5E6A5F2618 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D70A6DECD5EF868A7B35B796B7805621 /* PaybookSync.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PaybookSync/PaybookSync-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PaybookSync/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PaybookSync/PaybookSync.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PaybookSync;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		E11B193304CE23ADE4E0B00A92B4713A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0BAD5F65B5D1C7595B65A68C0766B9C /* Pods-PaybookSync_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PaybookSync_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PaybookSync_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E7B535D1444B6E1A55D850447EF7343B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C90BADB4DC1F1C6A3C8CCE99A6076FD5 /* Pods-PaybookSync_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PaybookSync_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PaybookSync_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FE78509FAFB6686B3A7A070560F4824D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D70A6DECD5EF868A7B35B796B7805621 /* PaybookSync.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PaybookSync/PaybookSync-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PaybookSync/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PaybookSync/PaybookSync.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PaybookSync;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */,
+				0ACDCBCB0B6796575F46FFA2F5410C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		598EDCAA1AC5B6D88787D23C2EB93B5E /* Build configuration list for PBXNativeTarget "Pods-PaybookSync_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7B535D1444B6E1A55D850447EF7343B /* Debug */,
+				2AA4E3A0BAF1C257DCEE6686789B33F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D9D42CA9BDB21D78F66DFDC0DFB819D /* Build configuration list for PBXNativeTarget "Pods-PaybookSync_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				397286341221AB6452E6CA9FAF050C22 /* Debug */,
+				E11B193304CE23ADE4E0B00A92B4713A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9FCA548BBF746DB826B6ECFF8A88E59 /* Build configuration list for PBXNativeTarget "PaybookSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C9FF2393926CFF33DAF6C5E6A5F2618 /* Debug */,
+				FE78509FAFB6686B3A7A070560F4824D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

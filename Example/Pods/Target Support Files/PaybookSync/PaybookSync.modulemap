@@ -1,0 +1,6 @@
+framework module PaybookSync {
+  umbrella header "PaybookSync-umbrella.h"
+
+  export *
+  module * { export * }
+}

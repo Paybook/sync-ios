@@ -1,0 +1,16 @@
+PODS:
+  - PaybookSync (0.1.0)
+
+DEPENDENCIES:
+  - PaybookSync (from `../`)
+
+EXTERNAL SOURCES:
+  PaybookSync:
+    :path: ../
+
+SPEC CHECKSUMS:
+  PaybookSync: 601fb03ce43929d5ac283a6f002b5864aeeee485
+
+PODFILE CHECKSUM: df4bf35b7448ffef457d3f88dc3217461693ec4e
+
+COCOAPODS: 1.0.1
