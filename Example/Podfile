@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PaybookSync_Example' do
+  pod 'PaybookSync', :path => '../'
+
+  target 'PaybookSync_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
