@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+
+let baseURLString = "https://sync.paybook.com/v1/" //"[your_server_url]"
+let pubKey = "[your_API_key]"

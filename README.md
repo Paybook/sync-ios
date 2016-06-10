@@ -1,9 +1,5 @@
 # PaybookSync
 
-[![CI Status](http://img.shields.io/travis/Gabriel Villarreal/PaybookSync.svg?style=flat)](https://travis-ci.org/Gabriel Villarreal/PaybookSync)
-[![Version](https://img.shields.io/cocoapods/v/PaybookSync.svg?style=flat)](http://cocoapods.org/pods/PaybookSync)
-[![License](https://img.shields.io/cocoapods/l/PaybookSync.svg?style=flat)](http://cocoapods.org/pods/PaybookSync)
-[![Platform](https://img.shields.io/cocoapods/p/PaybookSync.svg?style=flat)](http://cocoapods.org/pods/PaybookSync)
 
 ## Example
 
