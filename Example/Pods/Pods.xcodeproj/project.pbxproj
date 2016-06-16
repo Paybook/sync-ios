@@ -8,42 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1F9022AC9979CD59E8F83962DAF51D /* Error.swift */; };
-		14D021CD1D1351BF00756EA1 /* Catalogues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D021CC1D1351BF00756EA1 /* Catalogues.swift */; };
 		16102E4E35FAA0FC4161282FECE56469 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */; };
-		2722CD0B2872FEE0B612539886482ECC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924F049FD62889B85E34A6A8CC9C3A6A /* Session.swift */; };
-		28AE49D156AFD4AF60D2E724E0FABD74 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9170FB536D197ADABD29D9B5D0FA27CB /* User.swift */; };
 		29E4291EE7D9E457A5A78D66061D304F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */; };
 		2A3C076D138CB7EFEF02C13BCDCFCC57 /* Pods-PaybookSync_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E250539C2503D85455BA5BF8F39CEDD /* Pods-PaybookSync_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D3405986FC586FA6C0A5E0B6BA7E64E /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CBED44D4009D80F990A188D7A8B3F /* Validation.swift */; };
 		2FDBF0916477F405D7DFD7CA08868F6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
 		34CCDCA848A701466256BC2927DA8856 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */; };
+		387EEC9E5270226638243EC783258D34 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2806021418668E9FBD78C0F5B710F88 /* Session.swift */; };
 		3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */; };
 		4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C763FD5409006D69EDB82815E4A61 /* Manager.swift */; };
 		4CFFB8C27A3ADDADC7B0CEF8D419DA1F /* Pods-PaybookSync_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F23DB019818B77DAA6F0C46F42336 /* Pods-PaybookSync_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4DB446875712AD00EFB4C873414B143A /* PaybookSync-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C9F1BB6CFE9E1A2F1222CAE5542B44 /* PaybookSync-dummy.m */; };
 		59468AC167ACC1C5513A7B81FBC37F70 /* PaybookSync-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 62D26291ADC0D21EC2D3EEC69D89CF33 /* PaybookSync-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */; };
 		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */; };
-		5D5DE17784CAAB9D63740D823144D91B /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B7EEFCA4BCBF8226FEB633944A8CFA /* Account.swift */; };
+		5F8FD2402FB2FC8A35EF7196C8F0D74E /* PaybookSync-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C9F1BB6CFE9E1A2F1222CAE5542B44 /* PaybookSync-dummy.m */; };
 		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */; };
+		7048330EFDD0C79C5BAFCF8F2189662A /* Catalogues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF39910CC2ADE74035B694CB707129 /* Catalogues.swift */; };
 		7B48852C4D848FA2DA416A98F6425869 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E07E98001DB6C163294A39CAB05963D /* ServerTrustPolicy.swift */; };
 		8499E759574E282BA5F54C0A88BADDF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
 		8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */; };
 		91C09AC2A52ED69A27C8D923139A006F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
+		91C7FF25D8B2426A76451BC2327DD8ED /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DEC7A92008D9A95321021A35107B19 /* Transaction.swift */; };
 		9432777C36AC3F33FA507B95F4D7E021 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41EA265E42E2F53F87DD98BDA6BDEFD5 /* Foundation.framework */; };
 		9469DF81ECB494E84675969B5E13374C /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA314156AC500125F4078EE968DB14C6 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E393CF47FE31F265B29AA2D9B67C656 /* Result.swift */; };
 		ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */; };
 		AE4CF87C02C042DF13ED5B21C4FDC1E0 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */; };
+		B93CCBD8E2429DD68649BCC6E1E49592 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02952804B5067779A0FF9CC7FC80E5E /* User.swift */; };
 		BE41196F6A3903E59C3306FE3F8B43FE /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */; };
 		C0DB70AB368765DC64BFB5FEA75E0696 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */; };
 		C611AFD14B185A9EF377A502B399D7B3 /* Pods-PaybookSync_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DAA793F5E93F5162F3318E96132415 /* Pods-PaybookSync_Tests-dummy.m */; };
 		C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */; };
 		CB313F23FDAFEF7366041ED0693F1E07 /* Pods-PaybookSync_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBFF1DB327766F4E01BB4A19E43E6CE7 /* Pods-PaybookSync_Example-dummy.m */; };
-		E3B22054491DAB95AAD8E79B9FD6B81D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D886681519410CFA5BB1D278127C1B /* Credentials.swift */; };
-		E7792EAD6C544478DDA32DE7E6C75609 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F51A9623AB9D1052DC0378C88B332 /* Transaction.swift */; };
-		E90DC6E1FCDB728CD51274C97F7F1FF1 /* Paybook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BD9BE2F253255A65B7C0DE088B57C7 /* Paybook.swift */; };
+		EA727122C21249BDD45E15E40D77E66A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA6229EFB7F5D153424E01191CCB1AC /* Account.swift */; };
 		EFE92E8D3813DD26E78E93EEAF6D7E7E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */; };
+		FCA3C4F00F5BC34016DA66201458F6AF /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAE299214C18C6FB0D74D625FDB5C0 /* Credentials.swift */; };
+		FF9EB2163B2955874E7D253B114292D9 /* Paybook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE9947109AF7E9EC1BA0D5B4161F12 /* Paybook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,6 @@
 		09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = Source/Upload.swift; sourceTree = "<group>"; };
 		0DBA7F3642776C1964512C9A38829081 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		101C763FD5409006D69EDB82815E4A61 /* Manager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Manager.swift; path = Source/Manager.swift; sourceTree = "<group>"; };
-		14D021CC1D1351BF00756EA1 /* Catalogues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Catalogues.swift; sourceTree = "<group>"; };
 		1E2A29BA50E80B66E36C94B60FAD8863 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		360E59F8C2F909E6E3D99E68BCAF69C2 /* Pods-PaybookSync_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PaybookSync_Example-resources.sh"; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Source/Download.swift; sourceTree = "<group>"; };
 		511211DFB74020AC00FE07E113376FE2 /* Pods-PaybookSync_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PaybookSync_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5175E677ADC3F810A4FB10B104C4332B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51DEC7A92008D9A95321021A35107B19 /* Transaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		5B09F376C277F027BDCD54137D76C547 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		5C5763A83A1E028B6C4A073221CB764F /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		62D26291ADC0D21EC2D3EEC69D89CF33 /* PaybookSync-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PaybookSync-umbrella.h"; sourceTree = "<group>"; };
@@ -97,12 +97,9 @@
 		706C7AFFE37BA158C3553250F4B5FAED /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DFE25E68B4C07F9806E40CFD9A7CF7 /* Pods-PaybookSync_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PaybookSync_Example.modulemap"; sourceTree = "<group>"; };
 		79E32C97D15B18BFEB591B4A8B5C8477 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
+		7CBAE299214C18C6FB0D74D625FDB5C0 /* Credentials.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		7ED443D528393D61A04FBD88603DE5F3 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		87BD9BE2F253255A65B7C0DE088B57C7 /* Paybook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Paybook.swift; sourceTree = "<group>"; };
-		8F3F51A9623AB9D1052DC0378C88B332 /* Transaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		8FFF564423DBE209836D47626963E9D4 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		9170FB536D197ADABD29D9B5D0FA27CB /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		924F049FD62889B85E34A6A8CC9C3A6A /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		925B9F684E46F38EC8679F9BB1723E94 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9295F7492585DC1BB817BD04A2E6326A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -111,9 +108,14 @@
 		9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		A00DE3A954D58FD6B656DAC62C9A319F /* Pods_PaybookSync_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaybookSync_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
+		A7EF39910CC2ADE74035B694CB707129 /* Catalogues.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Catalogues.swift; sourceTree = "<group>"; };
 		AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		B02952804B5067779A0FF9CC7FC80E5E /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BAA6229EFB7F5D153424E01191CCB1AC /* Account.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		BAAE9947109AF7E9EC1BA0D5B4161F12 /* Paybook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Paybook.swift; sourceTree = "<group>"; };
 		BCEBD64693E897DBE1449A933DB8E2C0 /* PaybookSync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PaybookSync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2806021418668E9FBD78C0F5B710F88 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		C5E2384AA7B4A53D9709ED2551B884F9 /* Pods-PaybookSync_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PaybookSync_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		C90BADB4DC1F1C6A3C8CCE99A6076FD5 /* Pods-PaybookSync_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaybookSync_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CC812FE121C6E74ED9ED3D6A48F0C95B /* Pods-PaybookSync_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PaybookSync_Tests.modulemap"; sourceTree = "<group>"; };
@@ -127,8 +129,6 @@
 		DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		E0BAD5F65B5D1C7595B65A68C0766B9C /* Pods-PaybookSync_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaybookSync_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		E0CC16188074A9F15414DE34A111577A /* Pods-PaybookSync_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PaybookSync_Example.release.xcconfig"; sourceTree = "<group>"; };
-		E5D886681519410CFA5BB1D278127C1B /* Credentials.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
-		E6B7EEFCA4BCBF8226FEB633944A8CFA /* Account.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EA09C8F6C52FFC60E5AA22C0A395B9CA /* Pods-PaybookSync_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PaybookSync_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F9039D48B1E893EF8AD87645A4FF820F /* Stream.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = Source/Stream.swift; sourceTree = "<group>"; };
 		F9278DA00F41E390EE68B6F3C8161C54 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
@@ -300,20 +300,6 @@
 			);
 			sourceTree = "<group>";
 		};
-		B8F6FEDBB4953D56D1DD978792B71EE3 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				E6B7EEFCA4BCBF8226FEB633944A8CFA /* Account.swift */,
-				E5D886681519410CFA5BB1D278127C1B /* Credentials.swift */,
-				87BD9BE2F253255A65B7C0DE088B57C7 /* Paybook.swift */,
-				924F049FD62889B85E34A6A8CC9C3A6A /* Session.swift */,
-				8F3F51A9623AB9D1052DC0378C88B332 /* Transaction.swift */,
-				14D021CC1D1351BF00756EA1 /* Catalogues.swift */,
-				9170FB536D197ADABD29D9B5D0FA27CB /* User.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		C3A12FBD6D855B8B816EA2FD7E03173B /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +312,7 @@
 		C8317DA2631548953D6D0E7C2397615A /* PaybookSync */ = {
 			isa = PBXGroup;
 			children = (
-				B8F6FEDBB4953D56D1DD978792B71EE3 /* Classes */,
+				F8059A24BB3ADEED4834C92541AFD4F3 /* Classes */,
 			);
 			path = PaybookSync;
 			sourceTree = "<group>";
@@ -357,6 +343,20 @@
 			);
 			name = PaybookSync;
 			path = ../..;
+			sourceTree = "<group>";
+		};
+		F8059A24BB3ADEED4834C92541AFD4F3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BAA6229EFB7F5D153424E01191CCB1AC /* Account.swift */,
+				A7EF39910CC2ADE74035B694CB707129 /* Catalogues.swift */,
+				7CBAE299214C18C6FB0D74D625FDB5C0 /* Credentials.swift */,
+				BAAE9947109AF7E9EC1BA0D5B4161F12 /* Paybook.swift */,
+				C2806021418668E9FBD78C0F5B710F88 /* Session.swift */,
+				51DEC7A92008D9A95321021A35107B19 /* Transaction.swift */,
+				B02952804B5067779A0FF9CC7FC80E5E /* User.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,7 +420,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 277C322D895A47FD4B5D137B496A6599 /* Build configuration list for PBXNativeTarget "PaybookSync" */;
 			buildPhases = (
-				1A08D34770B8033F67010062BCCAED72 /* Sources */,
+				7711B62C0D15F5528117C31ABEB5B25D /* Sources */,
 				83FD709B22788A403F649083C2D12114 /* Frameworks */,
 				D20575C338CB31C9C9BF7FD51258A89B /* Headers */,
 			);
@@ -506,25 +506,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A08D34770B8033F67010062BCCAED72 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5D5DE17784CAAB9D63740D823144D91B /* Account.swift in Sources */,
-				E3B22054491DAB95AAD8E79B9FD6B81D /* Credentials.swift in Sources */,
-				E90DC6E1FCDB728CD51274C97F7F1FF1 /* Paybook.swift in Sources */,
-				4DB446875712AD00EFB4C873414B143A /* PaybookSync-dummy.m in Sources */,
-				2722CD0B2872FEE0B612539886482ECC /* Session.swift in Sources */,
-				E7792EAD6C544478DDA32DE7E6C75609 /* Transaction.swift in Sources */,
-				28AE49D156AFD4AF60D2E724E0FABD74 /* User.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		499392A47A15C26E352B449BF66DFF37 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CB313F23FDAFEF7366041ED0693F1E07 /* Pods-PaybookSync_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7711B62C0D15F5528117C31ABEB5B25D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA727122C21249BDD45E15E40D77E66A /* Account.swift in Sources */,
+				7048330EFDD0C79C5BAFCF8F2189662A /* Catalogues.swift in Sources */,
+				FCA3C4F00F5BC34016DA66201458F6AF /* Credentials.swift in Sources */,
+				FF9EB2163B2955874E7D253B114292D9 /* Paybook.swift in Sources */,
+				5F8FD2402FB2FC8A35EF7196C8F0D74E /* PaybookSync-dummy.m in Sources */,
+				387EEC9E5270226638243EC783258D34 /* Session.swift in Sources */,
+				91C7FF25D8B2426A76451BC2327DD8ED /* Transaction.swift in Sources */,
+				B93CCBD8E2429DD68649BCC6E1E49592 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,7 +536,6 @@
 				ADF19C953CE2A7D0B72EC93A81FCCC26 /* Alamofire-dummy.m in Sources */,
 				8EB11202167FCDDF1257AAAB1D1FB244 /* Alamofire.swift in Sources */,
 				5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */,
-				14D021CD1D1351BF00756EA1 /* Catalogues.swift in Sources */,
 				095406039B4D371E48D08B38A2975AC8 /* Error.swift in Sources */,
 				4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */,
 				C7B6DD7C0456C50289A2C381DFE9FA3F /* MultipartFormData.swift in Sources */,

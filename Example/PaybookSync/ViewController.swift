@@ -29,11 +29,7 @@ class ViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func SecondTest(sender: AnyObject) {
-        
-        vartest.validate({
-            response, error in
-            print("\(response), \(error) ")
-        })
+       
     }
     
     
@@ -43,7 +39,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        User.get_all() {
+        
+        User.get() {
             userArray , error in
             
             if userArray != nil{

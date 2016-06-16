@@ -108,7 +108,7 @@ public class User : Paybook {
      }
      */
     
-    public class func get_all(completionHandler: (([User]?, NSError?) -> ())?) {//-> [User]?{
+    public class func get(completionHandler: (([User]?, NSError?) -> ())?) {//-> [User]?{
  
         let url = "users"
         
