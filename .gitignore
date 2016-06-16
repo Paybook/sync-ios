@@ -18,7 +18,6 @@ profile
 DerivedData
 *.hmap
 *.ipa
-APIConfig.swift
 
 
 # Bundler

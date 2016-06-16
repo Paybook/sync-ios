@@ -43,10 +43,21 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="Bb8-pe-kMH"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMY-dm-jVI">
+                                <rect key="frame" x="238" y="262" width="124" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Second Test">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="SecondTest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZZU-6E-346"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="XAs-0F-aHo" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="0Tx-1B-2Fj"/>
+                            <constraint firstItem="cMY-dm-jVI" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="O8m-b0-8gk"/>
                             <constraint firstItem="ESS-lU-hdm" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="jMa-pj-zPK"/>
                             <constraint firstItem="evA-4O-HYJ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="q6x-oz-r7I"/>
                         </constraints>

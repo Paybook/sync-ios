@@ -11,20 +11,31 @@ import PaybookSync
 
 class ViewController: UIViewController, UITextViewDelegate {
 
+    
+    var vartest : Session!
+    
+    
     @IBOutlet weak var username: UITextField!
     
     @IBOutlet weak var password: UITextField!
     
     @IBAction func Test(sender: AnyObject) {
-        var mySession = Session(id_user: username.text!)
-        
-        mySession.create() {
-            responseObject , error in
-            print("responseObject = \(responseObject); error = \(error)")
-            return
-        }
-       
+        _ = Session(id_user: username.text!, completionHandler: {
+            session , error in
+            self.vartest = session
+            print("Session created in API = \(session?.token); error = \(error)")
+        })
+      
     }
+    
+    @IBAction func SecondTest(sender: AnyObject) {
+        
+        vartest.validate({
+            response, error in
+            print("\(response), \(error) ")
+        })
+    }
+    
     
     func textViewDidEndEditing(textView: UITextView) {
         textView.endEditing(true)
@@ -33,8 +44,16 @@ class ViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         User.get_all() {
-            responseObject , error in
-            print("responseObject = \(responseObject); error = \(error)")
+            userArray , error in
+            
+            if userArray != nil{
+                for value in userArray!{
+                    print("\(value.name) : \(value.id_user)")
+                }
+            }
+            
+            
+            
             return
         }
         // Do any additional setup after loading the view, typically from a nib.

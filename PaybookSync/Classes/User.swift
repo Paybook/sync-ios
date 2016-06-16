@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 
-public class User {
+public class User : Paybook {
     
     public var id_user : String!
     public var id_external : String!
@@ -20,218 +20,168 @@ public class User {
     
     
     
-    public init (username: String){
+    init(username: String){
         
         // Init
         self.name = username
-        // Create user in API
-        register(username, completionHandler: {
-            responseObject, error in
-            if responseObject != nil {
-                if var user = responseObject!["response"] as? NSDictionary {
-                    self.id_user = user["id_user"] as? String
-                    self.id_external = user["id_external"] as? String
-                    self.dt_create = user["dt_create"] as? NSDate
-                    self.dt_modify = user["dt_modify"] as? NSDate
-                    print(user)
-                }
-            }else if error != nil{
-                print(error)
-            }
-            
-            
-        })
-        
-       
+        super.init()
         
     }
-
     
-    // Mark Private function to send user to Paybook API
-    
-    func register(username: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    // Init with NSDictionary with existing users from API
+    convenience init(dic: NSDictionary){
         
+        // Init
+        self.init(username: dic["name"] as! String)
+        
+        self.id_user = dic["id_user"] as? String
+        self.id_external = dic["id_external"] as? String
+        self.dt_create = dic["dt_create"] as? NSDate
+        self.dt_modify = dic["dt_modify"] as? NSDate
+        
+    }
+    
+    // Init object and create user in API
+    
+    /** Example how to get all users
+     _ = User(username: "[username]", completionHandler: {
+        user , error in
+        print("User created in API = \(user); error = \(error)")
+     })
+     */
+ 
+    convenience public init(username: String, completionHandler: ((User?, NSError?) -> ())?){
+        
+        // Init
+        self.init(username: username)
+        
+        // Create user in API
         var data = [
-            "api_key" : pubKey,
             "name" : username
         ]
         
-        let url = "\(baseURLString)users"
+        let url = "users"
         
-        Alamofire.request(.POST, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
-            switch response.result {
-            case .Success(let value):
-                if(completionHandler != nil){
-                    completionHandler!(value as? NSDictionary, nil)
+        Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            
+            if response != nil {
+                if var responseObject = response!["response"] as? NSDictionary{
+                    self.id_user = responseObject["id_user"] as? String
+                    self.id_external = responseObject["id_external"] as? String
+                    self.dt_create = responseObject["dt_create"] as? NSDate
+                    self.dt_modify = responseObject["dt_modify"] as? NSDate
+                    
+                    if completionHandler != nil {
+                        completionHandler!(self,error)
+                    }
+                        
+                    
                 }
                 
-            case .Failure(let error):
-                if(completionHandler != nil){
-                    completionHandler!(nil, error)
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
                 }
             }
-        }
+            
+        })
         
         
     }
     
     
-    // Mark Public functions
+    
+    
+    // ** MARK Class Methods
     
     
     
-/*
-    
-    public func signup(completionHandler: ((NSDictionary?, NSError?) -> ())?){
-        
-        var data = [
-            "api_key" : pubKey,
-            "name" : self.name
-        ]
-        
-        let url = "\(baseURLString)users"
-        
-        Alamofire.request(.POST, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
-            switch response.result {
-            case .Success(let value):
-                if(completionHandler != nil){
-                    completionHandler!(value as? NSDictionary, nil)
-                }
-                
-            case .Failure(let error):
-                if(completionHandler != nil){
-                    completionHandler!(nil, error)
-                }
-            }
-        }
-    
-    }*/
-    
-    /** Example
-     
-     User.signup(username.text!, password: password.text!, completionHandler: {
-        responseObject, error in
-        print("responseObject = \(responseObject); error = \(error)")
-        return
-     })
-     
-     */
-    
-    
-    
-    
-    
-    
-    public class func get_all(completionHandler: ((NSDictionary?, NSError?) -> ())?) {//-> [User]?{
-        
-        var data = [
-            "api_key" : pubKey
-        ]
- 
-        let url = "\(baseURLString)users"
-        
-        var array = [User]()
-        
-        Alamofire.request(.GET, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
-            switch response.result {
-            case .Success(let value):
-                if(completionHandler != nil){
-                    completionHandler!(value as? NSDictionary, nil)
-                }
-            case .Failure(let error):
-                if(completionHandler != nil){
-                    completionHandler!(nil, error)
-                }
-            }
-        }
-        
-    }
-    
-    /** Example
+    /** Example how to get all users
      User.get_all() {
-        responseObject , error in
+        responseArray , error in
+    
         print("responseObject = \(responseObject); error = \(error)")
         return
      }
-    */
-    
-    
-    
-    
-    
-    
-    public class func login(username: String, password: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
-        
-        var data = [
-            "api_key" : pubKey,
-            "username" : username,
-            "password" : password
-        ]
-        
-        let url = "\(baseURLString)login"
-        
-        Alamofire.request(.POST, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
-            switch response.result {
-            case .Success(let value):
-                if(completionHandler != nil){
-                    completionHandler!(value as? NSDictionary, nil)
-                }
-                
-            case .Failure(let error):
-                if(completionHandler != nil){
-                    completionHandler!(nil, error)
-                }
-            }
-        }
-        
-        
-    }
-    /*
-     User.login(username.text!, password: password.text!, completionHandler: {
-        responseObject, error in
-        print("responseObject = \(responseObject); error = \(error)")
-        return
-     })
-     
      */
     
-    
-    
-    
-    
-    
-    
-    public class func delete(id_user: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    public class func get_all(completionHandler: (([User]?, NSError?) -> ())?) {//-> [User]?{
+ 
+        let url = "users"
         
-        var data = [
-            "api_key" : pubKey,
-            "id_user" : id_user
-        ]
+        var array = [User]()
         
-        let url = "\(baseURLString)users/\(id_user)"
         
-        Alamofire.request(.DELETE, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
-            switch response.result {
-            case .Success(let value):
-                if(completionHandler != nil){
-                    completionHandler!(value as? NSDictionary, nil)
+        
+        self.call("GET", endpoint: url, parameters: nil, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                var usersArray = [User]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        usersArray.append(User(dic: value as! NSDictionary))
+                    }
+                    if completionHandler != nil {
+                        completionHandler!(usersArray,error)
+                    }
                 }
                 
-            case .Failure(let error):
-                if(completionHandler != nil){
-                    completionHandler!(nil, error)
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
                 }
             }
-        }
+            
+        })
+        
     }
     
-    /*
-     User.delete("5737adb80b212ae23d8b4584", completionHandler: {
+    
+    
+    
+    
+    /** Example how to delete a users
+     User.delete("[id_user]", completionHandler: {
         responseObject, error in
         print("responseObject = \(responseObject); error = \(error)")
         return
      })
-    */
+     */
+    public class func delete(id_user: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+        
+        
+        
+        let url = "users/\(id_user)"
+        
+        self.call("DELETE", endpoint: url, parameters: nil, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                if completionHandler != nil {
+                    completionHandler!(response,error)
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+        })
+    
+    
+    
+    
+    
+    }
+    
+    
     
     
 }
