@@ -10,7 +10,7 @@ import Foundation
 
 
 
-class Account : Paybook {
+public class Account : Paybook {
     
     var id_account : String!
     var id_external : String!
@@ -28,7 +28,8 @@ class Account : Paybook {
     
     
     
-    // Account
+    // ** MARK Convenince Init
+    
     convenience init (dict: NSDictionary){
         self.init()
         self.id_account = dict["id_account"] as? String
@@ -49,20 +50,36 @@ class Account : Paybook {
     // ** MARK Class Methods
     
     
-    // [Transaction]
-    public class func get(session: Session,id_user: String?, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    // Return ([Account],NSError) in completionHandler 
+    /** Example to get accounts
+     
+     Account.get([mySession], id_user: nil, completionHandler: {
+        response, error in
+        print("\(response), \(error)")
+     })
+     */
+    
+    public class func get(session: Session,id_user: String?, completionHandler: (([Account]?, NSError?) -> ())?){
         
         let url = "accounts"
         var data = [
             "token" : session.token
         ]
         
-        self.call("GET", endpoint: url, parameters: nil, completionHandler: {
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
             response, error in
             
             if response != nil {
-                if completionHandler != nil {
-                    completionHandler!(response,error)
+                var array = [Account]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Account(dict: value as! NSDictionary))
+                    }
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
                 }
                 
             }else{
@@ -70,7 +87,6 @@ class Account : Paybook {
                     completionHandler!(nil,error)
                 }
             }
-            
         })
 
         

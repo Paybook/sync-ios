@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Transaction : Paybook {
+public class Transaction : Paybook {
     
     var id_transaction : String!
     var id_user : String!
@@ -51,14 +51,84 @@ class Transaction : Paybook {
     
     // ** MARK Class Methods
     
-    // # transactions Integer
-    public class func get_count( session : Session,id_user : String ,id_credential: String){
+    // Return (Int) # transactions in completionHandler
+    /** Example to get number of transactions
+     
+     Transaction.get_count([mySession], id_user: nil, completionHandler: {
+        response, error in
+        print("# transaction: \(response), \(error)")
+     })
+     */
+    
+    public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, NSError?) -> ())?){
+        
+        let url = "transactions/count"
+        var data = [
+            "token" : session.token
+        ]
+        
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                
+                if var responseObject = response!["response"] as? NSDictionary{
+                    
+                    if completionHandler != nil {
+                        completionHandler!(responseObject["count"] as? Int,nil)
+                    }
+                    
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+        })
+
         
     }
     
-    // [Transaction]
-    public class func get(session: Session,id_user: String){
+    // Return ([Transaction]) # transactions in completionHandler
+    /** Example to get number of transactions
+     
+     Transaction.get([mySession], id_user: nil, completionHandler: {
+        response, error in
+        print("array: \(response), \(error)")
+     })
+     */
+    
+    public class func get(session: Session,id_user: String?, completionHandler: (([Transaction]?, NSError?) -> ())?){
         
+        
+        let url = "transactions"
+        var data = [
+            "token" : session.token
+        ]
+        
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                var array = [Transaction]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Transaction(dict: value as! NSDictionary))
+                    }
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+        })
     }
     
     

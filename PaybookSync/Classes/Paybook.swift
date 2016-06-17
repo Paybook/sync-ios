@@ -12,7 +12,7 @@ import Alamofire
 public class Paybook {
     
     static let api_key = "[your_API_key]"
-    static let baseURLString = "[url_server]"
+    static let baseURLString = "https://sync.paybook.com/v1/"
     
     public init(){
         

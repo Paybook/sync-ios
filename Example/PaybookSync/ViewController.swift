@@ -20,16 +20,19 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func Test(sender: AnyObject) {
+        
         _ = Session(id_user: username.text!, completionHandler: {
             session , error in
             self.vartest = session
             print("Session created in API = \(session?.token); error = \(error)")
         })
-      
+     
     }
     
     @IBAction func SecondTest(sender: AnyObject) {
        
+        
+        
     }
     
     

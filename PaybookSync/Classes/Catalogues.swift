@@ -11,79 +11,302 @@ import Foundation
 // ** MARK Class Structures
 
 
-struct Account_type {
-    var id_account_type : String
-    var name : String
+public struct Account_type {
+    var id_account_type : String!
+    var name : String!
 }
 
-struct Attachment_type {
-    var id_attachment_type : String
-    var name : String
+public struct Attachment_type {
+    var id_attachment_type : String!
+    var name : String!
 }
 
-struct Country {
-    var id_country : String
-    var name : String
-    var code : String
+public struct Country {
+    var id_country : String!
+    var name : String!
+    var code : String!
 }
 
-struct Site {
-    var id_site : String
-    var id_site_organization : String
-    var id_site_organization_type : String
-    var name : String
-    var credentials : NSArray
+public struct Site {
+    var id_site : String!
+    var id_site_organization : String!
+    var id_site_organization_type : String!
+    var name : String!
+    var credentials : NSArray!
 }
 
-struct Credential_structure {
-    var name : String
-    var type : String
-    var label : String
-    var required : Bool
-    var username : String
+public struct Credential_structure {
+    var name : String!
+    var type : String!
+    var label : String!
+    var required : Bool!
+    var username : String!
 }
 
-struct Site_organization {
-    var id_site_organization : String
-    var id_site_organization_type : String
-    var id_country : String
-    var name : String
-    var avatar : String
-    var small_cover : String
-    var cover : String
+public struct Site_organization {
+    var id_site_organization : String!
+    var id_site_organization_type : String!
+    var id_country : String!
+    var name : String!
+    var avatar : String!
+    var small_cover : String!
+    var cover : String!
 }
 
 
 
-class Catalogues : Paybook {
-    
+public class Catalogues : Paybook {
     
     
     // ** MARK Class Methods
     
     
-    // [Account_type]
-    public class func get_account_types(session: Session,id_user: String){
-        
-    }
+    
+    
+    // Return ([Account_type]?, NSError?) in completionHandler
+    /** Example
 
-    // [Attachment_type]
-    public class func get_attachment_types(session: Session,id_user: String){
+     Catalogues.get_account_types(vartest, id_user: nil, completionHandler: {
+        response , error in
+        print("get_account_types \(response), \(error)")
+     })
+
+    */
+    
+    public class func get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, NSError?) -> ())?){
+        
+        var url = "catalogues/account_types"
+        var data = [
+            "token" : session.token
+        ]
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+        response, error in
+            
+            if response != nil {
+                var array = [Account_type]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Account_type(id_account_type: value["id_account_type"] as! String, name: value["name"] as! String))
+                    }
+                    
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+
+        
+        })
+       
+    }
+    
+    
+    
+    
+
+    
+    // Return ([Attachment_type]?, NSError?) in completionHandler
+    /** Example
+     
+     Catalogues.get_attachment_types(vartest, id_user: nil, completionHandler: {
+        response , error in
+        print("get_attachment_types  \(response), \(error)")
+     })
+     
+     */
+    public class func get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, NSError?) -> ())?){
+        
+        var url = "catalogues/attachment_types"
+        var data = [
+            "token" : session.token
+        ]
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                var array = [Attachment_type]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Attachment_type(id_attachment_type: value["id_attachment_type"] as? String, name: value["name"] as? String))
+                    }
+                    
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+            
+        })
+
+    }
+    
+    
+    
+    
+    
+    
+    // Return ([Country]?, NSError?) in completionHandler
+    /** Example
+     
+     Catalogues.get_countries( vartest, id_user: nil, completionHandler: {
+        response , error in
+        print("get_countries  \(response), \(error)")
+     })
+     
+     */
+    public class func get_countries(session: Session, id_user: String?,completionHandler: (([Country]?, NSError?) -> ())?){
+        
+        
+        var url = "catalogues/countries"
+        var data = [
+            "token" : session.token
+        ]
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                var array = [Country]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Country(id_country: value["id_country"] as! String, name: value["name"] as! String, code: value["code"] as! String))
+                    }
+                    
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+            
+        })
+        
         
     }
     
-    // [Country]
-    public class func get_countries(session: Session,id_user: String){
+    
+    
+    
+    
+    
+    // Return ([Site]?, NSError?) in completionHandler
+    /** Example
+     
+     Catalogues.get_sites(vartest, id_user: nil, completionHandler: {
+        response , error in
+        print("get_sites \(response), \(error)")
+     })
+     
+     */
+    public class func get_sites(session: Session, id_user: String?,completionHandler: (([Site]?, NSError?) -> ())?){
+        
+        
+        var url = "catalogues/sites"
+        var data = [
+            "token" : session.token
+        ]
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                var array = [Site]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Site(id_site: value["id_site"] as? String, id_site_organization: value["id_site_organization"] as? String, id_site_organization_type: value["id_site_organization_type"] as? String, name: value["name"] as? String, credentials: value["credentials"] as? NSArray))
+                    }
+                    
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+            
+        })
         
     }
     
-    // [Site]
-    public class func get_sites(session: Session,id_user: String){
-        
-    }
     
-    // [Site_organization]
-    public class func get_site_organizations(session: Session,id_user: String){
+    
+    
+    
+    // Return ([Site]?, NSError?) in completionHandler
+    /** Example
+     
+     Catalogues.get_site_organizations(vartest, id_user: nil, completionHandler: {
+        response , error in
+        print("get_site_organizations  \(response), \(error)")
+     })
+     
+     */
+    public class func get_site_organizations(session: Session, id_user: String?,completionHandler: (([Site_organization]?, NSError?) -> ())?){
+        
+        
+        var url = "catalogues/site_organizations"
+        var data = [
+            "token" : session.token
+        ]
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                var array = [Site_organization]()
+                
+                if var responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Site_organization(
+                            id_site_organization: value["id_site_organization"] as? String,
+                            id_site_organization_type: value["id_site_organization_type"] as? String,
+                            id_country: value["id_country"] as? String,
+                            name: value["name"] as? String,
+                            avatar: value["avatar"] as? String,
+                            small_cover: value["small_cover"] as? String,
+                            cover: value["cover"] as? String))
+                    }
+                    
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+            
+        })
+
         
     }
     

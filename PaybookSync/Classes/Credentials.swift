@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Credentials : Paybook {
+public class Credentials : Paybook {
     
     var id_credential : String!
     var id_site : String!
@@ -22,7 +22,7 @@ class Credentials : Paybook {
     
     
     // Credentials
-    public init (session : String,id_user : String,id_site: String, credentials: NSDictionary){
+    public init (session : String,id_user : String,id_site: String, credentials: NSDictionary , completionHandler: ((NSDictionary?, NSError?) -> ())?){
         self.id_credential = credentials["id_credential"] as? String
         self.id_site = credentials["id_site"] as? String
         self.username = credentials["username"] as? String
@@ -40,7 +40,7 @@ class Credentials : Paybook {
    
     
     // [Dict]
-    public func get_status( session : Session,id_user : String ){
+    public func get_status( session : Session,id_user : String, completionHandler: ((NSDictionary?, NSError?) -> ())? ){
         
     }
     
@@ -49,12 +49,34 @@ class Credentials : Paybook {
     // ** MARK Class Methods
     
     // Bool deleted
-    public class func delete( session : Session,id_user : String ,id_credential: String){
+    public class func delete( session : Session,id_user : String ,id_credential: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
         
     }
     
     // [Credentials]
-    public class func get(session: Session,id_user: String){
+    public class func get(session: Session,id_user: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+        
+        let url = "credentials"
+        var data = [
+            "token" : session.token,
+            //"id_user" : session.id_user
+        ]
+        
+        self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                if completionHandler != nil {
+                    completionHandler!(response,error)
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+        })
         
     }
     

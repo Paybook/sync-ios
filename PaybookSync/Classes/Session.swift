@@ -20,6 +20,7 @@ public class Session: Paybook {
     
     // ** MARK Convenience INIT
     
+    // Return (Session?, NSError?) in completionHandler
     /** To init a Session you can use this code
      
      _ = Session(id_user: "[id_user]", completionHandler: {
@@ -71,6 +72,7 @@ public class Session: Paybook {
    
     // ** MARK Class Methods
     
+    // Return (NSDictionary?, NSError?) in completionHandler
     /** Example to delete a Session
      
      Session.delete("[token]", completionHandler: {
@@ -113,6 +115,7 @@ public class Session: Paybook {
     
     // ** MARK Instance Methods
     
+    // Return (NSDictionary?, NSError?) in completionHandler
     /** Example to validate Session
      
      mySession.validate() {

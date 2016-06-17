@@ -43,7 +43,8 @@ public class User : Paybook {
     
     // Init object and create user in API
     
-    /** Example how to get all users
+    // Return (User,NSError) in completionHandler
+    /** Example how to create a user
      _ = User(username: "[username]", completionHandler: {
         user , error in
         print("User created in API = \(user); error = \(error)")
@@ -98,9 +99,9 @@ public class User : Paybook {
     // ** MARK Class Methods
     
     
-    
+    // Return ([User],NSError) in completionHandler
     /** Example how to get all users
-     User.get_all() {
+     User.get() {
         responseArray , error in
     
         print("responseObject = \(responseObject); error = \(error)")
@@ -145,7 +146,7 @@ public class User : Paybook {
     
     
     
-    
+    // Return (NSDictionary,NSError) in completionHandler
     /** Example how to delete a users
      User.delete("[id_user]", completionHandler: {
         responseObject, error in
