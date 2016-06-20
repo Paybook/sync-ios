@@ -21,24 +21,13 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func Test(sender: AnyObject) {
         
-        _ = Session(id_user: username.text!, completionHandler: {
-            session , error in
-            self.vartest = session
-            Credentials.get(self.vartest, id_user: nil, completionHandler: {
-                response, error in
-                print(" \(response), \(error)")
-            })
-            
-        })
+        
+       
      
     }
     
     @IBAction func SecondTest(sender: AnyObject) {
        
-        Credentials.delete(vartest, id_user: nil, id_credential: password.text!, completionHandler: {
-            response, error in
-            print(" \(response), \(error)")
-        })
         
     }
     
@@ -50,19 +39,10 @@ class ViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        User.get() {
-            userArray , error in
-            
-            if userArray != nil{
-                for value in userArray!{
-                    print("\(value.name) : \(value.id_user)")
-                }
-            }
-            
-            
-            
-            return
-        }
+        
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

@@ -11,20 +11,15 @@ import Alamofire
 
 public class Paybook {
     
-    static let api_key = "[your_API_key]"
+    public static var api_key = "[your_API_key]"
     static let baseURLString = "https://sync.paybook.com/v1/"
+    
     
     public init(){
         
     }
     
-    convenience public init(api_key: String){
-        self.init()
-    }
-    
-    
-    
-    
+
     // ** MARK Class Methods
     
     public class func call (method: String, endpoint: String, parameters: NSDictionary?, completionHandler: ((NSDictionary?, NSError?) -> ())?){

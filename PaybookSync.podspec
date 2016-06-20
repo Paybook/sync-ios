@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PaybookSync'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'PaybookSync is a library to take advantage of the Paybook Financial API (Sync).'
 
 # This description is used to generate tags and improve search results.
