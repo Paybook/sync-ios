@@ -62,7 +62,7 @@ public class Account : Paybook {
     public class func get(session: Session,id_user: String?, completionHandler: (([Account]?, NSError?) -> ())?){
         
         let url = "accounts"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         
@@ -72,7 +72,7 @@ public class Account : Paybook {
             if response != nil {
                 var array = [Account]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         array.append(Account(dict: value as! NSDictionary))

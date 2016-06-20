@@ -36,7 +36,7 @@ public class Session: Paybook {
         self.id_user = id_user
         
         
-        var data = [
+        let data = [
             "id_user" : id_user
         ]
         
@@ -47,7 +47,7 @@ public class Session: Paybook {
             response, error in
             
             if response != nil {
-                if var responseObject = response!["response"] as? NSDictionary{
+                if let responseObject = response!["response"] as? NSDictionary{
                     self.token = responseObject["token"] as? String
                     if completionHandler != nil {
                         completionHandler!(self,error)

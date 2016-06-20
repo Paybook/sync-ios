@@ -76,7 +76,7 @@ public class Catalogues : Paybook {
     public class func get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, NSError?) -> ())?){
         
         let url = "catalogues/account_types"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
@@ -85,7 +85,7 @@ public class Catalogues : Paybook {
             if response != nil {
                 var array = [Account_type]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         array.append(Account_type(id_account_type: value["id_account_type"] as! String, name: value["name"] as! String))
@@ -124,7 +124,7 @@ public class Catalogues : Paybook {
     public class func get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, NSError?) -> ())?){
         
         let url = "catalogues/attachment_types"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
@@ -133,7 +133,7 @@ public class Catalogues : Paybook {
             if response != nil {
                 var array = [Attachment_type]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         array.append(Attachment_type(id_attachment_type: value["id_attachment_type"] as? String, name: value["name"] as? String))
@@ -173,7 +173,7 @@ public class Catalogues : Paybook {
         
         
         let url = "catalogues/countries"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
@@ -182,7 +182,7 @@ public class Catalogues : Paybook {
             if response != nil {
                 var array = [Country]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         array.append(Country(id_country: value["id_country"] as! String, name: value["name"] as! String, code: value["code"] as! String))
@@ -223,7 +223,7 @@ public class Catalogues : Paybook {
         
         
         let url = "catalogues/sites"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
@@ -232,7 +232,7 @@ public class Catalogues : Paybook {
             if response != nil {
                 var array = [Site]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         array.append(Site(id_site: value["id_site"] as? String, id_site_organization: value["id_site_organization"] as? String, id_site_organization_type: value["id_site_organization_type"] as? String, name: value["name"] as? String, credentials: value["credentials"] as? NSArray))
@@ -271,7 +271,7 @@ public class Catalogues : Paybook {
         
         
         let url = "catalogues/site_organizations"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
@@ -280,7 +280,7 @@ public class Catalogues : Paybook {
             if response != nil {
                 var array = [Site_organization]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         array.append(Site_organization(

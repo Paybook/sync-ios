@@ -63,7 +63,7 @@ public class Transaction : Paybook {
     public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, NSError?) -> ())?){
         
         let url = "transactions/count"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         
@@ -72,7 +72,7 @@ public class Transaction : Paybook {
             
             if response != nil {
                 
-                if var responseObject = response!["response"] as? NSDictionary{
+                if let responseObject = response!["response"] as? NSDictionary{
                     
                     if completionHandler != nil {
                         completionHandler!(responseObject["count"] as? Int,nil)
@@ -103,7 +103,7 @@ public class Transaction : Paybook {
         
         
         let url = "transactions"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         
@@ -113,7 +113,7 @@ public class Transaction : Paybook {
             if response != nil {
                 var array = [Transaction]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         array.append(Transaction(dict: value as! NSDictionary))

@@ -39,7 +39,7 @@ public class Credentials : Paybook {
         self.id_site_organization = credentials["id_site_organization"] as? String
         self.id_site_organization_type = credentials["id_site_organization_type"] as? String
         // Create user in API
-        var data = [
+        let data = [
             "token" : session.token,
             "id_site" : id_site,
             "credentials" : credentials
@@ -52,7 +52,7 @@ public class Credentials : Paybook {
             
             
             if response != nil {
-                if var responseObject = response!["response"] as? NSDictionary{
+                if let responseObject = response!["response"] as? NSDictionary{
                     
                     self.id_credential = responseObject["id_credential"] as? String
                     self.username = responseObject["username"] as? String
@@ -102,7 +102,7 @@ public class Credentials : Paybook {
     public class func delete( session : Session,id_user : String? ,id_credential: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
         
         
-        var data = [
+        let data = [
             "token" : session.token,
         ]
         
@@ -141,7 +141,7 @@ public class Credentials : Paybook {
     public class func get(session: Session,id_user: String?, completionHandler: ((NSDictionary?, NSError?) -> ())?){
         
         let url = "credentials"
-        var data = [
+        let data = [
             "token" : session.token
         ]
         

@@ -20,12 +20,36 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func Test(sender: AnyObject) {
+        Paybook.api_key = username.text!
+        User.get() {
+            responseArray , error in
+            if responseArray != nil{
+                for user in responseArray!{
+                    print(user.id_user)
+                }
+            }
+            
+            return
+        }
+       
      
     }
     
     @IBAction func SecondTest(sender: AnyObject) {
        
-        
+        _ = Session(id_user: password.text!, completionHandler: {
+            session , error in
+            print("Session created in API = \(session?.token); error = \(error)")
+            
+            if session != nil{
+                
+                Transaction.get(session!, id_user: nil, completionHandler: {
+                    response, error in
+                    print("array: \(response), \(error)")
+                })
+            }
+            
+        })
     }
     
     
@@ -35,6 +59,9 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         
         // Do any additional setup after loading the view, typically from a nib.

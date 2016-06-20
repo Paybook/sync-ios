@@ -57,7 +57,7 @@ public class User : Paybook {
         self.init(username: username)
         
         // Create user in API
-        var data = [
+        let data = [
             "name" : username
         ]
         
@@ -68,7 +68,7 @@ public class User : Paybook {
             
             
             if response != nil {
-                if var responseObject = response!["response"] as? NSDictionary{
+                if let responseObject = response!["response"] as? NSDictionary{
                     self.id_user = responseObject["id_user"] as? String
                     self.id_external = responseObject["id_external"] as? String
                     self.dt_create = responseObject["dt_create"] as? NSDate
@@ -104,7 +104,7 @@ public class User : Paybook {
      User.get() {
         responseArray , error in
     
-        print("responseObject = \(responseObject); error = \(error)")
+        print("responseObject = \(responseArray); error = \(error)")
         return
      }
      */
@@ -113,17 +113,13 @@ public class User : Paybook {
  
         let url = "users"
         
-        var array = [User]()
-        
-        
-        
         self.call("GET", endpoint: url, parameters: nil, completionHandler: {
             response, error in
             
             if response != nil {
                 var usersArray = [User]()
                 
-                if var responseArray = response!["response"] as? NSArray{
+                if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
                         usersArray.append(User(dic: value as! NSDictionary))
