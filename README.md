@@ -16,9 +16,6 @@ it, simply add the following line to your Podfile:
 pod "PaybookSync"
 ```
 
-## Author
-
-Gabriel Villarreal, gabriel@paybook.me
 
 ## License
 

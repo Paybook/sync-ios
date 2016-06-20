@@ -24,14 +24,21 @@ class ViewController: UIViewController, UITextViewDelegate {
         _ = Session(id_user: username.text!, completionHandler: {
             session , error in
             self.vartest = session
-            print("Session created in API = \(session?.token); error = \(error)")
+            Credentials.get(self.vartest, id_user: nil, completionHandler: {
+                response, error in
+                print(" \(response), \(error)")
+            })
+            
         })
      
     }
     
     @IBAction func SecondTest(sender: AnyObject) {
        
-        
+        Credentials.delete(vartest, id_user: nil, id_credential: password.text!, completionHandler: {
+            response, error in
+            print(" \(response), \(error)")
+        })
         
     }
     

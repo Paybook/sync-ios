@@ -28,13 +28,13 @@ public class Paybook {
     // ** MARK Class Methods
     
     public class func call (method: String, endpoint: String, parameters: NSDictionary?, completionHandler: ((NSDictionary?, NSError?) -> ())?){
-        var data = ["api_key" : api_key]
+        var data : [String: AnyObject] = ["api_key" : api_key]
         
         if(parameters != nil){
             // Add parameters in request data
-            data.update(parameters as! Dictionary<String, String>)
+            data.update(parameters as! Dictionary<String, AnyObject>)
         }
-        
+        print(data)
         
         
         let url = "\(baseURLString)\(endpoint)"

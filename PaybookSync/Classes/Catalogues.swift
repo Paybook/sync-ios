@@ -258,7 +258,7 @@ public class Catalogues : Paybook {
     
     
     
-    // Return ([Site]?, NSError?) in completionHandler
+    // Return ([Site_organization]?, NSError?) in completionHandler
     /** Example
      
      Catalogues.get_site_organizations(vartest, id_user: nil, completionHandler: {

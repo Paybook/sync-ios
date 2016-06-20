@@ -21,16 +21,66 @@ public class Credentials : Paybook {
     var twofa : String!
     
     
-    // Credentials
-    public init (session : String,id_user : String,id_site: String, credentials: NSDictionary , completionHandler: ((NSDictionary?, NSError?) -> ())?){
-        self.id_credential = credentials["id_credential"] as? String
+    // Return a Credentials in completionHandler.
+    /**
+     _ = Credentials(session: [mySession], id_user: nil, id_site: ["id_site"], credentials: [data_credentials], completionHandler: {
+        response, error in
+        print(" \(response), \(error)")
+    })
+     */
+    
+    public convenience init (session : Session ,id_user : String? , id_site: String, credentials: NSDictionary , completionHandler: ((Credentials?, NSError?) -> ())?){
+        
+        
+        
+        // Init
+        self.init()
         self.id_site = credentials["id_site"] as? String
-        self.username = credentials["username"] as? String
         self.id_site_organization = credentials["id_site_organization"] as? String
         self.id_site_organization_type = credentials["id_site_organization_type"] as? String
-        self.ws = credentials["ws"] as? String
-        self.status = credentials["status"] as? String
-        self.twofa = credentials["twofa"] as? String
+        // Create user in API
+        var data = [
+            "token" : session.token,
+            "id_site" : id_site,
+            "credentials" : credentials
+        ]
+        
+        let url = "credentials"
+        
+        Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            
+            if response != nil {
+                if var responseObject = response!["response"] as? NSDictionary{
+                    
+                    self.id_credential = responseObject["id_credential"] as? String
+                    self.username = responseObject["username"] as? String
+                    self.ws = responseObject["ws"] as? String
+                    self.status = responseObject["status"] as? String
+                    self.twofa = responseObject["twofa"] as? String
+                    
+                    if completionHandler != nil {
+                        completionHandler!(self,error)
+                    }
+                    
+                    
+                }
+                
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+        })
+
+        
+        
+        
+        
+        
     }
     
     
@@ -49,17 +99,50 @@ public class Credentials : Paybook {
     // ** MARK Class Methods
     
     // Bool deleted
-    public class func delete( session : Session,id_user : String ,id_credential: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    public class func delete( session : Session,id_user : String? ,id_credential: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
         
+        
+        var data = [
+            "token" : session.token,
+        ]
+        
+        let url = "credentials/\(id_credential)"
+        
+        self.call("DELETE", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                if completionHandler != nil {
+                    completionHandler!(response,error)
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+        })
+        
+        
+
     }
     
-    // [Credentials]
-    public class func get(session: Session,id_user: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    
+    
+    
+    // Return [Credentials] in completionHandler
+    /** Example
+     Credentials.get(vartest, id_user: nil, completionHandler: {
+        response, error in
+        print(" \(response), \(error)")
+     })
+     */
+    public class func get(session: Session,id_user: String?, completionHandler: ((NSDictionary?, NSError?) -> ())?){
         
         let url = "credentials"
         var data = [
-            "token" : session.token,
-            //"id_user" : session.id_user
+            "token" : session.token
         ]
         
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
