@@ -75,7 +75,7 @@ public class Catalogues : Paybook {
     
     public class func get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, NSError?) -> ())?){
         
-        var url = "catalogues/account_types"
+        let url = "catalogues/account_types"
         var data = [
             "token" : session.token
         ]
@@ -123,7 +123,7 @@ public class Catalogues : Paybook {
      */
     public class func get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, NSError?) -> ())?){
         
-        var url = "catalogues/attachment_types"
+        let url = "catalogues/attachment_types"
         var data = [
             "token" : session.token
         ]
@@ -172,7 +172,7 @@ public class Catalogues : Paybook {
     public class func get_countries(session: Session, id_user: String?,completionHandler: (([Country]?, NSError?) -> ())?){
         
         
-        var url = "catalogues/countries"
+        let url = "catalogues/countries"
         var data = [
             "token" : session.token
         ]
@@ -222,7 +222,7 @@ public class Catalogues : Paybook {
     public class func get_sites(session: Session, id_user: String?,completionHandler: (([Site]?, NSError?) -> ())?){
         
         
-        var url = "catalogues/sites"
+        let url = "catalogues/sites"
         var data = [
             "token" : session.token
         ]
@@ -270,7 +270,7 @@ public class Catalogues : Paybook {
     public class func get_site_organizations(session: Session, id_user: String?,completionHandler: (([Site_organization]?, NSError?) -> ())?){
         
         
-        var url = "catalogues/site_organizations"
+        let url = "catalogues/site_organizations"
         var data = [
             "token" : session.token
         ]

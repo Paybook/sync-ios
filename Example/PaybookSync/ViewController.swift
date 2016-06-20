@@ -20,9 +20,6 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func Test(sender: AnyObject) {
-        
-        
-       
      
     }
     
@@ -38,9 +35,6 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         
         
         // Do any additional setup after loading the view, typically from a nib.
