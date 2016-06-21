@@ -66,7 +66,7 @@ public class Catalogues : Paybook {
     // Return ([Account_type]?, NSError?) in completionHandler
     /** Example
 
-     Catalogues.get_account_types(vartest, id_user: nil, completionHandler: {
+     Catalogues.get_account_types(mySession, id_user: nil, completionHandler: {
         response , error in
         print("get_account_types \(response), \(error)")
      })
@@ -115,7 +115,7 @@ public class Catalogues : Paybook {
     // Return ([Attachment_type]?, NSError?) in completionHandler
     /** Example
      
-     Catalogues.get_attachment_types(vartest, id_user: nil, completionHandler: {
+     Catalogues.get_attachment_types(mySession, id_user: nil, completionHandler: {
         response , error in
         print("get_attachment_types  \(response), \(error)")
      })
@@ -163,7 +163,7 @@ public class Catalogues : Paybook {
     // Return ([Country]?, NSError?) in completionHandler
     /** Example
      
-     Catalogues.get_countries( vartest, id_user: nil, completionHandler: {
+     Catalogues.get_countries( mySession, id_user: nil, completionHandler: {
         response , error in
         print("get_countries  \(response), \(error)")
      })
@@ -213,7 +213,7 @@ public class Catalogues : Paybook {
     // Return ([Site]?, NSError?) in completionHandler
     /** Example
      
-     Catalogues.get_sites(vartest, id_user: nil, completionHandler: {
+     Catalogues.get_sites(mySession, id_user: nil, completionHandler: {
         response , error in
         print("get_sites \(response), \(error)")
      })
@@ -261,7 +261,7 @@ public class Catalogues : Paybook {
     // Return ([Site_organization]?, NSError?) in completionHandler
     /** Example
      
-     Catalogues.get_site_organizations(vartest, id_user: nil, completionHandler: {
+     Catalogues.get_site_organizations(mySession, id_user: nil, completionHandler: {
         response , error in
         print("get_site_organizations  \(response), \(error)")
      })

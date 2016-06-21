@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'PaybookSync'
+  s.name             = 'Paybook'
   s.version          = '1.0.2'
-  s.summary          = 'PaybookSync is a library to take advantage of the Paybook Financial API (Sync).'
+  s.summary          = 'Paybook is a library to take advantage of the Paybook Financial API (Sync).'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
