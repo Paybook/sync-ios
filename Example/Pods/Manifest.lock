@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.4.0)
-  - PaybookSync (1.0.1):
+  - PaybookSync (1.0.2):
     - Alamofire (~> 3.4)
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
-  PaybookSync: 6ccb5d821eea51e82367766d1d351da366f201a3
+  PaybookSync: 84c4eb5740cee5bb6baa70416f0c7bc9b9eb23ea
 
 PODFILE CHECKSUM: df4bf35b7448ffef457d3f88dc3217461693ec4e
 

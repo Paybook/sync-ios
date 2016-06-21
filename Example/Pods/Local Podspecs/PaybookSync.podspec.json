@@ -1,7 +1,7 @@
 {
   "name": "PaybookSync",
-  "version": "1.0.1",
-  "summary": "PaybookSync is a library to take advantage of the Paybook Financial API (Sync).",
+  "version": "1.0.2",
+  "summary": "Paybook is a library to take advantage of the Paybook Financial API (Sync).",
   "description": "A library to take advantage of the Paybook Financial API (Sync) to pull information from Mexican Banks and Tax Authority.",
   "homepage": "https://github.com/Paybook/sync-ios",
   "license": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Paybook/sync-ios.git",
-    "tag": "1.0.1"
+    "tag": "1.0.2"
   },
   "platforms": {
     "ios": "8.0"

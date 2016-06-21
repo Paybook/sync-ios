@@ -60,11 +60,13 @@ method_type returned_value_type x = class_or_instance.get(attr1:attr1_type,...,a
 5. attrX: es el nombre del atributo X
 6. attrX_type: es el tipo de dato del atributo X
 
-**Importante:** Todos los metodos regresan valores por medio de una Funcion completionHandler que recive el tipo de dato a retornar en caso de que el request sea exitoso o un error en caso de fallar e.g:
-``` Account.get([mySession], id_user: nil, completionHandler: {
-        response, error in
-        print("\(response), \(error)")
-    })```
+**Importante:** Todos los metodos regresan valores por medio de una función completionHandler que recibe el tipo de dato a retornar en caso de que el request sea exitoso o un error en caso de fallar e.g:
+``` 
+Account.get([mySession], id_user: nil, completionHandler: {
+    response, error in
+    print("\(response), \(error)")
+})
+```
 
 ### Accounts
 
@@ -78,7 +80,7 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Requests accounts of a user | GET https://sync.paybook.com/v1/accounts | ```static NSArray [Account] = Account.get(session: Session,id_user: String?, completionHandler: (([Account]?, NSError?) -> ())?)```          |
+| Requests accounts of a user | GET https://sync.paybook.com/v1/accounts | ```static NSArray [Account] = Account.get(session:Session,id_user:String?,completionHandler:(([Account]?, NSError?)->())?)```          |
 
 ### Attachments
 
@@ -111,11 +113,11 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Request account types | GET https://sync.paybook.com/v1/catalogues/account_types   | ```static NSArray [Account_type] = Catalogues.get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, NSError?) -> ())?)```          |
-| Request attachment types | GET https://sync.paybook.com/v1/catalogues/attachment_types   | ```static NSArray [Attachment_type] = Catalogues.get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, NSError?) -> ())?)```          |
-| Request available countries | GET https://sync.paybook.com/v1/catalogues/countries   | ```static NSArray [Country] = Catalogues.get_countries(session: Session, id_user: String?,completionHandler: (([Country]?, NSError?) -> ())?)```          |
-| Request available sites | GET https://sync.paybook.com/v1/catalogues/sites   | ```static NSArray [Site] = Catalogues.get_sites(session: Session, id_user: String?,completionHandler: (([Site]?, NSError?) -> ())?)```          |
-| Request site organizations | GET https://sync.paybook.com/v1/catalogues/site_organizations   | ```static NSArray [Site_organization] = Catalogues.get_site_organizations(session: Session, id_user: String?,completionHandler: (([Site_organization]?, NSError?) -> ())?)```          |
+| Request account types | GET https://sync.paybook.com/v1/catalogues/account_types   | ```static NSArray [Account_type] = Catalogues.get_account_types(session:Session,id_user:String?,completionHandler:(([Account_type]?, NSError?)->())?)```          |
+| Request attachment types | GET https://sync.paybook.com/v1/catalogues/attachment_types   | ```static NSArray [Attachment_type] = Catalogues.get_attachment_types(session:Session,id_user:String?,completionHandler:(([Attachment_type]?,NSError?)->())?)```          |
+| Request available countries | GET https://sync.paybook.com/v1/catalogues/countries   | ```static NSArray [Country] = Catalogues.get_countries(session:Session,id_user:String?,completionHandler:(([Country]?,NSError?)->())?)```          |
+| Request available sites | GET https://sync.paybook.com/v1/catalogues/sites   | ```static NSArray [Site] = Catalogues.get_sites(session:Session,id_user:String?,completionHandler:(([Site]?,NSError?)->())?)```          |
+| Request site organizations | GET https://sync.paybook.com/v1/catalogues/site_organizations   | ```static NSArray [Site_organization] = Catalogues.get_site_organizations(session:Session,id_user:String?,completionHandler:(([Site_organization]?,NSError?)->())?)```          |
 
 ### Credentials
 
@@ -129,11 +131,11 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Creates or updates credentials | POST https://sync.paybook.com/v1/credentials | ```Credentials credentials = Credential(session : Session ,id_user : String? , id_site: String, credentials: NSDictionary , completionHandler: ((Credentials?, NSError?) -> ())?)```          |
-| Deletes credentials | DELETE https://sync.paybook.com/v1/credentials/:id_credential | ```static NSDictionary deleted Credentials.delete(session : Session,id_user : String? ,id_credential: String, completionHandler: ((NSDictionary?, NSError?) -> ())?)```          |
+| Creates or updates credentials | POST https://sync.paybook.com/v1/credentials | ```Credentials credentials = Credential(session:Session,id_user:String?,id_site:String,credentials:NSDictionary,completionHandler:((Credentials?,NSError?)->())?)```          |
+| Deletes credentials | DELETE https://sync.paybook.com/v1/credentials/:id_credential | ```static NSDictionary deleted Credentials.delete(session:Session,id_user:String?,id_credential:String,completionHandler:((NSDictionary?,NSError?)->())?)```          |
 | Request status | GET status_url | ```list [Dict] = credentials.get_status(session=Session,id_user=str)```          |
 | Set twofa | POST twofa_url | ```bool twofa_set = credentials.set_twofa(session=Session,id_user=str,twofa_value=str)```          |
-| Request register credentials | GET https://sync.paybook.com/v1/credentials | ```static list [Credentials] = Credentials.get(session: Session,id_user: String?, completionHandler: (([Credentials]?, NSError?) -> ())?)```          |
+| Request register credentials | GET https://sync.paybook.com/v1/credentials | ```static list [Credentials] = Credentials.get(session:Session,id_user:String?,completionHandler:(([Credentials]?,NSError?)->())?)```          |
 
 
 ### Sessions
@@ -149,9 +151,9 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Creates a session | POST https://sync.paybook.com/v1/sessions   | ```Session session = Session(id_user: String, completionHandler: ((Session?, NSError?) -> ())?)```          |
-| Verify a session | GET https://sync.paybook.com/v1/sessions/:token/verify | ```NSDictionary verified = session.verify(completionHandler: ((NSDictionary?, NSError?) -> ())?)```                  |
-| Deletes a session     | DELETE https://sync.paybook.com/v1/sessions/:token    | ```static NSDictionary deleted = Session.delete(token: String, completionHandler: ((NSDictionary?, NSError?) -> ())?)```|
+| Creates a session | POST https://sync.paybook.com/v1/sessions   | ```Session session = Session(id_user:String,completionHandler:((Session?,NSError?)->())?)```          |
+| Verify a session | GET https://sync.paybook.com/v1/sessions/:token/verify | ```NSDictionary verified = session.verify(completionHandler:((NSDictionary?, NSError?)->())?)```                  |
+| Deletes a session     | DELETE https://sync.paybook.com/v1/sessions/:token    | ```static NSDictionary deleted = Session.delete(token:String,completionHandler:((NSDictionary?,NSError?)->())?)```|
 
 
 ### Transactions
@@ -167,8 +169,8 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Requests number of transactions | GET https://sync.paybook.com/v1/transactions/count | ```static int transactions_count = Transaction.get_count(session : Session,id_user : String? , completionHandler: ((Int?, NSError?) -> ())?)```          |
-| Requests transactions | GET https://sync.paybook.com/v1/transactions | ```static NSArray [Transaction] = Transaction.get(session: Session,id_user: String?, completionHandler: (([Transaction]?, NSError?) -> ())?)```          |
+| Requests number of transactions | GET https://sync.paybook.com/v1/transactions/count | ```static int transactions_count = Transaction.get_count(session :Session,id_user:String?,completionHandler:((Int?, NSError?)->())?)```          |
+| Requests transactions | GET https://sync.paybook.com/v1/transactions | ```static NSArray [Transaction] = Transaction.get(session:Session,id_user:String?,completionHandler:(([Transaction]?,NSError?)->())?)```          |
 
 ### User
 
@@ -183,9 +185,9 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                 |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Creates a user | POST https://sync.paybook.com/v1/users   | ```User user = User(username: String, completionHandler: ((User?, NSError?) -> ())?)```          |
-| Deletes a user | DELETE https://sync.paybook.com/v1/users | ```static NSDictionary deleted = User.delete(id_user: String, completionHandler: ((NSDictionary?, NSError?) -> ())?)```                  |
-| Get users      | GET https://sync.paybook.com/v1/users    | ```static NSArray [User] = User.get(completionHandler: (([User]?, NSError?) -> ())?)```|
+| Creates a user | POST https://sync.paybook.com/v1/users   | ```User user = User(username:String,completionHandler:((User?,NSError?)->())?)```          |
+| Deletes a user | DELETE https://sync.paybook.com/v1/users | ```static NSDictionary deleted = User.delete(id_user:String,completionHandler: ((NSDictionary?, NSError?)->())?)```                  |
+| Get users      | GET https://sync.paybook.com/v1/users    | ```static NSArray [User] = User.get(completionHandler:(([User]?,NSError?)->())?)```|
 
 
 
