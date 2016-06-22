@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PaybookSync
+import Paybook
 
 class ViewController: UIViewController, UITextViewDelegate {
 

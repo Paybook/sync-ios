@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "PaybookSync_Example.app"
-               BlueprintName = "PaybookSync_Example"
-               ReferencedContainer = "container:PaybookSync.xcodeproj">
+               BuildableName = "Paybook_Example.app"
+               BlueprintName = "Paybook_Example"
+               ReferencedContainer = "container:Paybook.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "PaybookSync_Tests.xctest"
-               BlueprintName = "PaybookSync_Tests"
-               ReferencedContainer = "container:PaybookSync.xcodeproj">
+               BuildableName = "Paybook_Example.xctest"
+               BlueprintName = "Paybook_Tests"
+               ReferencedContainer = "container:Paybook.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "PaybookSync_Tests.xctest"
-               BlueprintName = "PaybookSync_Tests"
-               ReferencedContainer = "container:PaybookSync.xcodeproj">
+               BuildableName = "Paybook_Example.xctest"
+               BlueprintName = "Paybook_Tests"
+               ReferencedContainer = "container:Paybook.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "PaybookSync_Example.app"
-            BlueprintName = "PaybookSync_Example"
-            ReferencedContainer = "container:PaybookSync.xcodeproj">
+            BuildableName = "Paybook_Example.app"
+            BlueprintName = "Paybook_Example"
+            ReferencedContainer = "container:Paybook.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "PaybookSync_Example.app"
-            BlueprintName = "PaybookSync_Example"
-            ReferencedContainer = "container:PaybookSync.xcodeproj">
+            BuildableName = "Paybook_Example.app"
+            BlueprintName = "Paybook_Example"
+            ReferencedContainer = "container:Paybook.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -99,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "PaybookSync_Example.app"
-            BlueprintName = "PaybookSync_Example"
-            ReferencedContainer = "container:PaybookSync.xcodeproj">
+            BuildableName = "Paybook_Example.app"
+            BlueprintName = "Paybook_Example"
+            ReferencedContainer = "container:Paybook.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

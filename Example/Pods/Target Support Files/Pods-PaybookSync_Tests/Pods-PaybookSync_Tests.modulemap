@@ -1,6 +1,0 @@
-framework module Pods_PaybookSync_Tests {
-  umbrella header "Pods-PaybookSync_Tests-umbrella.h"
-
-  export *
-  module * { export * }
-}

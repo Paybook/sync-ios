@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B489CF00E084DDA07741988 /* Pods_Paybook_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1FDF77E10E5C369B0CB286 /* Pods_Paybook_Example.framework */; };
+		2F84C782580E9B5923F7E8C9 /* Pods_Paybook_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D35E24BD97C2C3F7A05AFC4 /* Pods_Paybook_Tests.framework */; };
 		50DD5C6721A8B575F7748F25 /* Pods_PaybookSync_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EE060B110E4351209356E6 /* Pods_PaybookSync_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -31,22 +33,28 @@
 		0608D0A530BA71599D7766FF /* Pods-PaybookSync_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		27CAC6D7839124A498695374 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2FB520A8414C788210F24BB3 /* Pods-PaybookSync_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		318CE31A7455E5B5B5C5D102 /* Pods-Paybook_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paybook_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paybook_Example/Pods-Paybook_Example.release.xcconfig"; sourceTree = "<group>"; };
+		48E699B548B29A130FA59F98 /* Pods-Paybook_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paybook_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paybook_Example/Pods-Paybook_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4D19E87CFFDDA4FB3A9595EA /* Pods-PaybookSync_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		607FACD01AFB9204008FA782 /* PaybookSync_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaybookSync_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACD01AFB9204008FA782 /* Paybook_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paybook_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		607FACE51AFB9204008FA782 /* PaybookSync_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PaybookSync_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		607FACE51AFB9204008FA782 /* Paybook_Example.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Paybook_Example.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		648A92F7D7130ED4DFCB3D4B /* Pods-Paybook_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paybook_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paybook_Tests/Pods-Paybook_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B3751DA4B6A878B2CB83804 /* Pods-PaybookSync_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9D35E24BD97C2C3F7A05AFC4 /* Pods_Paybook_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paybook_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAC9480DB06646F8BF620775 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BE314F192670AE4A9A59EF0F /* Pods_PaybookSync_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaybookSync_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D98908A6532811AC45066E9F /* PaybookSync.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PaybookSync.podspec; path = ../PaybookSync.podspec; sourceTree = "<group>"; };
+		CC1FDF77E10E5C369B0CB286 /* Pods_Paybook_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paybook_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98908A6532811AC45066E9F /* Paybook.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Paybook.podspec; path = ../Paybook.podspec; sourceTree = "<group>"; };
 		F0EE060B110E4351209356E6 /* Pods_PaybookSync_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PaybookSync_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD52C38E43FC8F9FDF83A99C /* Pods-Paybook_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paybook_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paybook_Tests/Pods-Paybook_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A258FD1D4385691428AF4DE6 /* Pods_PaybookSync_Example.framework in Frameworks */,
+				0B489CF00E084DDA07741988 /* Pods_Paybook_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50DD5C6721A8B575F7748F25 /* Pods_PaybookSync_Tests.framework in Frameworks */,
+				2F84C782580E9B5923F7E8C9 /* Pods_Paybook_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,8 +94,8 @@
 		607FACD11AFB9204008FA782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD01AFB9204008FA782 /* PaybookSync_Example.app */,
-				607FACE51AFB9204008FA782 /* PaybookSync_Tests.xctest */,
+				607FACD01AFB9204008FA782 /* Paybook_Example.app */,
+				607FACE51AFB9204008FA782 /* Paybook_Example.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,7 +142,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				D98908A6532811AC45066E9F /* PaybookSync.podspec */,
+				D98908A6532811AC45066E9F /* Paybook.podspec */,
 				27CAC6D7839124A498695374 /* README.md */,
 				AAC9480DB06646F8BF620775 /* LICENSE */,
 			);
@@ -144,6 +154,8 @@
 			children = (
 				BE314F192670AE4A9A59EF0F /* Pods_PaybookSync_Example.framework */,
 				F0EE060B110E4351209356E6 /* Pods_PaybookSync_Tests.framework */,
+				CC1FDF77E10E5C369B0CB286 /* Pods_Paybook_Example.framework */,
+				9D35E24BD97C2C3F7A05AFC4 /* Pods_Paybook_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,6 +167,10 @@
 				8B3751DA4B6A878B2CB83804 /* Pods-PaybookSync_Example.release.xcconfig */,
 				2FB520A8414C788210F24BB3 /* Pods-PaybookSync_Tests.debug.xcconfig */,
 				4D19E87CFFDDA4FB3A9595EA /* Pods-PaybookSync_Tests.release.xcconfig */,
+				48E699B548B29A130FA59F98 /* Pods-Paybook_Example.debug.xcconfig */,
+				318CE31A7455E5B5B5C5D102 /* Pods-Paybook_Example.release.xcconfig */,
+				648A92F7D7130ED4DFCB3D4B /* Pods-Paybook_Tests.debug.xcconfig */,
+				FD52C38E43FC8F9FDF83A99C /* Pods-Paybook_Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -162,9 +178,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		607FACCF1AFB9204008FA782 /* PaybookSync_Example */ = {
+		607FACCF1AFB9204008FA782 /* Paybook_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PaybookSync_Example" */;
+			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Paybook_Example" */;
 			buildPhases = (
 				3FDE7A85F7ABCFCB970F5336 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
@@ -177,14 +193,14 @@
 			);
 			dependencies = (
 			);
-			name = PaybookSync_Example;
+			name = Paybook_Example;
 			productName = PaybookSync;
-			productReference = 607FACD01AFB9204008FA782 /* PaybookSync_Example.app */;
+			productReference = 607FACD01AFB9204008FA782 /* Paybook_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		607FACE41AFB9204008FA782 /* PaybookSync_Tests */ = {
+		607FACE41AFB9204008FA782 /* Paybook_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PaybookSync_Tests" */;
+			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Paybook_Tests" */;
 			buildPhases = (
 				9BD1B8CDB406007C4240757A /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
@@ -198,9 +214,9 @@
 			dependencies = (
 				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
 			);
-			name = PaybookSync_Tests;
+			name = Paybook_Tests;
 			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* PaybookSync_Tests.xctest */;
+			productReference = 607FACE51AFB9204008FA782 /* Paybook_Example.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +238,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "PaybookSync" */;
+			buildConfigurationList = 607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Paybook" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -235,8 +251,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				607FACCF1AFB9204008FA782 /* PaybookSync_Example */,
-				607FACE41AFB9204008FA782 /* PaybookSync_Tests */,
+				607FACCF1AFB9204008FA782 /* Paybook_Example */,
+				607FACE41AFB9204008FA782 /* Paybook_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -274,7 +290,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paybook_Example/Pods-Paybook_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		34165AE1955FEB6C2CB54EE7 /* [CP] Embed Pods Frameworks */ = {
@@ -289,7 +305,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paybook_Tests/Pods-Paybook_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3FDE7A85F7ABCFCB970F5336 /* [CP] Check Pods Manifest.lock */ = {
@@ -334,7 +350,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paybook_Tests/Pods-Paybook_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DBD91DB2FB5ED5DB1F7D8E14 /* [CP] Embed Pods Frameworks */ = {
@@ -349,7 +365,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paybook_Example/Pods-Paybook_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -377,7 +393,7 @@
 /* Begin PBXTargetDependency section */
 		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 607FACCF1AFB9204008FA782 /* PaybookSync_Example */;
+			target = 607FACCF1AFB9204008FA782 /* Paybook_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -486,33 +502,33 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0608D0A530BA71599D7766FF /* Pods-PaybookSync_Example.debug.xcconfig */;
+			baseConfigurationReference = 48E699B548B29A130FA59F98 /* Pods-Paybook_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PaybookSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Paybook_Example;
 			};
 			name = Debug;
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B3751DA4B6A878B2CB83804 /* Pods-PaybookSync_Example.release.xcconfig */;
+			baseConfigurationReference = 318CE31A7455E5B5B5C5D102 /* Pods-Paybook_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PaybookSync/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Paybook_Example;
 			};
 			name = Release;
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FB520A8414C788210F24BB3 /* Pods-PaybookSync_Tests.debug.xcconfig */;
+			baseConfigurationReference = 648A92F7D7130ED4DFCB3D4B /* Pods-Paybook_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -525,13 +541,13 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Paybook_Example;
 			};
 			name = Debug;
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D19E87CFFDDA4FB3A9595EA /* Pods-PaybookSync_Tests.release.xcconfig */;
+			baseConfigurationReference = FD52C38E43FC8F9FDF83A99C /* Pods-Paybook_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -540,14 +556,14 @@
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Paybook_Example;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "PaybookSync" */ = {
+		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Paybook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACED1AFB9204008FA782 /* Debug */,
@@ -556,7 +572,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PaybookSync_Example" */ = {
+		607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Paybook_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
@@ -565,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "PaybookSync_Tests" */ = {
+		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Paybook_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,
