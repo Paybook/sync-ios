@@ -1,4 +1,4 @@
-# Paybook iOS Library V1.0.2
+# Paybook iOS Library V1.0.3
 
 Esta es la librería de Paybook para iOS. Mediante esta librería usted puede implementar el API REST de Paybook de manera rapida y sencilla a través de sus clases y métodos.
 
@@ -80,7 +80,7 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Requests accounts of a user | GET https://sync.paybook.com/v1/accounts | ```static NSArray [Account] = Account.get(session:Session,id_user:String?,completionHandler:(([Account]?, NSError?)->())?)```          |
+| Requests accounts of a user | GET https://sync.paybook.com/v1/accounts | ```static NSArray [Account] = Account.get(session:Session,id_user:String?,completionHandler:(([Account]?, PaybookError?)->())?)```          |
 
 ### Attachments
 
@@ -113,11 +113,11 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Request account types | GET https://sync.paybook.com/v1/catalogues/account_types   | ```static NSArray [Account_type] = Catalogues.get_account_types(session:Session,id_user:String?,completionHandler:(([Account_type]?, NSError?)->())?)```          |
-| Request attachment types | GET https://sync.paybook.com/v1/catalogues/attachment_types   | ```static NSArray [Attachment_type] = Catalogues.get_attachment_types(session:Session,id_user:String?,completionHandler:(([Attachment_type]?,NSError?)->())?)```          |
-| Request available countries | GET https://sync.paybook.com/v1/catalogues/countries   | ```static NSArray [Country] = Catalogues.get_countries(session:Session,id_user:String?,completionHandler:(([Country]?,NSError?)->())?)```          |
-| Request available sites | GET https://sync.paybook.com/v1/catalogues/sites   | ```static NSArray [Site] = Catalogues.get_sites(session:Session,id_user:String?,completionHandler:(([Site]?,NSError?)->())?)```          |
-| Request site organizations | GET https://sync.paybook.com/v1/catalogues/site_organizations   | ```static NSArray [Site_organization] = Catalogues.get_site_organizations(session:Session,id_user:String?,completionHandler:(([Site_organization]?,NSError?)->())?)```          |
+| Request account types | GET https://sync.paybook.com/v1/catalogues/account_types   | ```static NSArray [Account_type] = Catalogues.get_account_types(session:Session,id_user:String?,completionHandler:(([Account_type]?, PaybookError?)->())?)```          |
+| Request attachment types | GET https://sync.paybook.com/v1/catalogues/attachment_types   | ```static NSArray [Attachment_type] = Catalogues.get_attachment_types(session:Session,id_user:String?,completionHandler:(([Attachment_type]?,PaybookError?)->())?)```          |
+| Request available countries | GET https://sync.paybook.com/v1/catalogues/countries   | ```static NSArray [Country] = Catalogues.get_countries(session:Session,id_user:String?,completionHandler:(([Country]?,PaybookError?)->())?)```          |
+| Request available sites | GET https://sync.paybook.com/v1/catalogues/sites   | ```static NSArray [Site] = Catalogues.get_sites(session:Session,id_user:String?,completionHandler:(([Site]?,PaybookError?)->())?)```          |
+| Request site organizations | GET https://sync.paybook.com/v1/catalogues/site_organizations   | ```static NSArray [Site_organization] = Catalogues.get_site_organizations(session:Session,id_user:String?,completionHandler:(([Site_organization]?,PaybookError?)->())?)```          |
 
 ### Credentials
 
@@ -131,11 +131,11 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Creates or updates credentials | POST https://sync.paybook.com/v1/credentials | ```Credentials credentials = Credential(session:Session,id_user:String?,id_site:String,credentials:NSDictionary,completionHandler:((Credentials?,NSError?)->())?)```          |
-| Deletes credentials | DELETE https://sync.paybook.com/v1/credentials/:id_credential | ```static Bool deleted Credentials.delete(session:Session,id_user:String?,id_credential:String,completionHandler:((Bool?,NSError?)->())?)```          |
+| Creates or updates credentials | POST https://sync.paybook.com/v1/credentials | ```Credentials credentials = Credential(session:Session,id_user:String?,id_site:String,credentials:NSDictionary,completionHandler:((Credentials?,PaybookError?)->())?)```          |
+| Deletes credentials | DELETE https://sync.paybook.com/v1/credentials/:id_credential | ```static Bool deleted Credentials.delete(session:Session,id_user:String?,id_credential:String,completionHandler:((Bool?,PaybookError?)->())?)```          |
 | Request status | GET status_url | ```list [Dict] = credentials.get_status(session=Session,id_user=str)```          |
 | Set twofa | POST twofa_url | ```bool twofa_set = credentials.set_twofa(session=Session,id_user=str,twofa_value=str)```          |
-| Request register credentials | GET https://sync.paybook.com/v1/credentials | ```static list [Credentials] = Credentials.get(session:Session,id_user:String?,completionHandler:(([Credentials]?,NSError?)->())?)```          |
+| Request register credentials | GET https://sync.paybook.com/v1/credentials | ```static list [Credentials] = Credentials.get(session:Session,id_user:String?,completionHandler:(([Credentials]?,PaybookError?)->())?)```          |
 
 
 ### Sessions
@@ -151,9 +151,9 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Creates a session | POST https://sync.paybook.com/v1/sessions   | ```Session session = Session(id_user:String,completionHandler:((Session?,NSError?)->())?)```          |
-| Verify a session | GET https://sync.paybook.com/v1/sessions/:token/verify | ```NSDictionary verified = session.verify(completionHandler:((NSDictionary?, NSError?)->())?)```                  |
-| Deletes a session     | DELETE https://sync.paybook.com/v1/sessions/:token    | ```static Bool deleted = Session.delete(token:String,completionHandler:((Bool?,NSError?)->())?)```|
+| Creates a session | POST https://sync.paybook.com/v1/sessions   | ```Session session = Session(id_user:String,completionHandler:((Session?,PaybookError?)->())?)```          |
+| Verify a session | GET https://sync.paybook.com/v1/sessions/:token/verify | ```NSDictionary verified = session.verify(completionHandler:((NSDictionary?, PaybookError?)->())?)```                  |
+| Deletes a session     | DELETE https://sync.paybook.com/v1/sessions/:token    | ```static Bool deleted = Session.delete(token:String,completionHandler:((Bool?,PaybookError?)->())?)```|
 
 
 ### Transactions
@@ -169,8 +169,8 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Requests number of transactions | GET https://sync.paybook.com/v1/transactions/count | ```static int transactions_count = Transaction.get_count(session :Session,id_user:String?,completionHandler:((Int?, NSError?)->())?)```          |
-| Requests transactions | GET https://sync.paybook.com/v1/transactions | ```static NSArray [Transaction] = Transaction.get(session:Session,id_user:String?,completionHandler:(([Transaction]?,NSError?)->())?)```          |
+| Requests number of transactions | GET https://sync.paybook.com/v1/transactions/count | ```static int transactions_count = Transaction.get_count(session :Session,id_user:String?,completionHandler:((Int?, PaybookError?)->())?)```          |
+| Requests transactions | GET https://sync.paybook.com/v1/transactions | ```static NSArray [Transaction] = Transaction.get(session:Session,id_user:String?,completionHandler:(([Transaction]?,PaybookError?)->())?)```          |
 
 ### User
 
@@ -185,9 +185,9 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                 |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Creates a user | POST https://sync.paybook.com/v1/users   | ```User user = User(username:String,completionHandler:((User?,NSError?)->())?)```          |
-| Deletes a user | DELETE https://sync.paybook.com/v1/users | ```static Bool deleted = User.delete(id_user:String,completionHandler: ((Bool?, NSError?)->())?)```                  |
-| Get users      | GET https://sync.paybook.com/v1/users    | ```static NSArray [User] = User.get(completionHandler:(([User]?,NSError?)->())?)```|
+| Creates a user | POST https://sync.paybook.com/v1/users   | ```User user = User(username:String,completionHandler:((User?,PaybookError?)->())?)```          |
+| Deletes a user | DELETE https://sync.paybook.com/v1/users | ```static Bool deleted = User.delete(id_user:String,completionHandler: ((Bool?, PaybookError?)->())?)```                  |
+| Get users      | GET https://sync.paybook.com/v1/users    | ```static NSArray [User] = User.get(completionHandler:(([User]?,PaybookError?)->())?)```|
 
 
 
