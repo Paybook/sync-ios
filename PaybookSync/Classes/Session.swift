@@ -30,7 +30,7 @@ public class Session: Paybook {
      
      */
     
-    public convenience init(id_user: String, completionHandler: ((Session?, NSError?) -> ())?){
+    public convenience init(id_user: String, completionHandler: ((Session?, PaybookError?) -> ())?){
         self.init()
         
         self.id_user = id_user
@@ -83,7 +83,7 @@ public class Session: Paybook {
      
      */
     
-    public class func delete(token: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    public class func delete(token: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
         
         
         
@@ -92,9 +92,15 @@ public class Session: Paybook {
         self.call("DELETE", endpoint: url, parameters: nil, completionHandler: {
             response, error in
             
-            if response != nil {
-                if completionHandler != nil {
-                    completionHandler!(response,error)
+            if response != nil{
+                if response!["code"] as! Int == 200{
+                    if completionHandler != nil {
+                        completionHandler!(true,error)
+                    }
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(false,error)
+                    }
                 }
                 
             }else{
@@ -102,6 +108,7 @@ public class Session: Paybook {
                     completionHandler!(nil,error)
                 }
             }
+
             
         })
         
@@ -126,7 +133,7 @@ public class Session: Paybook {
     
     */
     
-    public func validate(completionHandler: ((NSDictionary?, NSError?) -> ())?) {//-> [User]?{
+    public func validate(completionHandler: ((NSDictionary?, PaybookError?) -> ())?) {//-> [User]?{
         
         
         let url = "sessions/\(self.token)/verify"

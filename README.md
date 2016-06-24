@@ -17,7 +17,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'PaybookSync', '~> 1.0.2'
+    pod 'Paybook', '~> 1.0.3'
 end
 ```
 
@@ -132,7 +132,7 @@ Descripción de los métodos de la clase:
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
 | Creates or updates credentials | POST https://sync.paybook.com/v1/credentials | ```Credentials credentials = Credential(session:Session,id_user:String?,id_site:String,credentials:NSDictionary,completionHandler:((Credentials?,NSError?)->())?)```          |
-| Deletes credentials | DELETE https://sync.paybook.com/v1/credentials/:id_credential | ```static NSDictionary deleted Credentials.delete(session:Session,id_user:String?,id_credential:String,completionHandler:((NSDictionary?,NSError?)->())?)```          |
+| Deletes credentials | DELETE https://sync.paybook.com/v1/credentials/:id_credential | ```static Bool deleted Credentials.delete(session:Session,id_user:String?,id_credential:String,completionHandler:((Bool?,NSError?)->())?)```          |
 | Request status | GET status_url | ```list [Dict] = credentials.get_status(session=Session,id_user=str)```          |
 | Set twofa | POST twofa_url | ```bool twofa_set = credentials.set_twofa(session=Session,id_user=str,twofa_value=str)```          |
 | Request register credentials | GET https://sync.paybook.com/v1/credentials | ```static list [Credentials] = Credentials.get(session:Session,id_user:String?,completionHandler:(([Credentials]?,NSError?)->())?)```          |
@@ -153,7 +153,7 @@ Descripción de los métodos de la clase:
 | -------------- | ---------------------------------------- | ------------------------------------ |
 | Creates a session | POST https://sync.paybook.com/v1/sessions   | ```Session session = Session(id_user:String,completionHandler:((Session?,NSError?)->())?)```          |
 | Verify a session | GET https://sync.paybook.com/v1/sessions/:token/verify | ```NSDictionary verified = session.verify(completionHandler:((NSDictionary?, NSError?)->())?)```                  |
-| Deletes a session     | DELETE https://sync.paybook.com/v1/sessions/:token    | ```static NSDictionary deleted = Session.delete(token:String,completionHandler:((NSDictionary?,NSError?)->())?)```|
+| Deletes a session     | DELETE https://sync.paybook.com/v1/sessions/:token    | ```static Bool deleted = Session.delete(token:String,completionHandler:((Bool?,NSError?)->())?)```|
 
 
 ### Transactions
@@ -186,7 +186,7 @@ Descripción de los métodos de la clase:
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                 |
 | -------------- | ---------------------------------------- | ------------------------------------ |
 | Creates a user | POST https://sync.paybook.com/v1/users   | ```User user = User(username:String,completionHandler:((User?,NSError?)->())?)```          |
-| Deletes a user | DELETE https://sync.paybook.com/v1/users | ```static NSDictionary deleted = User.delete(id_user:String,completionHandler: ((NSDictionary?, NSError?)->())?)```                  |
+| Deletes a user | DELETE https://sync.paybook.com/v1/users | ```static Bool deleted = User.delete(id_user:String,completionHandler: ((Bool?, NSError?)->())?)```                  |
 | Get users      | GET https://sync.paybook.com/v1/users    | ```static NSArray [User] = User.get(completionHandler:(([User]?,NSError?)->())?)```|
 
 

@@ -60,7 +60,7 @@ public class Transaction : Paybook {
      })
      */
     
-    public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, NSError?) -> ())?){
+    public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
         
         let url = "transactions/count"
         let data = [
@@ -91,7 +91,7 @@ public class Transaction : Paybook {
     }
     
     // Return ([Transaction]) # transactions in completionHandler
-    /** Example to get number of transactions
+    /** Example to get transactions
      
      Transaction.get([mySession], id_user: nil, completionHandler: {
         response, error in
@@ -99,7 +99,7 @@ public class Transaction : Paybook {
      })
      */
     
-    public class func get(session: Session,id_user: String?, completionHandler: (([Transaction]?, NSError?) -> ())?){
+    public class func get(session: Session,id_user: String?, completionHandler: (([Transaction]?, PaybookError?) -> ())?){
         
         
         let url = "transactions"

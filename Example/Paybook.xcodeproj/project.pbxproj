@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B489CF00E084DDA07741988 /* Pods_Paybook_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1FDF77E10E5C369B0CB286 /* Pods_Paybook_Example.framework */; };
+		1414A2321D1B4DE90027A655 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1414A2311D1B4DE90027A655 /* UnitTest.swift */; };
 		2F84C782580E9B5923F7E8C9 /* Pods_Paybook_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D35E24BD97C2C3F7A05AFC4 /* Pods_Paybook_Tests.framework */; };
 		50DD5C6721A8B575F7748F25 /* Pods_PaybookSync_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EE060B110E4351209356E6 /* Pods_PaybookSync_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		0608D0A530BA71599D7766FF /* Pods-PaybookSync_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1414A2311D1B4DE90027A655 /* UnitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		27CAC6D7839124A498695374 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2FB520A8414C788210F24BB3 /* Pods-PaybookSync_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		318CE31A7455E5B5B5C5D102 /* Pods-Paybook_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paybook_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paybook_Example/Pods-Paybook_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				1414A2311D1B4DE90027A655 /* UnitTest.swift */,
 			);
 			name = "Example for PaybookSync";
 			path = PaybookSync;
@@ -375,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1414A2321D1B4DE90027A655 /* UnitTest.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

@@ -59,7 +59,7 @@ public class Account : Paybook {
      })
      */
     
-    public class func get(session: Session,id_user: String?, completionHandler: (([Account]?, NSError?) -> ())?){
+    public class func get(session: Session,id_user: String?, completionHandler: (([Account]?, PaybookError?) -> ())?){
         
         let url = "accounts"
         let data = [

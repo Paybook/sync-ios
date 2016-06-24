@@ -73,7 +73,7 @@ public class Catalogues : Paybook {
 
     */
     
-    public class func get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, NSError?) -> ())?){
+    public class func get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, PaybookError?) -> ())?){
         
         let url = "catalogues/account_types"
         let data = [
@@ -121,7 +121,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, NSError?) -> ())?){
+    public class func get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
         
         let url = "catalogues/attachment_types"
         let data = [
@@ -169,7 +169,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_countries(session: Session, id_user: String?,completionHandler: (([Country]?, NSError?) -> ())?){
+    public class func get_countries(session: Session, id_user: String?,completionHandler: (([Country]?, PaybookError?) -> ())?){
         
         
         let url = "catalogues/countries"
@@ -219,7 +219,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_sites(session: Session, id_user: String?,completionHandler: (([Site]?, NSError?) -> ())?){
+    public class func get_sites(session: Session, id_user: String?,completionHandler: (([Site]?, PaybookError?) -> ())?){
         
         
         let url = "catalogues/sites"
@@ -267,7 +267,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_site_organizations(session: Session, id_user: String?,completionHandler: (([Site_organization]?, NSError?) -> ())?){
+    public class func get_site_organizations(session: Session, id_user: String?,completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
         
         
         let url = "catalogues/site_organizations"

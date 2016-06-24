@@ -22,7 +22,7 @@ public class Paybook {
 
     // ** MARK Class Methods
     
-    public class func call (method: String, endpoint: String, parameters: NSDictionary?, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    public class func call (method: String, endpoint: String, parameters: NSDictionary?, completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         var data : [String: AnyObject] = ["api_key" : api_key]
         
         if(parameters != nil){
@@ -40,14 +40,26 @@ public class Paybook {
             Alamofire.request(.GET, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
                 switch response.result {
                 case .Success(let value):
-                    if(completionHandler != nil){
-                        completionHandler!(value as? NSDictionary, nil)
+                    
+                    if value["code"] as! Int == 200 {
+                        
+                        if(completionHandler != nil){
+                            completionHandler!(value as? NSDictionary, nil)
+                        }
+                    }else{
+                        if(completionHandler != nil){
+                            let error = PaybookError(code: value["code"] as! Int, message: value["message"] as? String, response: value["status"] as? NSDictionary, status: value["status"] as! Bool)
+                            completionHandler!(nil, error)
+                        }
                     }
+                    
                 case .Failure(let error):
+                    let perror = PaybookError(code: error.code, message: error.description, response:nil, status: false)
                     if(completionHandler != nil){
-                        completionHandler!(nil, error)
+                        completionHandler!(nil, perror)
                     }
                 }
+                
             }
             
             break
@@ -55,12 +67,23 @@ public class Paybook {
             Alamofire.request(.POST, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
                 switch response.result {
                 case .Success(let value):
-                    if(completionHandler != nil){
-                        completionHandler!(value as? NSDictionary, nil)
+                    
+                    if value["code"] as! Int == 200 {
+                        
+                        if(completionHandler != nil){
+                            completionHandler!(value as? NSDictionary, nil)
+                        }
+                    }else{
+                        if(completionHandler != nil){
+                            let error = PaybookError(code: value["code"] as! Int, message: value["message"] as? String, response: value["status"] as? NSDictionary, status: value["status"] as! Bool)
+                            completionHandler!(nil, error)
+                        }
                     }
+                    
                 case .Failure(let error):
+                    let perror = PaybookError(code: error.code, message: error.description, response:nil, status: false)
                     if(completionHandler != nil){
-                        completionHandler!(nil, error)
+                        completionHandler!(nil, perror)
                     }
                 }
             }
@@ -69,12 +92,23 @@ public class Paybook {
             Alamofire.request(.DELETE, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
                 switch response.result {
                 case .Success(let value):
-                    if(completionHandler != nil){
-                        completionHandler!(value as? NSDictionary, nil)
+                    
+                    if value["code"] as! Int == 200 {
+                        
+                        if(completionHandler != nil){
+                            completionHandler!(value as? NSDictionary, nil)
+                        }
+                    }else{
+                        if(completionHandler != nil){
+                            let error = PaybookError(code: value["code"] as! Int, message: value["message"] as? String, response: value["status"] as? NSDictionary, status: value["status"] as! Bool)
+                            completionHandler!(nil, error)
+                        }
                     }
+                    
                 case .Failure(let error):
+                    let perror = PaybookError(code: error.code, message: error.description, response:nil, status: false)
                     if(completionHandler != nil){
-                        completionHandler!(nil, error)
+                        completionHandler!(nil, perror)
                     }
                 }
             }

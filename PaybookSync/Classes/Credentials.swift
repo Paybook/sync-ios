@@ -29,7 +29,7 @@ public class Credentials : Paybook {
     })
      */
     
-    public convenience init (session : Session ,id_user : String? , id_site: String, credentials: NSDictionary , completionHandler: ((Credentials?, NSError?) -> ())?){
+    public convenience init (session : Session ,id_user : String? , id_site: String, credentials: NSDictionary , completionHandler: ((Credentials?, PaybookError?) -> ())?){
         
         
         
@@ -90,7 +90,7 @@ public class Credentials : Paybook {
    
     
     // [Dict]
-    public func get_status( session : Session,id_user : String, completionHandler: ((NSDictionary?, NSError?) -> ())? ){
+    public func get_status( session : Session,id_user : String, completionHandler: ((NSDictionary?, PaybookError?) -> ())? ){
         
     }
     
@@ -99,7 +99,7 @@ public class Credentials : Paybook {
     // ** MARK Class Methods
     
     // Bool deleted
-    public class func delete( session : Session,id_user : String? ,id_credential: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    public class func delete( session : Session,id_user : String? ,id_credential: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
         
         
         let data = [
@@ -111,9 +111,15 @@ public class Credentials : Paybook {
         self.call("DELETE", endpoint: url, parameters: data, completionHandler: {
             response, error in
             
-            if response != nil {
-                if completionHandler != nil {
-                    completionHandler!(response,error)
+            if response != nil{
+                if response!["code"] as! Int == 200{
+                    if completionHandler != nil {
+                        completionHandler!(true,error)
+                    }
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(false,error)
+                    }
                 }
                 
             }else{
@@ -138,7 +144,7 @@ public class Credentials : Paybook {
         print(" \(response), \(error)")
      })
      */
-    public class func get(session: Session,id_user: String?, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    public class func get(session: Session,id_user: String?, completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         
         let url = "credentials"
         let data = [

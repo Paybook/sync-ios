@@ -51,7 +51,7 @@ public class User : Paybook {
      })
      */
  
-    convenience public init(username: String, completionHandler: ((User?, NSError?) -> ())?){
+    convenience public init(username: String, completionHandler: ((User?, PaybookError?) -> ())?){
         
         // Init
         self.init(username: username)
@@ -109,7 +109,7 @@ public class User : Paybook {
      }
      */
     
-    public class func get(completionHandler: (([User]?, NSError?) -> ())?) {//-> [User]?{
+    public class func get(completionHandler: (([User]?, PaybookError?) -> ())?) {//-> [User]?{
  
         let url = "users"
         
@@ -150,7 +150,7 @@ public class User : Paybook {
         return
      })
      */
-    public class func delete(id_user: String, completionHandler: ((NSDictionary?, NSError?) -> ())?){
+    public class func delete(id_user: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
         
         
         
@@ -159,9 +159,15 @@ public class User : Paybook {
         self.call("DELETE", endpoint: url, parameters: nil, completionHandler: {
             response, error in
             
-            if response != nil {
-                if completionHandler != nil {
-                    completionHandler!(response,error)
+            if response != nil{
+                if response!["code"] as! Int == 200{
+                    if completionHandler != nil {
+                        completionHandler!(true,error)
+                    }
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(false,error)
+                    }
                 }
                 
             }else{
