@@ -94,8 +94,8 @@ Descripción de los métodos de la clase:
 
 | Action         | REST API ENDPOINT                                 | LIBRARY METHOD                                  |
 | -------------- | ---------------------------------------- | ------------------------------------ |
-| Requests attachments | GET https://sync.paybook.com/v1/attachments <br> GET https://sync.paybook.com/v1/attachments/:id_attachment <br> GET https://sync.paybook.com/v1/attachments/:id_attachment/extra | ```static list [Attachment] = Attachment.get(session=Session,id_user=str,id_attachment=str,extra=bool)```          |
-| Request the number of attachments | GET https://sync.paybook.com/v1/attachments/counts | ```static int attachments_count = Attachment.get_count(session=Session,id_user=str)```          |
+| Requests attachments | GET https://sync.paybook.com/v1/attachments <br> GET https://sync.paybook.com/v1/attachments/:id_attachment <br> GET https://sync.paybook.com/v1/attachments/:id_attachment/extra | ```static NSArray [Attachment] = Attachment.get(session:Session,id_user:String?,completionHandler:(([Attachments]?,PaybookError?)->())?)```          |
+| Request the number of attachments | GET https://sync.paybook.com/v1/attachments/counts | ```static int attachments_count = Attachment.get_count(session:Session,id_user:String?,completionHandler:((Int?,PaybookError?)->())?)```          |
 
 ### Catalogues
 
