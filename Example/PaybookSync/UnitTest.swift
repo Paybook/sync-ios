@@ -14,6 +14,7 @@ public class UnitTest {
     static var api_key : String!
     static var id_user : String!
     static var session_test : Session!
+    static var site_test : Site!
     
     public class func test_library(api_key: String){
         
@@ -183,7 +184,7 @@ public class UnitTest {
                                                         print("#15 Success ")
                                                         testCatalogues()
                                                     }else{
-                                                        print("#15 Fail \(error.debugDescription) ")
+                                                        print("#15 Fail \(error?.message) ")
                                                         finish()
                                                         return
                                                     }
@@ -191,33 +192,33 @@ public class UnitTest {
                                                 
                                                 
                                             }else{
-                                                print("#14 Fail\(error.debugDescription)")
+                                                print("#14 Fail \(error?.message)")
                                                 finish()
                                                 return
                                             }
                                         })
                                     }else{
-                                        print("#13 Fail")
+                                        print("#13 Fail \(error?.message)")
                                         finish()
                                         return
                                     }
                                 })
                                 
                             }else{
-                               print("#12 Fail ")
+                               print("#12 Fail \(error?.message)")
                                 finish()
                                 return
                             }
                         })
                         
                     }else{
-                        print("#11 Fail ")
+                        print("#11 Fail \(error?.message)")
                         finish()
                         return
                     }
                 })
             }else{
-                print("#10 Fail")
+                print("#10 Fail \(error?.message)")
                 finish()
                 return
             }
@@ -254,7 +255,13 @@ public class UnitTest {
                                     response, error in
                                     if response != nil {
                                         print("#19 Success")
-                                        testAccounts()
+                                        for site in response!{
+                                            if site.id_site == "56cf5728784806f72b8b456f"{
+                                                site_test = site
+                                                print("#22 Success")
+                                            }
+                                        }
+                                        testCredentials()
                                     }else{
                                         print("#19 Fail")
                                         finish()
@@ -297,7 +304,33 @@ public class UnitTest {
      */
     
     class func testCredentials(){
-    
+        Credentials.get(session_test, id_user: nil, completionHandler: {
+            response, error in
+            print(" \(response), \(error)")
+            if response != nil {
+                print("#23 Success")
+                print("#24 Success")
+                let data = [
+                    "username": "",
+                    "password": ""
+                ]
+                _ = Credentials(session: session_test, id_user: nil, id_site: site_test.id_site, credentials: data, completionHandler: {
+                    credential, error in
+                    if credential != nil {
+                        print("#25 Success \(credential)")
+                        
+                    }else{
+                        print("#25 Fail \(error?.message) ")
+                        finish()
+                        return
+                    }
+                })
+            }else{
+                print("#23 Fail \(error?.message)")
+                finish()
+                return
+            }
+        })
     
     }
 
@@ -383,7 +416,7 @@ public class UnitTest {
                     }
                 })
             }else{
-                print("#37 Fail, \(error?.message)")
+                print("#37 Fail code \(error?.code), \(error?.message)")
                 finish()
                 return
             }

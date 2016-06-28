@@ -60,6 +60,7 @@ public class Attachments : Paybook {
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
             response, error in
             print(response)
+            
             if response != nil {
                 
                 if let responseObject = response!["response"] as? NSDictionary{
@@ -76,6 +77,7 @@ public class Attachments : Paybook {
                 }
             }
         })
+
         
         
     }

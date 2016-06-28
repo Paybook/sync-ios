@@ -12,45 +12,45 @@ import Foundation
 
 
 public struct Account_type {
-    var id_account_type : String!
-    var name : String!
+    public var id_account_type : String!
+    public var name : String!
 }
 
 public struct Attachment_type {
-    var id_attachment_type : String!
-    var name : String!
+    public var id_attachment_type : String!
+    public var name : String!
 }
 
 public struct Country {
-    var id_country : String!
-    var name : String!
-    var code : String!
+    public var id_country : String!
+    public var name : String!
+    public var code : String!
 }
 
 public struct Site {
-    var id_site : String!
-    var id_site_organization : String!
-    var id_site_organization_type : String!
-    var name : String!
-    var credentials : NSArray!
+    public var id_site : String!
+    public var id_site_organization : String!
+    public var id_site_organization_type : String!
+    public var name : String!
+    public var credentials : NSArray!
 }
 
 public struct Credential_structure {
-    var name : String!
-    var type : String!
-    var label : String!
-    var required : Bool!
-    var username : String!
+    public var name : String!
+    public var type : String!
+    public var label : String!
+    public var required : Bool!
+    public var username : String!
 }
 
 public struct Site_organization {
-    var id_site_organization : String!
-    var id_site_organization_type : String!
-    var id_country : String!
-    var name : String!
-    var avatar : String!
-    var small_cover : String!
-    var cover : String!
+    public var id_site_organization : String!
+    public var id_site_organization_type : String!
+    public var id_country : String!
+    public var name : String!
+    public var avatar : String!
+    public var small_cover : String!
+    public var cover : String!
 }
 
 
