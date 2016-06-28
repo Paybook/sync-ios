@@ -51,44 +51,87 @@ public class User : Paybook {
      })
      */
  
-    convenience public init(username: String, completionHandler: ((User?, PaybookError?) -> ())?){
+    convenience public init(username: String, id_user: String?,completionHandler: ((User?, PaybookError?) -> ())?){
         
         // Init
         self.init(username: username)
         
-        // Create user in API
-        let data = [
-            "name" : username
-        ]
-        
-        let url = "users"
-        
-        Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        if id_user != nil {
+            // Create user in API
             
+            let url = "users/\(id_user!)"
             
-            if response != nil {
-                if let responseObject = response!["response"] as? NSDictionary{
-                    self.id_user = responseObject["id_user"] as? String
-                    self.id_external = responseObject["id_external"] as? String
-                    self.dt_create = responseObject["dt_create"] as? NSDate
-                    self.dt_modify = responseObject["dt_modify"] as? NSDate
+            Paybook.call("GET", endpoint: url, parameters: nil, completionHandler: {
+                response, error in
+                
+                if response != nil {
                     
-                    if completionHandler != nil {
-                        completionHandler!(self,error)
+                    if let responseObject = response!["response"] as? NSArray{
+                        if let user = responseObject[0] as? NSDictionary {
+                            self.id_user = user["id_user"] as? String
+                            self.id_external = user["id_external"] as? String
+                            self.dt_create = user["dt_create"] as? NSDate
+                            self.dt_modify = user["dt_modify"] as? NSDate
+                            self.name = user["name"] as? String
+                            
+                            if completionHandler != nil {
+                                completionHandler!(self,error)
+                            }
+                        }
                     }
-                        
                     
+                
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
                 }
                 
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
-            }
+            })
+
             
-        })
+            
+            
+        }else{
+            
+            // Create user in API
+            let data = [
+                "name" : username
+            ]
+            
+            let url = "users"
+            
+            Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                
+                if response != nil {
+                    if let responseObject = response!["response"] as? NSDictionary{
+                        self.id_user = responseObject["id_user"] as? String
+                        self.id_external = responseObject["id_external"] as? String
+                        self.dt_create = responseObject["dt_create"] as? NSDate
+                        self.dt_modify = responseObject["dt_modify"] as? NSDate
+                        
+                        if completionHandler != nil {
+                            completionHandler!(self,error)
+                        }
+                        
+                        
+                    }
+                    
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+                
+            })
+
+            
+            
+        }
+        
         
         
     }

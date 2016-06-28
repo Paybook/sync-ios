@@ -133,7 +133,7 @@ public class Session: Paybook {
     
     */
     
-    public func validate(completionHandler: ((NSDictionary?, PaybookError?) -> ())?) {//-> [User]?{
+    public func validate(completionHandler: ((Bool?, PaybookError?) -> ())?) {//-> [User]?{
         
         
         let url = "sessions/\(self.token)/verify"
@@ -142,14 +142,20 @@ public class Session: Paybook {
         Paybook.call("GET", endpoint: url, parameters: nil, completionHandler: {
             response, error in
             
-            if response != nil {
-                if completionHandler != nil {
-                    completionHandler!(response,error)
+            if response != nil{
+                if response!["code"] as! Int == 200{
+                    if completionHandler != nil {
+                        completionHandler!(true,error)
+                    }
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(false,error)
+                    }
                 }
                 
             }else{
                 if completionHandler != nil {
-                    completionHandler!(nil,error)
+                    completionHandler!(false,error)
                 }
             }
             

@@ -29,7 +29,6 @@ public class Paybook {
             // Add parameters in request data
             data.update(parameters as! Dictionary<String, AnyObject>)
         }
-        print(data)
         
         
         let url = "\(baseURLString)\(endpoint)"

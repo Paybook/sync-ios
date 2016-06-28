@@ -24,6 +24,7 @@ public class PaybookError {
         self.response = response
         self.status = status
     }
+   
     
 }
 
