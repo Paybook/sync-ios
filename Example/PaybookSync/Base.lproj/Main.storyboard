@@ -35,9 +35,17 @@
                                     <action selector="Test:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ICi-NH-B6O"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oq3-vP-kK3">
+                                <rect key="frame" x="200" y="206" width="200" height="30"/>
+                                <state key="normal" title="Check Status"/>
+                                <connections>
+                                    <action selector="testStatus:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="e3s-1G-uRU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="Oq3-vP-kK3" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="JOl-jA-TF7"/>
                             <constraint firstItem="ESS-lU-hdm" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="jMa-pj-zPK"/>
                             <constraint firstItem="evA-4O-HYJ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="q6x-oz-r7I"/>
                         </constraints>

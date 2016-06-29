@@ -11,14 +11,14 @@ import Foundation
 
 public class Credentials : Paybook {
     
-    var id_credential : String!
-    var id_site : String!
-    var username : String!
-    var id_site_organization : String!
-    var id_site_organization_type : String!
-    var ws : String!
-    var status : String!
-    var twofa : String!
+    public var id_credential : String!
+    public var id_site : String!
+    public var username : String!
+    public var id_site_organization : String!
+    public var id_site_organization_type : String!
+    public var ws : String!
+    public var status : String!
+    public var twofa : String!
     
     
     // Return a Credentials in completionHandler.
@@ -45,7 +45,7 @@ public class Credentials : Paybook {
             "credentials" : credentials
         ]
         
-        let url = "credentials"
+        let url = "https://sync.paybook.com/v1/credentials"
         
         Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
             response, error in
@@ -85,15 +85,84 @@ public class Credentials : Paybook {
     
     
     
+    
+    
+    
+    // Credential
+    convenience init (dict: NSDictionary){
+        self.init()
+        
+        self.id_site = dict["id_site"] as? String
+        self.id_site_organization = dict["id_site_organization"] as? String
+        self.id_site_organization_type = dict["id_site_organization_type"] as? String
+        self.id_credential = dict["id_credential"] as? String
+        self.username = dict["username"] as? String
+        self.ws = dict["ws"] as? String
+        self.status = dict["status"] as? String
+        self.twofa = dict["twofa"] as? String
+    }
+    
     // ** MARK Instance Methods
     
    
     
-    // [Dict]
-    public func get_status( session : Session,id_user : String, completionHandler: ((NSDictionary?, PaybookError?) -> ())? ){
+    // Int
+    public func get_status( session : Session,id_user : String?, completionHandler: ((Int?, PaybookError?) -> ())? ){
         
+        let url = self.status
+        let data = [
+            "token" : session.token
+        ]
+        
+        Paybook.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                
+                if let responseObject = response!["response"] as? NSDictionary{
+                    
+                    if completionHandler != nil {
+                        completionHandler!(responseObject["code"] as? Int,nil)
+                    }
+                    
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+        })
+
     }
     
+    // Int
+    public func set_twofa( session : Session,id_user : String?,token: String ,completionHandler: ((NSDictionary?, PaybookError?) -> ())? ){
+        
+        let url = self.twofa
+        let data = [
+            "token" : session.token,
+            "twofa": ["token": token]
+        ]
+        
+        Paybook.call("GET", endpoint: url, parameters: data, completionHandler: {
+            response, error in
+            
+            if response != nil {
+                if completionHandler != nil {
+                    completionHandler!(response!["response"] as? NSDictionary,nil)
+                }
+                
+            }else{
+                if completionHandler != nil {
+                    completionHandler!(nil,error)
+                }
+            }
+            
+        })
+        
+    }
     
     
     // ** MARK Class Methods
@@ -106,7 +175,7 @@ public class Credentials : Paybook {
             "token" : session.token,
         ]
         
-        let url = "credentials/\(id_credential)"
+        let url = "https://sync.paybook.com/v1credentials/\(id_credential)"
         
         self.call("DELETE", endpoint: url, parameters: data, completionHandler: {
             response, error in
@@ -139,14 +208,14 @@ public class Credentials : Paybook {
     
     // Return [Credentials] in completionHandler
     /** Example
-     Credentials.get(vartest, id_user: nil, completionHandler: {
+     Credentials.get(mySession, id_user: nil, completionHandler: {
         response, error in
         print(" \(response), \(error)")
      })
      */
-    public class func get(session: Session,id_user: String?, completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
+    public class func get(session: Session,id_user: String?, completionHandler: (([Credentials]?, PaybookError?) -> ())?){
         
-        let url = "credentials"
+        let url = "https://sync.paybook.com/v1/credentials"
         let data = [
             "token" : session.token
         ]
@@ -155,8 +224,16 @@ public class Credentials : Paybook {
             response, error in
             
             if response != nil {
-                if completionHandler != nil {
-                    completionHandler!(response,error)
+                var array = [Credentials]()
+                
+                if let responseArray = response!["response"] as? NSArray{
+                    
+                    for (value) in responseArray{
+                        array.append(Credentials(dict: value as! NSDictionary))
+                    }
+                    if completionHandler != nil {
+                        completionHandler!(array,error)
+                    }
                 }
                 
             }else{

@@ -40,7 +40,7 @@ public class Session: Paybook {
             "id_user" : id_user
         ]
         
-        let url = "sessions"
+        let url = "https://sync.paybook.com/v1/sessions"
         
         
         Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
@@ -87,7 +87,7 @@ public class Session: Paybook {
         
         
         
-        let url = "sessions/\(token)"
+        let url = "https://sync.paybook.com/v1/sessions/\(token)"
         
         self.call("DELETE", endpoint: url, parameters: nil, completionHandler: {
             response, error in
@@ -136,7 +136,7 @@ public class Session: Paybook {
     public func validate(completionHandler: ((Bool?, PaybookError?) -> ())?) {//-> [User]?{
         
         
-        let url = "sessions/\(self.token)/verify"
+        let url = "https://sync.paybook.com/v1/sessions/\(self.token)/verify"
         
         
         Paybook.call("GET", endpoint: url, parameters: nil, completionHandler: {

@@ -28,6 +28,9 @@ class ViewController: UIViewController, UITextViewDelegate {
     }
     
     
+    @IBAction func testStatus(sender: AnyObject) {
+        UnitTest.checkStatus()
+    }
     
     func textViewDidEndEditing(textView: UITextView) {
         textView.endEditing(true)

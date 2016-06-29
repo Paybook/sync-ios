@@ -59,7 +59,7 @@ public class User : Paybook {
         if id_user != nil {
             // Create user in API
             
-            let url = "users/\(id_user!)"
+            let url = "https://sync.paybook.com/v1/users/\(id_user!)"
             
             Paybook.call("GET", endpoint: url, parameters: nil, completionHandler: {
                 response, error in
@@ -99,7 +99,7 @@ public class User : Paybook {
                 "name" : username
             ]
             
-            let url = "users"
+            let url = "https://sync.paybook.com/v1/users"
             
             Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
                 response, error in
@@ -154,7 +154,7 @@ public class User : Paybook {
     
     public class func get(completionHandler: (([User]?, PaybookError?) -> ())?) {//-> [User]?{
  
-        let url = "users"
+        let url = "https://sync.paybook.com/v1/users"
         
         self.call("GET", endpoint: url, parameters: nil, completionHandler: {
             response, error in
@@ -197,7 +197,7 @@ public class User : Paybook {
         
         
         
-        let url = "users/\(id_user)"
+        let url = "https://sync.paybook.com/v1/users/\(id_user)"
         
         self.call("DELETE", endpoint: url, parameters: nil, completionHandler: {
             response, error in

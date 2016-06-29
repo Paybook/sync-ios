@@ -10,15 +10,15 @@ import Foundation
 
 public class Attachments : Paybook {
     
-    var id_account : String!
-    var id_external : String!
-    var id_user : String!
-    var id_attachment_type : String!
-    var id_transaction : String!
-    var file : String!
-    var extra : String!
-    var url : String!
-    var dt_refresh : String!
+    public var id_account : String!
+    public var id_external : String!
+    public var id_user : String!
+    public var id_attachment_type : String!
+    public var id_transaction : String!
+    public var file : String!
+    public var extra : String!
+    public var url : String!
+    public var dt_refresh : String!
    
     
     // Attachments
@@ -52,7 +52,7 @@ public class Attachments : Paybook {
     
     public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
         
-        let url = "attachments/counts"
+        let url = "https://sync.paybook.com/v1/attachments/counts"
         let data = [
             "token" : session.token
         ]
@@ -94,7 +94,7 @@ public class Attachments : Paybook {
     public class func get(session: Session,id_user: String?, completionHandler: (([Attachments]?, PaybookError?) -> ())?){
         
         
-        let url = "attachments"
+        let url = "https://sync.paybook.com/v1/attachments"
         let data = [
             "token" : session.token
         ]

@@ -11,19 +11,19 @@ import Foundation
 
 public class Transaction : Paybook {
     
-    var id_transaction : String!
-    var id_user : String!
-    var id_external : String!
-    var id_site : String!
-    var id_site_organization : String!
-    var id_site_organization_type : String!
-    var id_account : String!
-    var id_account_type : String!
-    var is_disable : String!
-    var description : String!
-    var amount : Double = 0.0
-    var dt_transaction : String!
-    var dt_refresh : String!
+    public var id_transaction : String!
+    public var id_user : String!
+    public var id_external : String!
+    public var id_site : String!
+    public var id_site_organization : String!
+    public var id_site_organization_type : String!
+    public var id_account : String!
+    public var id_account_type : String!
+    public var is_disable : String!
+    public var description : String!
+    public var amount : Double = 0.0
+    public var dt_transaction : String!
+    public var dt_refresh : String!
     
     
     
@@ -62,7 +62,7 @@ public class Transaction : Paybook {
     
     public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
         
-        let url = "transactions/count"
+        let url = "https://sync.paybook.com/v1/transactions/count"
         let data = [
             "token" : session.token
         ]
@@ -102,7 +102,7 @@ public class Transaction : Paybook {
     public class func get(session: Session,id_user: String?, completionHandler: (([Transaction]?, PaybookError?) -> ())?){
         
         
-        let url = "transactions"
+        let url = "https://sync.paybook.com/v1/transactions"
         let data = [
             "token" : session.token
         ]

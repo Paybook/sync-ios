@@ -75,7 +75,7 @@ public class Catalogues : Paybook {
     
     public class func get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, PaybookError?) -> ())?){
         
-        let url = "catalogues/account_types"
+        let url = "https://sync.paybook.com/v1/catalogues/account_types"
         let data = [
             "token" : session.token
         ]
@@ -123,7 +123,7 @@ public class Catalogues : Paybook {
      */
     public class func get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
         
-        let url = "catalogues/attachment_types"
+        let url = "https://sync.paybook.com/v1/catalogues/attachment_types"
         let data = [
             "token" : session.token
         ]
@@ -172,7 +172,7 @@ public class Catalogues : Paybook {
     public class func get_countries(session: Session, id_user: String?,completionHandler: (([Country]?, PaybookError?) -> ())?){
         
         
-        let url = "catalogues/countries"
+        let url = "https://sync.paybook.com/v1/catalogues/countries"
         let data = [
             "token" : session.token
         ]
@@ -219,13 +219,24 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_sites(session: Session, id_user: String?,completionHandler: (([Site]?, PaybookError?) -> ())?){
+    public class func get_sites(session: Session, id_user: String?,is_test: Bool?,completionHandler: (([Site]?, PaybookError?) -> ())?){
         
         
-        let url = "catalogues/sites"
-        let data = [
-            "token" : session.token
-        ]
+        let url = "https://sync.paybook.com/v1/catalogues/sites"
+        let data: NSDictionary
+        
+        if is_test != nil{
+            data = [
+                "token" : session.token,
+                "is_test" : is_test!
+            ]
+        }else{
+            data = [
+                "token" : session.token
+            ]
+        }
+        
+        
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
             response, error in
             
@@ -270,7 +281,7 @@ public class Catalogues : Paybook {
     public class func get_site_organizations(session: Session, id_user: String?,completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
         
         
-        let url = "catalogues/site_organizations"
+        let url = "https://sync.paybook.com/v1/catalogues/site_organizations"
         let data = [
             "token" : session.token
         ]

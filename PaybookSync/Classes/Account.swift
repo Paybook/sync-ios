@@ -12,17 +12,17 @@ import Foundation
 
 public class Account : Paybook {
     
-    var id_account : String!
-    var id_external : String!
-    var id_user : String!
-    var id_credential : String!
-    var id_site : String!
-    var id_site_organization : String!
-    var name : String!
-    var number : String!
-    var balance : Double = 0.0
-    var site : String!
-    var dt_refresh : String!
+    public var id_account : String!
+    public var id_external : String!
+    public var id_user : String!
+    public var id_credential : String!
+    public var id_site : String!
+    public var id_site_organization : String!
+    public var name : String!
+    public var number : String!
+    public var balance : Double = 0.0
+    public var site : String!
+    public var dt_refresh : String!
     
     
     
@@ -61,7 +61,7 @@ public class Account : Paybook {
     
     public class func get(session: Session,id_user: String?, completionHandler: (([Account]?, PaybookError?) -> ())?){
         
-        let url = "accounts"
+        let url = "https://sync.paybook.com/v1/accounts"
         let data = [
             "token" : session.token
         ]

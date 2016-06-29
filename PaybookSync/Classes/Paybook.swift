@@ -31,8 +31,8 @@ public class Paybook {
         }
         
         
-        let url = "\(baseURLString)\(endpoint)"
-        
+        //let url = "\(baseURLString)\(endpoint)"
+        let url = endpoint
         
         switch method {
         case "GET" :

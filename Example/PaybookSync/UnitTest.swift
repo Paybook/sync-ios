@@ -15,12 +15,15 @@ public class UnitTest {
     static var id_user : String!
     static var session_test : Session!
     static var site_test : Site!
+    static var site_SAT : Site!
+    static var cred_test : Credentials!
+    
     
     public class func test_library(api_key: String){
         
         UnitTest.api_key = api_key
         
-        //delete()
+        
         testInitialization()
         
         
@@ -90,7 +93,7 @@ public class UnitTest {
                             responseArray , error in
                             if (responseArray != nil) {
                                 for value in responseArray! {
-                                    print(value.id_user)
+                                    print("\(value.name) \(value.id_user)")
                                 }
                                 if responseArray?.count > user_count {
                                     print("#6 Success Creates a new user")
@@ -251,17 +254,57 @@ public class UnitTest {
                             response, error in
                             if response != nil {
                                 print("#18 Success")
-                                Catalogues.get_sites(session_test, id_user: nil, completionHandler: {
+                                
+                                Catalogues.get_sites(session_test, id_user: nil,is_test: false, completionHandler: {
                                     response, error in
                                     if response != nil {
                                         print("#19 Success")
                                         for site in response!{
-                                            if site.id_site == "56cf5728784806f72b8b456f"{
-                                                site_test = site
-                                                print("#22 Success")
+                                            // Get SAT Site
+                                            if site.id_site_organization == "56cf4ff5784806152c8b4568"{
+                                                site_SAT = site
+                                                print("#22 Success \(site)")
                                             }
                                         }
-                                        testCredentials()
+                                        Catalogues.get_sites(session_test, id_user: nil,is_test: true, completionHandler: {
+                                            response, error in
+                                            if response != nil {
+                                                for site in response!{
+                                                    // Get Token Test Site
+                                                    if site.name == "Token"{
+                                                        print("#20 Success")
+                                                        print("site: \(site)")
+                                                        site_test = site
+                                                    }
+                                                }
+                                                
+                                                if site_test != nil{
+                                                    Catalogues.get_site_organizations(session_test, id_user: nil, completionHandler: {
+                                                        response, error in
+                                                        if response != nil {
+                                                            print("#21 Success")
+                                                            
+                                                            testCredentials()
+                                                        }else{
+                                                            print("#21 Fail \(error?.message)")
+                                                            finish()
+                                                            return
+                                                        }
+                                                    })
+                                                }else{
+                                                    print("#20 Fail")
+                                                    finish()
+                                                    return
+                                                }
+                                                
+                                            }else{
+                                                print("#20 Fail")
+                                                finish()
+                                                return
+                                            }
+                                        })
+
+                                        
                                     }else{
                                         print("#19 Fail")
                                         finish()
@@ -302,40 +345,88 @@ public class UnitTest {
      32. Check status and wait for status 410
      33. Send token using set_twofa method
      */
-    
+    /*
     class func testCredentials(){
         Credentials.get(session_test, id_user: nil, completionHandler: {
             response, error in
-            print(" \(response), \(error)")
             if response != nil {
-                print("#23 Success")
-                print("#24 Success")
-                let data = [
-                    "username": "",
-                    "password": ""
-                ]
-                _ = Credentials(session: session_test, id_user: nil, id_site: site_test.id_site, credentials: data, completionHandler: {
-                    credential, error in
-                    if credential != nil {
-                        print("#25 Success \(credential)")
-                        
-                    }else{
-                        print("#25 Fail \(error?.message) ")
-                        finish()
-                        return
-                    }
-                })
-            }else{
-                print("#23 Fail \(error?.message)")
+                print("#23 Success you have \(response!.count) Credentials")
+                let credentials_count = response?.count
+                var params = [String:String]()
+                
+                for value in site_SAT.credentials{
+                    params[value["name"] as! String] = "Test"
+                }
+                print("#24 Success params : \(params)")
+                
                 finish()
-                return
+            }else{
+                print("#23 Fail")
+                finish()
             }
+           
         })
     
     }
 
+    */
     
+    class func testCredentials(){
+        Credentials.get(session_test, id_user: nil, completionHandler: {
+            response, error in
+            if response != nil {
+                print("#23 Success you have \(response!.count) Credentials")
+                //let credentials_count = response?.count
+                var params = [String:String]()
+                
+                for value in site_test.credentials{
+                    params[value["name"] as! String] = "Test"
+                }
+                print("#24 Success params : \(params)")
+                
+                _ = Credentials(session: session_test, id_user: nil, id_site: site_test.id_site, credentials: params, completionHandler: {
+                    response, error in
+                    
+                    if response != nil{
+                        print("#25 Success : \(response)")
+                        response?.get_status(session_test, id_user: nil, completionHandler: {
+                        response, error in
+                            print(response)
+                            
+                        })
+                        cred_test = response
+                        
+                    }
+                    
+                    
+                
+                })
+                
+                
+            }else{
+                print("#23 Fail")
+                finish()
+            }
+            
+        })
+        
+    }
     
+    class func checkStatus(){
+        cred_test.get_status(session_test, id_user: nil, completionHandler: {
+            response, error in
+            if response != nil{
+                print("Code: \(response)")
+                if response == 410 {
+                    
+                    finish()
+                }
+            }else{
+                print("Fail: \(error)")
+                finish()
+            }
+        })
+    }
     
     /*** Test Accounts
      34. Get accounts
@@ -440,11 +531,34 @@ public class UnitTest {
     class func delete(){
         Paybook.api_key = UnitTest.api_key
         
-        User.delete("id", completionHandler: {
+        User.delete("5771b5e80c212a9f058b4580", completionHandler: {
             response, error in
             print(response)
         })
-        
+        User.delete("577205c50b212a5b058b457b", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("5772087f0c212a3c058b4630", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("57720cd60c212a38058b457a", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("5772a0810b212a39058b4579", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("5772a8c40c212a51058b4581", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("5772ea7e0b212a4e058b4573", completionHandler: {
+            response, error in
+            print(response)
+        })
     }
     
 }
