@@ -17,13 +17,13 @@ public class UnitTest {
     static var site_test : Site!
     static var site_SAT : Site!
     static var cred_test : Credentials!
-    
+    static var timer = NSTimer()
     
     public class func test_library(api_key: String){
         
         UnitTest.api_key = api_key
         
-        
+        //delete()
         testInitialization()
         
         
@@ -342,10 +342,10 @@ public class UnitTest {
      28. Get credentials (they should be equal to step 23)
      29. Creates credentials for SAT/CIEC site again (you should use the site obtained in step 22)
      30. Creates credentials for Token test site (you should use the site obtained in step 20)
-     32. Check status and wait for status 410
-     33. Send token using set_twofa method
+     31. Check status and wait for status 410
+     32. Send token using set_twofa method
      */
-    /*
+    
     class func testCredentials(){
         Credentials.get(session_test, id_user: nil, completionHandler: {
             response, error in
@@ -355,51 +355,95 @@ public class UnitTest {
                 var params = [String:String]()
                 
                 for value in site_SAT.credentials{
-                    params[value["name"] as! String] = "Test"
+                    params[value["name"] as! String] = "test"
                 }
                 print("#24 Success params : \(params)")
                 
-                finish()
-            }else{
-                print("#23 Fail")
-                finish()
-            }
-           
-        })
-    
-    }
+                _ = Credentials(session: session_test, id_user: nil, id_site: site_SAT.id_site, credentials: params, completionHandler: {
+                    credential, error in
+                    if credential != nil{
+                        print("#25 Success ")
+                        Credentials.get(session_test, id_user: nil, completionHandler: {
+                            response, error in
+                            if response != nil && response?.count > credentials_count{
+                                print("#26 Success you have \(response!.count) credentials")
+                                
+                                Credentials.delete(session_test, id_user: nil, id_credential: credential!.id_credential, completionHandler: {
+                                    response, error in
+                                    if response != nil && response == true{
+                                       print("#27 Success ")
+                                        Credentials.get(session_test, id_user: nil, completionHandler: {
+                                            response, error in
+                                            if response != nil && response?.count == credentials_count{
+                                                print("#28 Success ")
+                                                _ = Credentials(session: session_test, id_user: nil, id_site: site_SAT.id_site, credentials: params, completionHandler: {
+                                                    response, error in
+                                                    if response != nil {
+                                                        print("#29 Success ")
+                                                        var params = [String:String]()
+                                                        
+                                                        for value in site_test.credentials{
+                                                            params[value["name"] as! String] = "test"
+                                                        }
+                                                        
+                                                        _ = Credentials(session: session_test, id_user: nil, id_site: site_test.id_site, credentials: params, completionHandler: {
+                                                            response, error in
+                                                            
+                                                            if response != nil{
+                                                                print("#30 Success ")
+                                                                cred_test = response
+                                                                print("Plaese check status manually")
 
-    */
-    
-    class func testCredentials(){
-        Credentials.get(session_test, id_user: nil, completionHandler: {
-            response, error in
-            if response != nil {
-                print("#23 Success you have \(response!.count) Credentials")
-                //let credentials_count = response?.count
-                var params = [String:String]()
-                
-                for value in site_test.credentials{
-                    params[value["name"] as! String] = "Test"
-                }
-                print("#24 Success params : \(params)")
-                
-                _ = Credentials(session: session_test, id_user: nil, id_site: site_test.id_site, credentials: params, completionHandler: {
-                    response, error in
-                    
-                    if response != nil{
-                        print("#25 Success : \(response)")
-                        response?.get_status(session_test, id_user: nil, completionHandler: {
-                        response, error in
-                            print(response)
+                                                            }else{
+                                                                print("#29 Fail ")
+                                                                finish()
+                                                            }
+                                                            
+                                                        })
+                                                        
+                                                    }else{
+                                                        print("#29 Fail ")
+                                                        finish()
+                                                    }
+                                                
+                                                })
+                                            }else{
+                                                print("#28 Fail \(error?.message)")
+                                                finish()
+                                            }
+                                        })
+                                    }else{
+                                        print("#27 Fail \(error?.message)")
+                                        finish()
+                                    }
+                                    
+                                })
+                                
+                            }else{
+                                print("#26 Fail \(error?.message)")
+                                finish()
+                            }
                             
                         })
-                        cred_test = response
                         
+                    }else{
+                        print("#25 Fail \(error?.message)")
                     }
                     
+                    /*
+                     if response != nil{
+                     print("#25 Success : \(response)")
+                     response?.get_status(session_test, id_user: nil, completionHandler: {
+                     response, error in
+                     print(response,error)
+                     
+                     })
+                     cred_test = response
+                     
+                     }
+                     
+                     */
                     
-                
                 })
                 
                 
@@ -416,17 +460,52 @@ public class UnitTest {
         cred_test.get_status(session_test, id_user: nil, completionHandler: {
             response, error in
             if response != nil{
-                print("Code: \(response)")
-                if response == 410 {
-                    
-                    finish()
+                for value in response! {
+                    print(value)
+                    switch value["code"] as! Int{
+                    case 100,101,102:
+                        print("Processing...")
+                        break
+                    case 200,201,202,203:
+                        print("Success...")
+                        timer.invalidate()
+                        break
+                    case 401,405,406,411:
+                        print("User Error \(value["code"])")
+                        break
+                    case 410:
+                        print("# 31 Success Waiting for two-fa")
+                        var params = [String:String]()
+                        
+                        for param in value["twofa"] as! [NSDictionary]{
+                            params[param["name"] as! String] = "test"
+                        }
+                        cred_test.set_twofa(session_test, id_user: nil, params: params, completionHandler: {
+                            response, error in
+                            if response != nil && response == true{
+                                print("32 Success")
+                                testAccounts()
+                            }else{
+                                print("32 Fail \(error?.message)")
+                            }
+                        })
+                        
+                        break
+                    case 500,501,504,505:
+                        print("System Error \(value["code"])")
+                        break
+                    default :
+                        break
+                    }
                 }
+                
             }else{
-                print("Fail: \(error)")
-                finish()
+                print("Fail: \(error?.message)")
+                
             }
         })
     }
+    
     
     /*** Test Accounts
      34. Get accounts
@@ -531,34 +610,30 @@ public class UnitTest {
     class func delete(){
         Paybook.api_key = UnitTest.api_key
         
-        User.delete("5771b5e80c212a9f058b4580", completionHandler: {
+        User.delete("577312c00b212ab0058b4570", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("577205c50b212a5b058b457b", completionHandler: {
+        User.delete("577404b30b212a8a058b457c", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("5772087f0c212a3c058b4630", completionHandler: {
+        User.delete("5774080d0c212ab1058b4581", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("57720cd60c212a38058b457a", completionHandler: {
+        
+        
+        
+        User.delete("577408e30b212a37058b4583", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("5772a0810b212a39058b4579", completionHandler: {
+        User.delete("57740c780c212a8e058b458b", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("5772a8c40c212a51058b4581", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("5772ea7e0b212a4e058b4573", completionHandler: {
-            response, error in
-            print(response)
-        })
+        
     }
     
 }

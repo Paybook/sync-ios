@@ -107,7 +107,7 @@ public class Credentials : Paybook {
    
     
     // Int
-    public func get_status( session : Session,id_user : String?, completionHandler: ((Int?, PaybookError?) -> ())? ){
+    public func get_status( session : Session,id_user : String?, completionHandler: (([NSDictionary]?, PaybookError?) -> ())? ){
         
         let url = self.status
         let data = [
@@ -119,10 +119,10 @@ public class Credentials : Paybook {
             
             if response != nil {
                 
-                if let responseObject = response!["response"] as? NSDictionary{
+                if let responseObject = response!["response"] as? NSArray{
                     
                     if completionHandler != nil {
-                        completionHandler!(responseObject["code"] as? Int,nil)
+                        completionHandler!(responseObject as! [NSDictionary],nil)
                     }
                     
                 }
@@ -138,20 +138,26 @@ public class Credentials : Paybook {
     }
     
     // Int
-    public func set_twofa( session : Session,id_user : String?,token: String ,completionHandler: ((NSDictionary?, PaybookError?) -> ())? ){
+    public func set_twofa( session : Session,id_user : String?,params: NSDictionary ,completionHandler: ((Bool?, PaybookError?) -> ())? ){
         
         let url = self.twofa
         let data = [
             "token" : session.token,
-            "twofa": ["token": token]
+            "twofa": params
         ]
         
-        Paybook.call("GET", endpoint: url, parameters: data, completionHandler: {
+        Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
             response, error in
             
-            if response != nil {
-                if completionHandler != nil {
-                    completionHandler!(response!["response"] as? NSDictionary,nil)
+            if response != nil{
+                if response!["code"] as! Int == 200{
+                    if completionHandler != nil {
+                        completionHandler!(true,error)
+                    }
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(false,error)
+                    }
                 }
                 
             }else{
@@ -172,10 +178,10 @@ public class Credentials : Paybook {
         
         
         let data = [
-            "token" : session.token,
+            "token" : session.token
         ]
         
-        let url = "https://sync.paybook.com/v1credentials/\(id_credential)"
+        let url = "https://sync.paybook.com/v1/credentials/\(id_credential)"
         
         self.call("DELETE", endpoint: url, parameters: data, completionHandler: {
             response, error in
