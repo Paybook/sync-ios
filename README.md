@@ -1,4 +1,4 @@
-# Paybook iOS Library V1.0.5
+# Paybook iOS Library V1.0.6
 
 Esta es la librería de Paybook para iOS. Mediante esta librería usted puede implementar el API REST de Paybook de manera rapida y sencilla a través de sus clases y métodos.
 
@@ -17,7 +17,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Paybook', '~> 1.0.5'
+    pod 'Paybook', '~> 1.0.6'
 end
 ```
 
