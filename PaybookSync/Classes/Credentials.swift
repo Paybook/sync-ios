@@ -235,8 +235,11 @@ public class Credentials : Paybook {
                 if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
-                        array.append(Credentials(dict: value as! NSDictionary))
+                        if let dict = value as? NSDictionary{
+                            array.append(Credentials(dict: dict))
+                        }
                     }
+                    
                     if completionHandler != nil {
                         completionHandler!(array,error)
                     }
