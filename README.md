@@ -1,4 +1,4 @@
-# Paybook iOS Library V1.0.4
+# Paybook iOS Library V1.0.5
 
 Esta es la librería de Paybook para iOS. Mediante esta librería usted puede implementar el API REST de Paybook de manera rapida y sencilla a través de sus clases y métodos.
 
@@ -17,7 +17,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Paybook', '~> 1.0.4'
+    pod 'Paybook', '~> 1.0.5'
 end
 ```
 
@@ -133,8 +133,8 @@ Descripción de los métodos de la clase:
 | -------------- | ---------------------------------------- | ------------------------------------ |
 | Creates or updates credentials | POST https://sync.paybook.com/v1/credentials | ```Credentials credentials = Credential(session:Session,id_user:String?,id_site:String,credentials:NSDictionary,completionHandler:((Credentials?,PaybookError?)->())?)```          |
 | Deletes credentials | DELETE https://sync.paybook.com/v1/credentials/:id_credential | ```static Bool deleted Credentials.delete(session:Session,id_user:String?,id_credential:String,completionHandler:((Bool?,PaybookError?)->())?)```          |
-| Request status | GET status_url | ```list [Dict] = credentials.get_status(session=Session,id_user=str)```          |
-| Set twofa | POST twofa_url | ```bool twofa_set = credentials.set_twofa(session=Session,id_user=str,twofa_value=str)```          |
+| Request status | GET status_url | ```list [NSDictionary] = credentials.get_status(session:Session,id_user:String?,completionHandler:(([NSDictionary]?,PaybookError?)->())?)```          |
+| Set twofa | POST twofa_url | ```bool twofa_set = credentials.set_twofa(session:Session,id_user:String?,params:NSDictionary,completionHandler:((Bool?,PaybookError?)->())?)```          |
 | Request register credentials | GET https://sync.paybook.com/v1/credentials | ```static list [Credentials] = Credentials.get(session:Session,id_user:String?,completionHandler:(([Credentials]?,PaybookError?)->())?)```          |
 
 

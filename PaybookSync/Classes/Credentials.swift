@@ -106,7 +106,7 @@ public class Credentials : Paybook {
     
    
     
-    // Int
+    // [NSDictionary]
     public func get_status( session : Session,id_user : String?, completionHandler: (([NSDictionary]?, PaybookError?) -> ())? ){
         
         let url = self.status
@@ -137,7 +137,7 @@ public class Credentials : Paybook {
 
     }
     
-    // Int
+    // Bool
     public func set_twofa( session : Session,id_user : String?,params: NSDictionary ,completionHandler: ((Bool?, PaybookError?) -> ())? ){
         
         let url = self.twofa
