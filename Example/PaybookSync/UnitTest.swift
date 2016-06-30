@@ -23,7 +23,6 @@ public class UnitTest {
         
         UnitTest.api_key = api_key
         
-        //delete()
         testInitialization()
         
         
@@ -53,6 +52,9 @@ public class UnitTest {
                     response, error in
                     if response != nil {
                         print("#3 Success")
+                        for value in response! {
+                            print("\(value.name) \(value.id_user)")
+                        }
                         // Continue with testUser
                         testUser()
                     }else{
@@ -92,9 +94,7 @@ public class UnitTest {
                         User.get() {
                             responseArray , error in
                             if (responseArray != nil) {
-                                for value in responseArray! {
-                                    print("\(value.name) \(value.id_user)")
-                                }
+                                
                                 if responseArray?.count > user_count {
                                     print("#6 Success Creates a new user")
                                     User.delete((user?.id_user)!, completionHandler: {
@@ -610,26 +610,62 @@ public class UnitTest {
     class func delete(){
         Paybook.api_key = UnitTest.api_key
         
-        User.delete("577312c00b212ab0058b4570", completionHandler: {
+        
+        
+        
+        User.delete("577458c40b212a2e208b4575", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("577404b30b212a8a058b457c", completionHandler: {
+        User.delete("577459360b212a78208b456e", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("5774080d0c212ab1058b4581", completionHandler: {
+        User.delete("577459c70c212a945f8b4571", completionHandler: {
+            response, error in
+            print(response)
+        })
+        
+        
+        User.delete("5774189d0c212a4e5f8b4567", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("57741bd10c212a9a5f8b4567", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("57743b7a0b212a85208b4569", completionHandler: {
             response, error in
             print(response)
         })
         
         
         
-        User.delete("577408e30b212a37058b4583", completionHandler: {
+        User.delete("57743ead0b212a98208b4569", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("57740c780c212a8e058b458b", completionHandler: {
+        User.delete("577440980b212a9b208b4569", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("5774423d0b212a88208b456e", completionHandler: {
+            response, error in
+            print(response)
+        })
+        
+        
+        
+        User.delete("577443610b212a63208b456f", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("57744e190c212a565f8b456e", completionHandler: {
+            response, error in
+            print(response)
+        })
+        User.delete("577456120c212a825f8b456b", completionHandler: {
             response, error in
             print(response)
         })
