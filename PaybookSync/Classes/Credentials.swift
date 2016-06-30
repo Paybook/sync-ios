@@ -119,12 +119,15 @@ public class Credentials : Paybook {
             
             if response != nil {
                 
-                if let responseObject = response!["response"] as? NSArray{
+                if let responseObject = response!["response"] as? [NSDictionary]{
                     
                     if completionHandler != nil {
-                        completionHandler!(responseObject as! [NSDictionary],nil)
+                        completionHandler!(responseObject,nil)
                     }
-                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
                 }
                 
             }else{
@@ -235,11 +238,8 @@ public class Credentials : Paybook {
                 if let responseArray = response!["response"] as? NSArray{
                     
                     for (value) in responseArray{
-                        if let dict = value as? NSDictionary{
-                            array.append(Credentials(dict: dict))
-                        }
+                        array.append(Credentials(dict: value as! NSDictionary))
                     }
-                    
                     if completionHandler != nil {
                         completionHandler!(array,error)
                     }
