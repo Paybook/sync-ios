@@ -1,4 +1,4 @@
-# Paybook iOS Library V1.0.6
+# Paybook iOS Library V1.0.7
 
 Esta es la librería de Paybook para iOS. Mediante esta librería usted puede implementar el API REST de Paybook de manera rapida y sencilla a través de sus clases y métodos.
 
@@ -17,7 +17,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'Paybook', '~> 1.0.6'
+    pod 'Paybook', '~> 1.0.7'
 end
 ```
 
@@ -34,11 +34,11 @@ $ pod install
 
 Antes de consultar la documentación puedes tomar alguno de nuestros tutoriales:
 
-- [Quickstart para sincronizar al SAT](https://github.com/Paybook/sync-py/blob/master/quickstart_sat.md)
+- [Quickstart para sincronizar al SAT]()
 
-- [Quickstart para sincronizar una cuenta bancaria con credenciales sencillas (usuario y contraseña)](https://github.com/Paybook/sync-py/blob/master/quickstart_normal_bank.md)
+- [Quickstart para sincronizar una cuenta bancaria con credenciales sencillas (usuario y contraseña)]()
 
-- [Quickstart para sincronizar una cuenta bancaria con token (usuario y contraseña)](https://github.com/Paybook/sync-py/blob/master/quickstart_token_bank.md)
+- [Quickstart para sincronizar una cuenta bancaria con token (usuario y contraseña)]()
 
 ## Recordatorios:
 

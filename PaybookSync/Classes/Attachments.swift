@@ -24,15 +24,16 @@ public class Attachments : Paybook {
     // Attachments
     convenience init (dict: NSDictionary){
         self.init()
+        
         self.id_account = dict["id_transaction"] as? String
-        self.id_external = dict["id_user"] as? String
-        self.id_user = dict["id_external"] as? String
-        self.id_attachment_type = dict["id_site"] as? String
-        self.id_transaction = dict["id_site_organization"] as? String
-        self.file = dict["id_site_organization_type"] as? String
-        self.extra = dict["id_account"] as? String
-        self.url = dict["id_account_type"] as? String
-        self.dt_refresh = dict["is_disable"] as? String
+        self.id_external = dict["id_external"] as? String
+        self.id_user = dict["id_user"] as? String
+        self.id_attachment_type = dict["id_attachment_type"] as? String
+        self.id_transaction = dict["id_transaction"] as? String
+        self.file = dict["file"] as? String
+        self.extra = dict["extra"] as? String
+        self.url = dict["url"] as? String
+        self.dt_refresh = dict["dt_refresh"] as? String
         
     }
     
@@ -52,14 +53,14 @@ public class Attachments : Paybook {
     
     public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
         
-        let url = "https://sync.paybook.com/v1/attachments/counts"
+        let url = "https://sync.paybook.com/v1/attachments/count"
         let data = [
             "token" : session.token
         ]
         
         self.call("GET", endpoint: url, parameters: data, completionHandler: {
             response, error in
-            print(response)
+            
             
             if response != nil {
                 
