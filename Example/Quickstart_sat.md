@@ -213,55 +213,47 @@ print("No se pudo crear las credenciales: \(error?.message)")
 Este sección de codigo va a inicializar un NSTimer que se encargara de de ejecutar la función "checkStatus" cada 3 segundos hasta que la credencial termine su proceso de sincronización.
 
 
-```swift
-if credential_response != nil {
-
-self.credential = credential_response
-print("\nCheck Status:")
-self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
-
-
-}else{
-print("No se pudo crear las credenciales: \(error?.message)")
-}
-
-```
-
 ####11. Consultamos las facturas sincronizadas:
 Una vez que ya hemos checado el estado de la sincronización y hemos verificado que ha terminado (código 200) podemos consultar las facturas sincronizadas, pra eso utlizaremos la función "getTransactions" la cual ejecutara lo siguiente:
 
 ```swift
-Transaction.get(self.session, id_user: nil, completionHandler: {
-    transaction_array, error in
-    if transaction_array != nil {
-        print("\nTransactions: ")
-        for transaction in transaction_array! {
-            print("$\(transaction.amount), \(transaction.description) ")
-        }
-    self.getAttachments()
-    }else{
-        print("Problemas al consultar las transacciones: \(error?.message)")    
+func getTransactions(){
+        Transaction.get(self.session, id_user: nil, completionHandler: {
+            transaction_array, error in
+            if transaction_array != nil {
+                print("\nTransactions: ")
+                for transaction in transaction_array! {
+                    print("$\(transaction.amount), \(transaction.description) ")
+                }
+                self.getAttachments()
+                
+            }else{
+                print("Problemas al consultar las transacciones: \(error?.message)")
+            }
+            
+        })
     }
-
-})
 ```
 
 ####12. Consultamos la información de archivos adjuntos:
 Podemos también consultar los archivos adjuntos a estas facturas como lo hacemos en la función "getAttachments", recordemos que por cada factura el SAT tiene una archivo XML y un archivo PDF:
 
 ```swift
-Attachments.get(session, id_user: nil, completionHandler: {
-    attachments_array, error in
-    
-    if attachments_array != nil {
-        print("\nAttachments: ")
-        for attachment in attachments_array! {
-            print("Attachment type : \(attachment.id_attachment_type), id_transaction: \(attachment.id_transaction) ")
-        }
-    }else{
-        print("Problemas al consultar los attachments: \(error?.message)")
+func getAttachments(){
+        Attachments.get(session, id_user: nil, completionHandler: {
+            attachments_array, error in
+            if attachments_array != nil {
+                print("\nAttachments: ")
+                for attachment in attachments_array! {
+                    print("Attachment type : \(attachment.id_attachment_type), id_transaction: \(attachment.id_transaction) ")
+                }
+                
+                
+            }else{
+                print("Problemas al consultar los attachments: \(error?.message)")
+            }
+        })
     }
-})
 ```
 
 ¡Felicidades! has terminado con este tutorial. 
