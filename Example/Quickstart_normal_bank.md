@@ -1,4 +1,4 @@
-##QUICKSTART NORMAL BANK
+##QUICKSTART BANCO NORMAL
 
 ### Requerimientos
 
@@ -23,7 +23,7 @@ Para consumir el API de Paybook lo primero que tenemos que hacer es instalar la 
 $ pod init
 ```
 
-**Importante: ** Es posible que la ejecución del comando anterior requiere que tengas instalado cocoapods en tu equipo.
+**Importante: ** La ejecución del comando anterior requiere que tengas instalado cocoapods en tu equipo.
 
 El siguiente paso es editar nuestro pod file para agregar nuestras dependencias, usa el siguiente comando para abrir tu pod file en Xcode:
 
@@ -33,12 +33,12 @@ $ open -a Xcode Podfile
 
 Reemplaza el contenido de tu pod file con el siguiente codigo:
 
-```
+```swift
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-target 'TestPods' do
+target 'YOUR_PROJECT_NAME' do
     use_frameworks!
     pod 'Paybook', '~> 1.0.6'
 end
@@ -53,14 +53,14 @@ $ pod install
 
 ##Ejecución:
 
-Este tutorial está basado en el script [Quickstar_sat_ViewController.swift](https://github.com/Paybook/sync-ios/blob/master/Example/PaybookSync/Quickstart_normal_bank_ViewController.swift) por lo que puedes descargar el archivo, configurar los valores YOUR_API_KEY, YOUR_BANK_USERNAME y YOUR_BANK_PASSWORD, asignarlo como la clase de tu view controller y ejecutarlo en tu equipo:
+Este tutorial está basado en el view controller [Quickstar_sat_ViewController.swift](https://github.com/Paybook/sync-ios/blob/master/Example/PaybookSync/Quickstart_normal_bank_ViewController.swift) por lo que puedes descargar el archivo, configurar los valores YOUR_API_KEY, YOUR_BANK_USERNAME y YOUR_BANK_PASSWORD, asignarlo como la clase de tu view controller y ejecutarlo en tu equipo:
 
 Una vez que has ejecutado el archivo podemos continuar analizando el código.
 
 ####1. Importar y asignar API key
 El primer paso para utilizar nuestra libreria es importarla ya asignarle tu API key esto se lleva acabo en el metodo de la clase viewDidLoad para que se ejecute inmeditamente de haber cragado nuestro ViewContrller.
 
-```
+```swift
 override func viewDidLoad() {
     super.viewDidLoad()
     Paybook.api_key = "YOUR_API_KEY"
@@ -71,7 +71,7 @@ override func viewDidLoad() {
 Para realizar la mayoría de las acciones en Paybook es necesario tener un usuario e iniciar una sesión, por lo tanto crearemos una función "getUsers" que se ejecutara en el viewDidLoad despues de haber asignado nuestra API key y que hara una consulta de nuestra lista de usuarios y seleccionaremos el usuario con el que deseamos trabajar. Una vez que tenemos al usuario iniciamos sesión con éste.
 
 
-```
+```swift
 func getUsers(){
     User.get(){
         response,error in
@@ -100,7 +100,7 @@ func createSession(){
 ####3. Consultamos el catálogo de las instituciones de Paybook:
 Recordemos que Paybook tiene un catálogo de instituciones que podemos seleccionar para sincronizar nuestros usuarios. A continuación consultaremos este catálogo, por medio de la función "getCatalogueSite" que utiliza nuestra clase Catalogues y hace un "get_sites":
 
-```
+```swift
 func getCatalogueSite(){
     Catalogues.get_sites(self.session, id_user: nil, is_test: nil, completionHandler: {
         sites_array, error in
@@ -122,7 +122,8 @@ func getCatalogueSite(){
         }
 
     })
-}```
+}
+```
 
 El catálogo muestra las siguienes instituciones:
 
@@ -150,7 +151,7 @@ Para efectos de este tutorial seleccionaremos **SuperNET Particulares (Santander
 
 A continuación registraremos las credenciales de nuestro banco, es decir, el usuario y contraseña que nos proporcionó el banco para acceder a sus servicios en línea:
 
-```
+```swift
 func createCredential(){
     let dataCredentials = [
         "username" : "BANK_USERNAME",
@@ -187,7 +188,7 @@ Una vez que has registrado las credenciales de una institución bancaria para un
 
 El status se analisza en la siguiente parte de codigo:
 
-```
+```swift
 if credential_response != nil {
 
 self.credential = credential_response
@@ -202,7 +203,7 @@ print("No se pudo crear las credenciales: \(error?.message)")
 
 La instrucción anterior establece un NSTimer que ejecutara la función "checkStatus" cada 3 segundos y en esta función se analizará el codigo de estado en que se encuentran las credenciales una vez que regrese algun codigo que nos diga que el proceso de sincronización termino, invalidara el NSTimer y continuara con lo siguiente:
 
-```
+```swift
 func checkStatus(){
 
 credential.get_status(self.session, id_user: nil, completionHandler: {
@@ -247,7 +248,7 @@ credential.get_status(self.session, id_user: nil, completionHandler: {
 
 Una vez que la sincronización ha terminado podemos consultar las transacciones y desplegar información de ellas:
 
-```
+```swift
 func getTransactions(){
     Transaction.get(self.session, id_user: nil, completionHandler: {
         transaction_array, error in

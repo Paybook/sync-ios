@@ -11,14 +11,14 @@ A lo largo de este tutorial te enseñaremos como sincronizar una institución ba
 
 ##Ejecución:
 
-Este tutorial está basado en el script [Quickstart_token_bank_ViewController.swift](https://github.com/Paybook/sync-ios/blob/master/Example/PaybookSync/Quickstart_token_bank_ViewController.swift) por lo que puedes descargar el archivo, configurar los valores YOUR_API_KEY, YOUR_BANK_USERNAME y YOUR_BANK_PASSWORD, asignarlo como la clase de tu view controller y ejecutarlo en tu equipo. Es recomendable tener el token a la mano puesto que el script eventualmente lo solicitará:
+Este tutorial está basado en el view controller [Quickstart_token_bank_ViewController.swift](https://github.com/Paybook/sync-ios/blob/master/Example/PaybookSync/Quickstart_token_bank_ViewController.swift) por lo que puedes descargar el archivo, configurar los valores YOUR_API_KEY, YOUR_BANK_USERNAME y YOUR_BANK_PASSWORD, asignarlo como la clase de tu view controller y ejecutarlo en tu equipo. Es recomendable tener el token a la mano puesto que el script eventualmente lo solicitará:
 
 Una vez que has ejecutado el archivo podemos continuar analizando el código.
 
 ####1. Importar y asignar API key
-El primer paso para utilizar nuestra libreria es importarla ya asignarle tu API key esto se lleva acabo en el metodo de la clase viewDidLoad para que se ejecute inmeditamente de haber cragado nuestro ViewContrller.
+El primer paso para utilizar nuestra libreria es importarla y asignarle tu API key esto se lleva acabo en el metodo de la clase viewDidLoad para que se ejecute inmeditamente de haber cragado nuestro ViewContrller.
 
-```
+```swift
 override func viewDidLoad() {
     super.viewDidLoad()
     Paybook.api_key = "YOUR_API_KEY"
@@ -29,7 +29,7 @@ override func viewDidLoad() {
 Para realizar la mayoría de las acciones en Paybook es necesario tener un usuario e iniciar una sesión, por lo tanto crearemos una función "getUsers" que se ejecutara en el viewDidLoad despues de haber asignado nuestra API key y que hara una consulta de nuestra lista de usuarios y seleccionaremos el usuario con el que deseamos trabajar. Una vez que tenemos al usuario iniciamos sesión con éste.
 
 
-```
+```swift
 func getUsers(){
     User.get(){
         response,error in
@@ -58,7 +58,7 @@ func createSession(){
 ####3. Consultamos el catálogo de las instituciones de Paybook:
 Recordemos que Paybook tiene un catálogo de instituciones que podemos seleccionar para sincronizar nuestros usuarios. A continuación consultaremos este catálogo, por medio de la función "getCatalogueSite" que utiliza nuestra clase Catalogues y hace un "get_sites":
 
-```
+```swift
 func getCatalogueSite(){
     Catalogues.get_sites(self.session, id_user: nil, is_test: nil, completionHandler: {
     sites_array, error in
@@ -109,7 +109,7 @@ Para efectos de este tutorial seleccionaremos **Banorte en su empresa** pero tu 
 
 A continuación registraremos las credenciales de nuestro banco, es decir, el usuario y contraseña que nos proporcionó el banco para acceder a sus servicios en línea:
 
-```
+```swift
 func createCredential(){
 let dataCredentials = [
     "username" : "BANK_USERNAME",
@@ -156,7 +156,7 @@ Una vez que has registrado las credenciales de una institución bancaria para un
 
 El estatus se analisza en la siguiente parte de codigo:
 
-```
+```swift
 if credential_response != nil {
     self.credential = credential_response
     print("\nCheck Status:")
@@ -172,7 +172,7 @@ if credential_response != nil {
 
 La instrucción anterior establece un NSTimer que ejecutara la función "checkStatus" cada 3 segundos y en esta función se analizará el codigo de estado en que se encuentran las credenciales una vez que regrese el codigo 410 podemos proseguir a enviar el token:
 
-```
+```swift
 func checkStatus(){
 
 credential.get_status(self.session, id_user: nil, completionHandler: {
@@ -217,7 +217,7 @@ credential.get_status(self.session, id_user: nil, completionHandler: {
 ####6. Enviar token bancario
 Ahora hay que ingresar el valor del token, el cual lo podemos solicitar por medio de un UITextField que podemos agregar a nuestro ViewController en nuestro Main.storyboard o el archivo .xib de nuestro ViewController. En este ejemplo tambien agregaremos un boton con un IBAction que se encargue de enviar el token cuando lo presionemos:
 
-```
+```swift
     @IBOutlet weak var tokenInput: UITextField!
 
     @IBAction func sendToken(sender: AnyObject) {
@@ -245,7 +245,7 @@ Es importante checar el código 401 que indica que el token introducido es incor
 
 Una vez que la sincronización ha terminado podemos consultar las transacciones y desplegar información de ellas:
 
-```
+```swift
 func getTransactions(){
     Transaction.get(self.session, id_user: nil, completionHandler: {
         transaction_array, error in

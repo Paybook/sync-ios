@@ -33,12 +33,12 @@ $ open -a Xcode Podfile
 
 Reemplaza el contenido de tu pod file con el siguiente codigo:
 
-```
+```swift
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-target 'TestPods' do
+target 'YOUR_PROJECT_NAME' do
     use_frameworks!
     pod 'Paybook', '~> 1.0.6'
 end
@@ -52,7 +52,7 @@ $ pod install
 
 
 ####2. Ejecutamos el Script:
-Este tutorial está basado en el controlador [Quickstar_sat_ViewController](https://github.com/Paybook/sync-ios/blob/master/Example/PaybookSync/Quickstart_sat_ViewController.swift) por lo que puedes descargar el archivo y configurarla como la clase del View Controller inicial, para probarla solo tines que configurar los valores YOUR_API_KEY, YOUR_RFC, YOUR_CIEC y ejecutarlo en tu equipo:
+Este tutorial está basado en el view controller [Quickstar_sat_ViewController](https://github.com/Paybook/sync-ios/blob/master/Example/PaybookSync/Quickstart_sat_ViewController.swift) por lo que puedes descargar el archivo y configurarla como la clase de tu view controller inicial, para probarla solo tines que configurar los valores YOUR_API_KEY, YOUR_RFC, YOUR_CIEC y ejecutarlo en tu equipo:
 
 
 A continuación explicaremos detalladamente la lógica del script que acabas de ejecutar.
@@ -60,7 +60,7 @@ A continuación explicaremos detalladamente la lógica del script que acabas de 
 ####3. Importamos paybook
 El primer paso es importar la librería y algunas dependencias:
 
-```
+```swift
 import UIKit
 import Paybook
 ```
@@ -68,7 +68,7 @@ import Paybook
 ####4. Configuramos la librería
 Una vez importada la librería tenemos que configurarla, para esto asignaremos el API KEY de Paybook dentro del metodo viewDidLoad de la clase.
 
-```
+```swift
 override func viewDidLoad() {
 super.viewDidLoad()
 
@@ -83,7 +83,7 @@ Para esto crearemos una función "createUser" y por medio de una funcion complet
 
 **Importante**: todo usuario estará ligado al API KEY con el que configuraste la librería (paso 4)
 
-```
+```swift
 func createUser(){
 
 _ = User(username: "MY_USER", id_user: nil, completionHandler: {
@@ -105,7 +105,7 @@ En la función completionHandler puedes inyectar tu propio codigo para trabajar 
 ####6. Consultamos los usuarios ligados a nuestra API KEY:
 Para verificar que el usuario creado en el paso 5 se haya creado corréctamente podemos consultar la lista de usuarios ligados a nuestra API KEY, esto lo podremos hacer por medio de la siguiente función.
 
-```
+```swift
 func getUsers(){
     User.get(){
         response,error in
@@ -124,7 +124,7 @@ func getUsers(){
 ####7. Creamos una nueva sesión:
 Para sincronizar las facturas del SAT primero tenemos que crear una sesión, la sesión estará ligada al usuario y tiene un proceso de expiración de 5 minutos después de que ésta ha estado inactiva. Para crear una sesión:
 
-```
+```swift
 func createSession(){
     self.session = Session(id_user: self.user.id_user, completionHandler: {
         session_response, error in
@@ -147,7 +147,7 @@ Paybook tiene un catálogo de instituciones que podemos sincronizar por usuario:
 
 A continuación consultaremos este catálogo y seleccionaremos el sitio del SAT para sincronizar las facturas del usuario que hemos creado en el paso 5:
 
-```
+```swift
 func getCatalogueSite(){
     Catalogues.get_sites(self.session, id_user: nil, is_test: nil, completionHandler: {
         sites_array, error in
@@ -175,7 +175,7 @@ func getCatalogueSite(){
 ####9. Configuramos nuestras credenciales del SAT:
 Una vez que hemos obtenido el sitio del SAT del catálogo de institiciones, configuraremos las credenciales de nuestro usuario (estas credenciales son las que el usuario utiliza para acceder al portal del SAT).
 
-```
+```swift
 func createCredential(){
     let data = [
     "rfc" : "YOUR_RFC",
@@ -196,7 +196,7 @@ Una vez registradas las credenciales se obtiene el primer estado (Código 100), 
 
 Para esto agregaremos el siguiente codigo en nuestra función completionHandler:
 
-```
+```swift
 if credential_response != nil {
 
 self.credential = credential_response
@@ -213,7 +213,7 @@ print("No se pudo crear las credenciales: \(error?.message)")
 Este sección de codigo va a inicializar un NSTimer que se encargara de de ejecutar la función "checkStatus" cada 3 segundos hasta que la credencial termine su proceso de sincronización.
 
 
-```
+```swift
 if credential_response != nil {
 
 self.credential = credential_response
@@ -229,7 +229,8 @@ print("No se pudo crear las credenciales: \(error?.message)")
 
 ####11. Consultamos las facturas sincronizadas:
 Una vez que ya hemos checado el estado de la sincronización y hemos verificado que ha terminado (código 200) podemos consultar las facturas sincronizadas, pra eso utlizaremos la función "getTransactions" la cual ejecutara lo siguiente:
-```
+
+```swift
 Transaction.get(self.session, id_user: nil, completionHandler: {
     transaction_array, error in
     if transaction_array != nil {
@@ -247,7 +248,8 @@ Transaction.get(self.session, id_user: nil, completionHandler: {
 
 ####12. Consultamos la información de archivos adjuntos:
 Podemos también consultar los archivos adjuntos a estas facturas como lo hacemos en la función "getAttachments", recordemos que por cada factura el SAT tiene una archivo XML y un archivo PDF:
-```
+
+```swift
 Attachments.get(session, id_user: nil, completionHandler: {
     attachments_array, error in
     

@@ -9,26 +9,33 @@ Esta es la librería de Paybook para iOS. Mediante esta librería usted puede im
 
 ### Instalación
 
-Para integrar PaybookSync en tu proyecto Xcode usando CocoaPods, solo especifica en tu Podfile:
+Para integrar Paybook en tu proyecto Xcode usando [CocoaPods](https://cocoapods.org), lo primero que tenemos que hacer es instalar la libreria de Paybook, para eso nos dirigiremos al directorio de mi proyecto por medio de la terminal, estando ahí ejecutaremos el siguiente comando para crear nuestro pod file:
 
 ```
+$ pod init
+```
+
+**Importante: ** La ejecución del comando anterior requiere que tengas instalado cocoapods en tu equipo.
+
+El siguiente paso es editar nuestro pod file para agregar nuestras dependencias, utiliza el siguiente comando para abrir tu pod file en Xcode:
+
+```
+$ open -a Xcode Podfile
+```
+
+Reemplaza el contenido de tu pod file con el siguiente codigo:
+
+```swift
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-target '<Your Target Name>' do
-    pod 'Paybook', '~> 1.0.7'
+target 'YOUR_PROJECT_NAME' do
+use_frameworks!
+pod 'Paybook', '~> 1.0.6'
 end
 ```
 
-Luego, ejecuta el siguiente comando:
-
-```
-$ pod install
-```
-
-
-**Importante: ** Es importante asegurarse de tener instalado anteriormente [CocoaPods](https://cocoapods.org).
 
 ## Quickstart:
 
