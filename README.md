@@ -34,11 +34,11 @@ $ pod install
 
 Antes de consultar la documentación puedes tomar alguno de nuestros tutoriales:
 
-- [Quickstart para sincronizar al SAT]()
+- [Quickstart para sincronizar al SAT](https://github.com/Paybook/sync-ios/blob/master/Example/Quickstart_sat.md)
 
-- [Quickstart para sincronizar una cuenta bancaria con credenciales sencillas (usuario y contraseña)]()
+- [Quickstart para sincronizar una cuenta bancaria con credenciales sencillas (usuario y contraseña)](https://github.com/Paybook/sync-ios/blob/master/Example/Quickstart_normal_bank.md)
 
-- [Quickstart para sincronizar una cuenta bancaria con token (usuario y contraseña)]()
+- [Quickstart para sincronizar una cuenta bancaria con token (usuario y contraseña)](https://github.com/Paybook/sync-ios/blob/master/Example/Quickstart_token_bank.md)
 
 ## Recordatorios:
 
