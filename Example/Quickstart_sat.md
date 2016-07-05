@@ -23,7 +23,7 @@ Para consumir el API de Paybook lo primero que tenemos que hacer es instalar la 
 $ pod init
 ```
 
-**Importante: ** Es posible que la ejecución del comando anterior requiere que tengas instalado cocoapods en tu equipo.
+**Importante: ** La ejecución del comando anterior requiere que tengas instalado cocoapods en tu equipo.
 
 El siguiente paso es editar nuestro pod file para agregar nuestras dependencias, usa el siguiente comando para abrir tu pod file en Xcode:
 
