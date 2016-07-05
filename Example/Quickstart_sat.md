@@ -11,7 +11,7 @@
 
 A lo largo de este tutorial te enseñaremos como consumir el API Rest de Paybook por medio de la librería de Paybook. Al terminar este tutorial habrás podido crear nuevos usuarios en Paybook, sincronizar algunas instituciones de estos usuarios y visualizar las transacciones sincronizadas.
 
-La documentación completa de la librería la puedes consultar [aquí](https://github.com/Paybook/sync-py/blob/master/readme.md) 
+La documentación completa de la librería la puedes consultar [aquí](https://github.com/Paybook/sync-ios/blob/master/README.md) 
 
 ##En la consola:
 
@@ -52,151 +52,225 @@ $ pod install
 
 
 ####2. Ejecutamos el Script:
-Este tutorial está basado en el script [quickstart.py](https://github.com/Paybook/sync-py/blob/master/quickstart_sat.py) por lo que puedes descargar el archivo, configurar los valores YOUR_API_KEY, YOUR_RFC y YOUR_CIEC y ejecutarlo en tu equipo:
+Este tutorial está basado en el controlador [Quickstar_sat_ViewController](https://github.com/Paybook/sync-ios/blob/master/Example/PaybookSync/Quickstart_sat_ViewController.swift) por lo que puedes descargar el archivo y configurarla como la clase del View Controller inicial, para probarla solo tines que configurar los valores YOUR_API_KEY, YOUR_RFC, YOUR_CIEC y ejecutarlo en tu equipo:
 
-```python
-python quickstart_sat.py
-```
 
 A continuación explicaremos detalladamente la lógica del script que acabas de ejecutar.
 
 ####3. Importamos paybook
 El primer paso es importar la librería y algunas dependencias:
 
-```python
-import time
-import sys
-import paybook.sdk as paybook
+```
+import UIKit
+import Paybook
 ```
 
 ####4. Configuramos la librería
-Una vez importada la librería tenemos que configurarla, para esto únicamente se necesita tu API KEY de Paybook.
+Una vez importada la librería tenemos que configurarla, para esto asignaremos el API KEY de Paybook dentro del metodo viewDidLoad de la clase.
 
-```python
-paybook.Paybook(YOUR_API_KEY)
+```
+override func viewDidLoad() {
+super.viewDidLoad()
+
+Paybook.api_key = "YOUR_API_KEY"
+
+}
 ```
 
 ####5. Creamos un usuario:
 Una vez configurada la librería, el primer paso será crear un usuario, este usuario será, por ejemplo, aquel del cual queremos obtener sus facturas del SAT.
+Para esto crearemos una función "createUser" y por medio de una funcion completionHandler que recive el usuario ya creado lo guardaremos dentro de una variable de la clase, para usarlo posteriormente:
 
 **Importante**: todo usuario estará ligado al API KEY con el que configuraste la librería (paso 4)
 
-```python
-user = paybook.User(name='MY_USER')
 ```
+func createUser(){
+
+_ = User(username: "MY_USER", id_user: nil, completionHandler: {
+    user_response, error in
+    if user_response != nil{
+        // Asignamos el objeto user_response a la variable user
+        self.user = user_response!
+        print("User : \(user_response?.name)")
+        
+    }else{
+        print("No se pudo crear el usuario: \(error?.message)")
+    }
+})
+
+}
+```
+En la función completionHandler puedes inyectar tu propio codigo para trabajar con el usuario creado.
 
 ####6. Consultamos los usuarios ligados a nuestra API KEY:
-Para verificar que el usuario creado en el paso 5 se haya creado corréctamente podemos consultar la lista de usuarios ligados a nuestra API KEY.
+Para verificar que el usuario creado en el paso 5 se haya creado corréctamente podemos consultar la lista de usuarios ligados a nuestra API KEY, esto lo podremos hacer por medio de la siguiente función.
 
-```python
-my_users = paybook.User.get()
-for user in my_users:
-print user.name
+```
+func getUsers(){
+    User.get(){
+        response,error in
+    
+        if response != nil {
+            print("\nUsers: ")
+            for user in response!{
+                print("\(user.name)")
+            }
+        }
+        self.createSession()
+    }
+}
 ```
 
 ####7. Creamos una nueva sesión:
 Para sincronizar las facturas del SAT primero tenemos que crear una sesión, la sesión estará ligada al usuario y tiene un proceso de expiración de 5 minutos después de que ésta ha estado inactiva. Para crear una sesión:
 
-```python
-session = paybook.Session(user)
-print 'Session token: ' + session.token
+```
+func createSession(){
+    self.session = Session(id_user: self.user.id_user, completionHandler: {
+        session_response, error in
+
+        if session_response != nil {
+            self.session = session_response
+            self.getCatalogueSite()
+        }else{
+            print("No se pudo crear la session: \(error?.message)")
+        }
+    })
+}
 ```
 
-####8. Podemos validar la sesión creada:
-De manera opcional podemos validar la sesión, es decir, checar que no haya expirado.
 
-```python
-session_verified = session.verify()
-print 'Session verified: ' + str(session_verified)
-```
-
-####9. Consultamos el catálogo de instituciones que podemos sincronizar y extraemos el SAT:
+####8. Consultamos el catálogo de instituciones que podemos sincronizar y extraemos el SAT:
 Paybook tiene un catálogo de instituciones que podemos sincronizar por usuario:
 
 ![Instituciones](https://github.com/Paybook/sync-py/blob/master/sites.png "Instituciones")
 
 A continuación consultaremos este catálogo y seleccionaremos el sitio del SAT para sincronizar las facturas del usuario que hemos creado en el paso 5:
 
-```python
-sat_site = None
-sites = paybook.Catalogues.get_sites(session=session)
-for site in sites:
-print site.name.encode('utf-8')
-if site.name == 'CIEC':
-sat_site = site
-print 'SAT site: ' + sat_site.name + ' ' + sat_site.id_site
+```
+func getCatalogueSite(){
+    Catalogues.get_sites(self.session, id_user: nil, is_test: nil, completionHandler: {
+        sites_array, error in
+
+        if sites_array != nil{
+
+            print("\nCatalago de Sites:")
+            for site in sites_array!{
+
+                if site.name == "CIEC" {
+                    print ("SAT site: \(site.name) \(site.id_site)")
+                    self.site = site
+                }else{
+                    print(site.name)
+                }
+                
+            }
+
+        }
+
+    })
+}
 ```
 
-####10. Configuramos nuestras credenciales del SAT:
+####9. Configuramos nuestras credenciales del SAT:
 Una vez que hemos obtenido el sitio del SAT del catálogo de institiciones, configuraremos las credenciales de nuestro usuario (estas credenciales son las que el usuario utiliza para acceder al portal del SAT).
 
-```python
-credentials_data = {
-'rfc' : 'SOME_RFC',
-'password' : 'SOME_CIEC'
+```
+func createCredential(){
+    let data = [
+    "rfc" : "YOUR_RFC",
+    "password" : "YOUR_CIEC"
+    ]
+
+    _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: data, completionHandler: {
+        credential_response , error in
+    })
 }
-sat_credentials = paybook.Credentials(session=session,id_site=sat_site.id_site,credentials=credentials_data)
-print sat_credentials.username
 ```
 
-####11. Checamos el estatus de sincronización de las credenciales creadas y esperamos a que la sincronización finalice:
-Cada vez que registamos unas credenciales Paybook inicia un Job (proceso) que se encargará de validar esas credenciales y posteriormente sincronizar las transacciones. Este Job se puede representar como una maquina de estados:
+####10. Una vez creada una credencial es necesario estar monitorendo el estatus de sincronización. Cada vez que registamos unas credenciales Paybook inicia un Job (proceso) que se encargará de validar esas credenciales y posteriormente sincronizar las transacciones. Este Job se puede representar como una maquina de estados:
 
 ![Job Estatus](https://github.com/Paybook/sync-py/blob/master/normal.png "Job Estatus")
 
 Una vez registradas las credenciales se obtiene el primer estado (Código 100), posteriormente una vez que el Job ha empezado se obtiene el segundo estado (Código 101). Después de aquí, en caso de que las credenciales sean válidas, prosiguen los estados 202, 201 o 200. Estos indican que la sincronización está en proceso (código 201), que no se encontraron transacciones (código 202), o bien, la sincronización ha terminado (código 200). La librería proporciona un método para consultar el estado actual del Job. Este método se puede ejecutar constantemente hasta que se obtenga el estado requerido por el usuario, para este ejemplo especifico consultamos el estado hasta que se obtenga un código 200, es decir, que la sincronización haya terminado:
 
-```python
-sat_sync_completed = False
-while not sat_sync_completed: 
-print 'Polling ... '
-time.sleep(5)
-sat_status = sat_credentials.get_status(session=session)
-for status in sat_status:
-code = status['code']
-if code == 200:
-sat_sync_completed = True
+Para esto agregaremos el siguiente codigo en nuestra función completionHandler:
+
+```
+if credential_response != nil {
+
+self.credential = credential_response
+print("\nCheck Status:")
+self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.check_status), userInfo: nil, repeats: true)
+
+
+}else{
+print("No se pudo crear las credenciales: \(error?.message)")
+}
+
 ```
 
-####12. Consultamos las facturas sincronizadas:
-Una vez que ya hemos checado el estado de la sincronización y hemos verificado que ha terminado (código 200) podemos consultar las facturas sincronizadas:
-```python
-sat_transactions = paybook.Transaction.get(session=session)
-print 'Facturas del SAT: ' + str(len(sat_transactions))
+Este sección de codigo va a inicializar un NSTimer que se encargara de de ejecutar la función "checkStatus" cada 3 segundos hasta que la credencial termine su proceso de sincronización.
+
+
+```
+if credential_response != nil {
+
+self.credential = credential_response
+print("\nCheck Status:")
+self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
+
+
+}else{
+print("No se pudo crear las credenciales: \(error?.message)")
+}
+
 ```
 
-####13. Consultamos la información de archivos adjuntos:
-Podemos también consultar los archivos adjuntos a estas facturas, recordemos que por cada factura el SAT tiene una archivo XML y un archivo PDF:
-```python
-attachments = paybook.Attachment.get(session=session)
-print 'Archivos XML/PDF del SAT: ' + str(len(attachments))
+####11. Consultamos las facturas sincronizadas:
+Una vez que ya hemos checado el estado de la sincronización y hemos verificado que ha terminado (código 200) podemos consultar las facturas sincronizadas, pra eso utlizaremos la función "getTransactions" la cual ejecutara lo siguiente:
+```
+Transaction.get(self.session, id_user: nil, completionHandler: {
+    transaction_array, error in
+    if transaction_array != nil {
+        print("\nTransactions: ")
+        for transaction in transaction_array! {
+            print("$\(transaction.amount), \(transaction.description) ")
+        }
+    self.getAttachments()
+    }else{
+        print("Problemas al consultar las transacciones: \(error?.message)")    
+    }
+
+})
 ```
 
-####14. Obtenemos el XML y PDF de alguna factura:
-Podemos descargar estos archivos:
-```python
-if len(attachments) > 0:
-i = 0
-for attachment in attachments:
-i+=1
-id_attachment = attachment.url[1:]
-print id_attachment
-attachment_content = paybook.Attachment.get(session=session,id_attachment=id_attachment)
-print 'Attachment ' + str(i) + ':'
-print str(attachment_content)
-if i == 2:
-break	
+####12. Consultamos la información de archivos adjuntos:
+Podemos también consultar los archivos adjuntos a estas facturas como lo hacemos en la función "getAttachments", recordemos que por cada factura el SAT tiene una archivo XML y un archivo PDF:
+```
+Attachments.get(session, id_user: nil, completionHandler: {
+    attachments_array, error in
+    
+    if attachments_array != nil {
+        print("\nAttachments: ")
+        for attachment in attachments_array! {
+            print("Attachment type : \(attachment.id_attachment_type), id_transaction: \(attachment.id_transaction) ")
+        }
+    }else{
+        print("Problemas al consultar los attachments: \(error?.message)")
+    }
+})
 ```
 
 ¡Felicidades! has terminado con este tutorial. 
 
 ### Siguientes Pasos
 
-- Revisar el tutorial de como sincronizar una institución bancaria con credenciales simples (usuario y contraseña) [aquí](https://github.com/Paybook/sync-py/blob/master/quickstart_normal_bank.md)
+- Revisar el tutorial de como sincronizar una institución bancaria con credenciales simples (usuario y contraseña) [aquí](https://github.com/Paybook/sync-ios/blob/master/Example/Quickstart_normal_bank.md)
 
-- Revisar el tutorial de como sincronizar una institución bancaria con token [aquí](https://github.com/Paybook/sync-py/blob/master/quickstart_token_bank.md)
+- Revisar el tutorial de como sincronizar una institución bancaria con token [aquí](https://github.com/Paybook/sync-ios/blob/master/Example/Quickstart_token_bank.md)
 
-- Puedes consultar y analizar la documentación completa de la librería [aquí](https://github.com/Paybook/sync-py/blob/master/readme.md)
+- Puedes consultar y analizar la documentación completa de la librería [aquí](https://github.com/Paybook/sync-ios)
 
 - Puedes consultar y analizar la documentación del API REST [aquí](https://www.paybook.com/sync/docs#api-Overview)
 

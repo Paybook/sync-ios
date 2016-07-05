@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eG5-2p-LEx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -56,7 +56,120 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="429"/>
+            <point key="canvasLocation" x="305" y="432"/>
+        </scene>
+        <!--Quickstart sat View Controller-->
+        <scene sceneID="l0N-LB-75e">
+            <objects>
+                <viewController id="eG5-2p-LEx" customClass="Quickstart_sat_ViewController" customModule="Paybook_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nuh-B1-6Ti"/>
+                        <viewControllerLayoutGuide type="bottom" id="gWm-r9-mBU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SZg-Yk-0CA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Quickstart SAT" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLu-Dq-0g7">
+                                <rect key="frame" x="185" y="80" width="230" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="eLu-Dq-0g7" firstAttribute="centerX" secondItem="SZg-Yk-0CA" secondAttribute="centerX" id="w4n-Ge-1fV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCP-OI-pgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-1599"/>
+        </scene>
+        <!--Quickstart normal bank View Controller-->
+        <scene sceneID="jAD-7E-9zF">
+            <objects>
+                <viewController id="2aA-u3-wHG" customClass="Quickstart_normal_bank_ViewController" customModule="Paybook_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vMO-s2-g5P"/>
+                        <viewControllerLayoutGuide type="bottom" id="kcN-YA-kBT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="63X-yp-h6D">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Quickstart de Banco Normal" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihO-gk-vTF">
+                                <rect key="frame" x="185" y="82" width="230" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="wr3-HG-WsP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ihO-gk-vTF" firstAttribute="centerX" secondItem="63X-yp-h6D" secondAttribute="centerX" id="YxK-VX-Kgg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IMN-Dt-JUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-928"/>
+        </scene>
+        <!--Quickstart token bank View Controller-->
+        <scene sceneID="BMY-Hf-1qs">
+            <objects>
+                <viewController id="FNp-Wh-7mb" customClass="Quickstart_token_bank_ViewController" customModule="Paybook_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RVf-Zf-6Zj"/>
+                        <viewControllerLayoutGuide type="bottom" id="sfU-DW-mvO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nBs-x9-dpi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Muy-ui-dAb">
+                                <rect key="frame" x="200" y="169" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-t3-V4F">
+                                <rect key="frame" x="200" y="212" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.62745098040000002" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Test">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendToken:" destination="FNp-Wh-7mb" eventType="touchUpInside" id="Yqn-FQ-fDz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Quickstart de Banco con Token" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmL-j1-XkG">
+                                <rect key="frame" x="185" y="72" width="230" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="aFj-0e-uOC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="YuF-t3-V4F" firstAttribute="centerX" secondItem="nBs-x9-dpi" secondAttribute="centerX" id="5il-4l-1xj"/>
+                            <constraint firstItem="Muy-ui-dAb" firstAttribute="centerX" secondItem="nBs-x9-dpi" secondAttribute="centerX" id="fbO-Mj-aIa"/>
+                            <constraint firstItem="cmL-j1-XkG" firstAttribute="centerX" secondItem="nBs-x9-dpi" secondAttribute="centerX" id="jaq-KJ-kKa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tokenInput" destination="Muy-ui-dAb" id="ZbP-kb-kgD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GOL-4K-fsw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="-250"/>
         </scene>
     </scenes>
 </document>

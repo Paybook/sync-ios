@@ -1,5 +1,5 @@
 //
-//  Quickstart_sat_ViewController.swift
+//  Quickstart_normal_bank_ViewController.swift
 //
 //  Created by Gabriel Villarreal on 30/06/16.
 //  Copyright © 2016 Paybook.Inc. All rights reserved.
@@ -8,7 +8,7 @@
 import UIKit
 import Paybook
 
-class Quickstart_sat_ViewController: UIViewController {
+class Quickstart_normal_bank_ViewController: UIViewController {
 
     var timer : NSTimer!
     var count = 1
@@ -23,37 +23,15 @@ class Quickstart_sat_ViewController: UIViewController {
     
     
     
-    
-    
-    func createUser(){
-        _ = User(username: "MY_USER", id_user: nil, completionHandler: {
-            user_response, error in
-            if user_response != nil{
-                self.user = user_response!
-                print("User : \(user_response?.name)")
-                self.getUsers()
-            }else{
-                print("No se pudo crear el usuario: \(error?.message)")
-            }
-        })
-
-    
-    }
-    
     func getUsers(){
         User.get(){
             response,error in
             if response != nil {
-                print("\nUsers: ")
-                for user in response!{
-                    print("\(user.name)")
-                }
+                self.user = response![0]
+                print("User: \(self.user.name) \(self.user.id_user)")
+                self.createSession()
             }
-            
-            self.createSession()
         }
-        
-        
     }
     
     func createSession(){
@@ -80,8 +58,8 @@ class Quickstart_sat_ViewController: UIViewController {
                 print("\nCatalago de Sites:")
                 for site in sites_array!{
                     
-                    if site.name == "CIEC" {
-                        print ("SAT site: \(site.name) \(site.id_site)")
+                    if site.name == "SuperNET Particulares" {
+                        print ("* Bank site: \(site.name) \(site.id_site)")
                         self.site = site
                     }else{
                         print(site.name)
@@ -96,18 +74,16 @@ class Quickstart_sat_ViewController: UIViewController {
             }
             
         })
-        
-        
     }
     
     
     func createCredential(){
-        let data = [
-            "rfc" : "YOUR_RFC",
-            "password" : "YOUR_CIEC"
+        let dataCredentials = [
+            "username" : "YOUR_BANK_USERNAME",
+            "password" : "YOUR_BANK_PASSWORD"
         ]
         
-        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: data, completionHandler: {
+        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: dataCredentials, completionHandler: {
             credential_response , error in
             if credential_response != nil {
                 
@@ -173,9 +149,8 @@ class Quickstart_sat_ViewController: UIViewController {
             if transaction_array != nil {
                 print("\nTransactions: ")
                 for transaction in transaction_array! {
-                    print("$\(transaction.amount), \(transaction.description) ")
+                    print("\(transaction.description), $\(transaction.amount) ")
                 }
-                self.getAttachments()
                 
             }else{
                 print("Problemas al consultar las transacciones: \(error?.message)")
@@ -185,28 +160,12 @@ class Quickstart_sat_ViewController: UIViewController {
     }
     
     
-    func getAttachments(){
-        Attachments.get(session, id_user: nil, completionHandler: {
-            attachments_array, error in
-            if attachments_array != nil {
-                print("\nAttachments: ")
-                for attachment in attachments_array! {
-                    print("Attachment type : \(attachment.id_attachment_type), id_transaction: \(attachment.id_transaction) ")
-                }
-                
-                
-            }else{
-                print("Problemas al consultar los attachments: \(error?.message)")
-            }
-        })
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         Paybook.api_key = "YOUR_API_KEY"
-        createUser()
+        getUsers()
         
     }
 

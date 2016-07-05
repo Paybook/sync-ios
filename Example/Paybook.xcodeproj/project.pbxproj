@@ -10,6 +10,10 @@
 		0B489CF00E084DDA07741988 /* Pods_Paybook_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1FDF77E10E5C369B0CB286 /* Pods_Paybook_Example.framework */; };
 		1414A2321D1B4DE90027A655 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1414A2311D1B4DE90027A655 /* UnitTest.swift */; };
 		142B0AC61D272791005EC3AF /* Quickstart_sat_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B0AC51D272791005EC3AF /* Quickstart_sat_ViewController.swift */; };
+		14E4434D1D2AFEB600152DF8 /* Quickstart_normal_bank.md in Sources */ = {isa = PBXBuildFile; fileRef = 14E4434C1D2AFEB600152DF8 /* Quickstart_normal_bank.md */; };
+		14E4434F1D2AFFB900152DF8 /* Quickstart_token_bank.md in Sources */ = {isa = PBXBuildFile; fileRef = 14E4434E1D2AFFB900152DF8 /* Quickstart_token_bank.md */; };
+		14E443511D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E443501D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift */; };
+		14E443531D2B013C00152DF8 /* Quickstart_token_bank_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E443521D2B013C00152DF8 /* Quickstart_token_bank_ViewController.swift */; };
 		14F1EB521D25955C000BA856 /* Quickstart_sat.md in Sources */ = {isa = PBXBuildFile; fileRef = 14F1EB511D25955C000BA856 /* Quickstart_sat.md */; };
 		2F84C782580E9B5923F7E8C9 /* Pods_Paybook_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D35E24BD97C2C3F7A05AFC4 /* Pods_Paybook_Tests.framework */; };
 		50DD5C6721A8B575F7748F25 /* Pods_PaybookSync_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0EE060B110E4351209356E6 /* Pods_PaybookSync_Tests.framework */; };
@@ -36,6 +40,10 @@
 		0608D0A530BA71599D7766FF /* Pods-PaybookSync_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Example/Pods-PaybookSync_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1414A2311D1B4DE90027A655 /* UnitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		142B0AC51D272791005EC3AF /* Quickstart_sat_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quickstart_sat_ViewController.swift; sourceTree = "<group>"; };
+		14E4434C1D2AFEB600152DF8 /* Quickstart_normal_bank.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Quickstart_normal_bank.md; sourceTree = "<group>"; };
+		14E4434E1D2AFFB900152DF8 /* Quickstart_token_bank.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Quickstart_token_bank.md; sourceTree = "<group>"; };
+		14E443501D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quickstart_normal_bank_ViewController.swift; sourceTree = "<group>"; };
+		14E443521D2B013C00152DF8 /* Quickstart_token_bank_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quickstart_token_bank_ViewController.swift; sourceTree = "<group>"; };
 		14F1EB511D25955C000BA856 /* Quickstart_sat.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Quickstart_sat.md; sourceTree = "<group>"; };
 		27CAC6D7839124A498695374 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2FB520A8414C788210F24BB3 /* Pods-PaybookSync_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PaybookSync_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PaybookSync_Tests/Pods-PaybookSync_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +120,8 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				1414A2311D1B4DE90027A655 /* UnitTest.swift */,
 				142B0AC51D272791005EC3AF /* Quickstart_sat_ViewController.swift */,
+				14E443501D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift */,
+				14E443521D2B013C00152DF8 /* Quickstart_token_bank_ViewController.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -153,6 +163,8 @@
 				D98908A6532811AC45066E9F /* Paybook.podspec */,
 				27CAC6D7839124A498695374 /* README.md */,
 				14F1EB511D25955C000BA856 /* Quickstart_sat.md */,
+				14E4434C1D2AFEB600152DF8 /* Quickstart_normal_bank.md */,
+				14E4434E1D2AFFB900152DF8 /* Quickstart_token_bank.md */,
 				AAC9480DB06646F8BF620775 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
@@ -386,8 +398,12 @@
 			files = (
 				1414A2321D1B4DE90027A655 /* UnitTest.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				14E443511D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift in Sources */,
+				14E4434D1D2AFEB600152DF8 /* Quickstart_normal_bank.md in Sources */,
+				14E443531D2B013C00152DF8 /* Quickstart_token_bank_ViewController.swift in Sources */,
 				142B0AC61D272791005EC3AF /* Quickstart_sat_ViewController.swift in Sources */,
 				14F1EB521D25955C000BA856 /* Quickstart_sat.md in Sources */,
+				14E4434F1D2AFFB900152DF8 /* Quickstart_token_bank.md in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

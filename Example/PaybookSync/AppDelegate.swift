@@ -3,7 +3,7 @@
 //  PaybookSync
 //
 //  Created by Gabriel Villarreal on 06/06/2016.
-//  Copyright (c) 2016 Gabriel Villarreal. All rights reserved.
+//  Copyright © 2016 Paybook.Inc. All rights reserved.
 //
 
 import UIKit

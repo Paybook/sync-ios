@@ -3,7 +3,7 @@
 //  Paybook
 //
 //  Created by Gabriel Villarreal on 22/06/16.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright © 2016 Paybook.Inc. All rights reserved.
 //
 
 import Foundation

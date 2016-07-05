@@ -1,5 +1,5 @@
 //
-//  Quickstart_sat_ViewController.swift
+//  Quickstart_token_bank_ViewController.swift
 //
 //  Created by Gabriel Villarreal on 30/06/16.
 //  Copyright © 2016 Paybook.Inc. All rights reserved.
@@ -8,7 +8,7 @@
 import UIKit
 import Paybook
 
-class Quickstart_sat_ViewController: UIViewController {
+class Quickstart_token_bank_ViewController: UIViewController {
 
     var timer : NSTimer!
     var count = 1
@@ -21,39 +21,34 @@ class Quickstart_sat_ViewController: UIViewController {
     var sat_sync_completed = false
     
     
+    @IBOutlet weak var tokenInput: UITextField!
     
-    
-    
-    
-    func createUser(){
-        _ = User(username: "MY_USER", id_user: nil, completionHandler: {
-            user_response, error in
-            if user_response != nil{
-                self.user = user_response!
-                print("User : \(user_response?.name)")
-                self.getUsers()
+    @IBAction func sendToken(sender: AnyObject) {
+        
+        let params : [String:String] = ["Banorte en su empresa": tokenInput.text!]
+        print("Send token: \(params)")
+        self.credential.set_twofa(self.session, id_user: nil, params: params, completionHandler: {
+            response, error in
+            if response != nil && response == true{
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
             }else{
-                print("No se pudo crear el usuario: \(error?.message)")
+                print("\(error?.message)")
             }
         })
-
-    
+        
     }
+    
+    
     
     func getUsers(){
         User.get(){
             response,error in
             if response != nil {
-                print("\nUsers: ")
-                for user in response!{
-                    print("\(user.name)")
-                }
+                self.user = response![0]
+                print("User: \(self.user.name) \(self.user.id_user)")
+                self.createSession()
             }
-            
-            self.createSession()
         }
-        
-        
     }
     
     func createSession(){
@@ -72,7 +67,7 @@ class Quickstart_sat_ViewController: UIViewController {
     }
     
     func getCatalogueSite(){
-        Catalogues.get_sites(self.session, id_user: nil, is_test: nil, completionHandler: {
+        Catalogues.get_sites(self.session, id_user: nil, is_test: true, completionHandler: {
             sites_array, error in
             
             if sites_array != nil{
@@ -80,7 +75,7 @@ class Quickstart_sat_ViewController: UIViewController {
                 print("\nCatalago de Sites:")
                 for site in sites_array!{
                     
-                    if site.name == "CIEC" {
+                    if site.name == "Banorte en su empresa" {
                         print ("SAT site: \(site.name) \(site.id_site)")
                         self.site = site
                     }else{
@@ -103,8 +98,8 @@ class Quickstart_sat_ViewController: UIViewController {
     
     func createCredential(){
         let data = [
-            "rfc" : "YOUR_RFC",
-            "password" : "YOUR_CIEC"
+            "username" : "YOUR_BANK_USERNAME",
+            "password" : "YOUR_BANK_PASSWORD"
         ]
         
         _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: data, completionHandler: {
@@ -206,7 +201,7 @@ class Quickstart_sat_ViewController: UIViewController {
         super.viewDidLoad()
 
         Paybook.api_key = "YOUR_API_KEY"
-        createUser()
+        getUsers()
         
     }
 
