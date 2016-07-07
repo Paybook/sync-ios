@@ -73,37 +73,54 @@ public class Catalogues : Paybook {
 
     */
     
-    public class func get_account_types(session: Session, id_user: String?,completionHandler: (([Account_type]?, PaybookError?) -> ())?){
+    public class func get_account_types(session: Session?, id_user: String?,completionHandler: (([Account_type]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/catalogues/account_types"
-        let data = [
-            "token" : session.token
-        ]
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-        response, error in
-            
-            if response != nil {
-                var array = [Account_type]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Account_type(id_account_type: value["id_account_type"] as! String, name: value["name"] as! String))
-                    }
-                    
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
-            }
-
+        var data = [String: AnyObject]()
         
-        })
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
+            
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Account_type]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Account_type(id_account_type: value["id_account_type"] as! String, name: value["name"] as! String))
+                        }
+                        
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+                
+                
+            })
+        }
+        
        
     }
     
@@ -121,38 +138,55 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_attachment_types(session: Session, id_user: String?,completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
+    public class func get_attachment_types(session: Session?, id_user: String?,completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/catalogues/attachment_types"
-        let data = [
-            "token" : session.token
-        ]
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        var data = [String: AnyObject]()
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
             
-            if response != nil {
-                var array = [Attachment_type]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Attachment_type(id_attachment_type: value["id_attachment_type"] as? String, name: value["name"] as? String))
-                    }
-                    
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
             }
             
             
-        })
-
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Attachment_type]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Attachment_type(id_attachment_type: value["id_attachment_type"] as? String, name: value["name"] as? String))
+                        }
+                        
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+                
+                
+            })
+        }
+        
+        
     }
     
     
@@ -169,38 +203,56 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_countries(session: Session, id_user: String?,completionHandler: (([Country]?, PaybookError?) -> ())?){
+    public class func get_countries(session: Session?, id_user: String?,completionHandler: (([Country]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/countries"
-        let data = [
-            "token" : session.token
-        ]
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        var data = [String: AnyObject]()
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
             
-            if response != nil {
-                var array = [Country]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Country(id_country: value["id_country"] as! String, name: value["name"] as! String, code: value["code"] as! String))
-                    }
-                    
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
             }
             
             
-        })
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Country]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Country(id_country: value["id_country"] as! String, name: value["name"] as! String, code: value["code"] as! String))
+                        }
+                        
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+                
+                
+            })
+        }
+
+        
         
         
     }
@@ -219,49 +271,59 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_sites(session: Session, id_user: String?,is_test: Bool?,completionHandler: (([Site]?, PaybookError?) -> ())?){
+    public class func get_sites(session: Session?, id_user: String?,is_test: Bool?,completionHandler: (([Site]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/sites"
-        let data: NSDictionary
+        var data = [String: AnyObject]()
         
-        if is_test != nil{
-            data = [
-                "token" : session.token,
-                "is_test" : is_test!
-            ]
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
         }else{
-            data = [
-                "token" : session.token
-            ]
-        }
-        
-        
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+            if is_test != nil{
+                data.update(["is_test" : is_test!])
+            }
             
-            if response != nil {
-                var array = [Site]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Site(id_site: value["id_site"] as? String, id_site_organization: value["id_site_organization"] as? String, id_site_organization_type: value["id_site_organization_type"] as? String, name: value["name"] as? String, credentials: value["credentials"] as? NSArray))
-                    }
-                    
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
             }
             
             
-        })
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Site]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Site(id_site: value["id_site"] as? String, id_site_organization: value["id_site_organization"] as? String, id_site_organization_type: value["id_site_organization_type"] as? String, name: value["name"] as? String, credentials: value["credentials"] as? NSArray))
+                        }
+                        
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+                
+                
+            })
+
+        }
+        
         
     }
     
@@ -278,45 +340,63 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_site_organizations(session: Session, id_user: String?,completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
+    public class func get_site_organizations(session: Session?, id_user: String?,completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/site_organizations"
-        let data = [
-            "token" : session.token
-        ]
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        var data = [String: AnyObject]()
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
             
-            if response != nil {
-                var array = [Site_organization]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Site_organization(
-                            id_site_organization: value["id_site_organization"] as? String,
-                            id_site_organization_type: value["id_site_organization_type"] as? String,
-                            id_country: value["id_country"] as? String,
-                            name: value["name"] as? String,
-                            avatar: value["avatar"] as? String,
-                            small_cover: value["small_cover"] as? String,
-                            cover: value["cover"] as? String))
-                    }
-                    
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
             }
             
             
-        })
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Site_organization]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Site_organization(
+                                id_site_organization: value["id_site_organization"] as? String,
+                                id_site_organization_type: value["id_site_organization_type"] as? String,
+                                id_country: value["id_country"] as? String,
+                                name: value["name"] as? String,
+                                avatar: value["avatar"] as? String,
+                                small_cover: value["small_cover"] as? String,
+                                cover: value["cover"] as? String))
+                        }
+                        
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+                
+                
+            })
+            
+        }
+        
 
         
     }

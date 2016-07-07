@@ -59,36 +59,51 @@ public class Account : Paybook {
      })
      */
     
-    public class func get(session: Session,id_user: String?, completionHandler: (([Account]?, PaybookError?) -> ())?){
+    public class func get(session: Session?,id_user: String?, completionHandler: (([Account]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/accounts"
-        let data = [
-            "token" : session.token
-        ]
+        var data = [String: AnyObject]()
         
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
-            
-            if response != nil {
-                var array = [Account]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Account(dict: value as! NSDictionary))
-                    }
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
             }
-        })
-
+        }else{
+            
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Account]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Account(dict: value as! NSDictionary))
+                        }
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+            })
+        }
+        
+        
         
     }
     

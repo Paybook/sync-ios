@@ -22,15 +22,10 @@ class ViewController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func Test(sender: AnyObject) {
-    
         UnitTest.test_library(imputText.text!)
-     
     }
     
     
-    @IBAction func testStatus(sender: AnyObject) {
-        UnitTest.checkStatus()
-    }
     
     func textViewDidEndEditing(textView: UITextView) {
         textView.endEditing(true)

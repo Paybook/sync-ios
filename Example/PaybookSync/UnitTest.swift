@@ -9,7 +9,7 @@
 import Foundation
 import Paybook
 
-public class UnitTest {
+public class UnitTest: NSObject {
     
     static var api_key : String!
     static var id_user : String!
@@ -26,12 +26,7 @@ public class UnitTest {
         testInitialization()
         
         
-        
-        
     }
-    
-    
-    
     
     
     /*** Test Initialization
@@ -84,7 +79,7 @@ public class UnitTest {
         User.get() {
             responseArray , error in
             if (responseArray != nil) {
-                print("#4 Success Get users")
+                print("\n#4 Success Get users")
                 let user_count = responseArray?.count
                 
                 _ = User(username: "UserTest",id_user: nil, completionHandler: {
@@ -158,7 +153,7 @@ public class UnitTest {
             user, error in
             
             if user != nil{
-                print("#10 Success")
+                print("\n#10 Success")
                 
                 _ = Session(id_user: user!.id_user, completionHandler: {
                     session , error in
@@ -245,7 +240,7 @@ public class UnitTest {
         Catalogues.get_account_types(session_test, id_user: nil, completionHandler: {
             response, error in
             if response != nil {
-                print("#16 Success")
+                print("\n#16 Success")
                 Catalogues.get_attachment_types(session_test, id_user: nil, completionHandler: {
                     response, error in
                     if response != nil {
@@ -350,7 +345,7 @@ public class UnitTest {
         Credentials.get(session_test, id_user: nil, completionHandler: {
             response, error in
             if response != nil {
-                print("#23 Success you have \(response!.count) Credentials")
+                print("\n#23 Success you have \(response!.count) Credentials")
                 let credentials_count = response?.count
                 var params = [String:String]()
                 
@@ -386,14 +381,13 @@ public class UnitTest {
                                                             params[value["name"] as! String] = "test"
                                                         }
                                                         
-                                                        _ = Credentials(session: session_test, id_user: nil, id_site: site_test.id_site, credentials: params, completionHandler: {
+                                                        _ = Credentials(session: nil, id_user: session_test.id_user, id_site: site_test.id_site, credentials: params, completionHandler: {
                                                             response, error in
                                                             
                                                             if response != nil{
                                                                 print("#30 Success ")
                                                                 cred_test = response
-                                                                print("Plaese check status manually")
-
+                                                                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                                                             }else{
                                                                 print("#29 Fail ")
                                                                 finish()
@@ -459,50 +453,55 @@ public class UnitTest {
     class func checkStatus(){
         cred_test.get_status(session_test, id_user: nil, completionHandler: {
             response, error in
+            
             if response != nil{
-                for value in response! {
-                    print(value)
-                    switch value["code"] as! Int{
-                    case 100,101,102:
-                        print("Processing...")
-                        break
-                    case 200,201,202,203:
-                        print("Success...")
-                        timer.invalidate()
-                        break
-                    case 401,405,406,411:
-                        print("User Error \(value["code"])")
-                        break
-                    case 410:
-                        print("# 31 Success Waiting for two-fa")
-                        var params = [String:String]()
-                        
-                        for param in value["twofa"] as! [NSDictionary]{
-                            params[param["name"] as! String] = "test"
-                        }
-                        cred_test.set_twofa(session_test, id_user: nil, params: params, completionHandler: {
-                            response, error in
-                            if response != nil && response == true{
-                                print("32 Success")
-                                testAccounts()
-                            }else{
-                                print("32 Fail \(error?.message)")
-                            }
-                        })
-                        
-                        break
-                    case 500,501,504,505:
-                        print("System Error \(value["code"])")
-                        break
-                    default :
-                        break
-                    }
-                }
                 
+                let status = response![response!.count-1]
+                
+                switch status["code"] as! Int{
+                case 100,101,102:
+                    print("Processing...\(status["code"])")
+                    break
+                case 200,201,202,203:
+                    print("Success...\(status["code"])")
+                    self.timer.invalidate()
+                    testAccounts()
+                    break
+                case 401,405,406,411:
+                    print("User Error \(status["code"])")
+                    self.timer.invalidate()
+                    break
+                case 410:
+                    print("Waiting for two-fa \(status["code"])")
+                    self.timer.invalidate()
+                    var params = [String:String]()
+                    
+                    for param in status["twofa"] as! [NSDictionary]{
+                        params[param["name"] as! String] = "test"
+                    }
+                    cred_test.set_twofa(session_test, id_user: nil, params: params, completionHandler: {
+                        response, error in
+                        if response != nil && response == true{
+                            print("32 Success")
+                            testAccounts()
+                        }else{
+                            print("32 Fail \(error?.message)")
+                        }
+                    })
+
+                    break
+                case 500,501,504,505:
+                    print("System Error \(status["code"])")
+                    self.timer.invalidate()
+                    break
+                default :
+                    break
+                }
             }else{
                 print("Fail: \(error?.message)")
                 
             }
+
         })
     }
     
@@ -514,7 +513,7 @@ public class UnitTest {
         Account.get(session_test, id_user: nil, completionHandler: {
             response, error in
             if response != nil {
-                print("#34 Success")
+                print("\n#34 Success")
                 testTransactions()
             }else{
                 print("#34 Fail")
@@ -534,7 +533,7 @@ public class UnitTest {
         Transaction.get_count(session_test, id_user: nil, completionHandler: {
             response, error in
             if response != nil {
-                print("#35 Success transaction count: \(response)")
+                print("\n#35 Success transaction count: \(response)")
                 Transaction.get(session_test, id_user: nil, completionHandler: {
                     response, error in
                     if response != nil {
@@ -571,12 +570,13 @@ public class UnitTest {
         Attachments.get_count(session_test, id_user: nil, completionHandler: {
             response, error in
             if response != nil {
-                print("#37 Success Attachments count: \(response)")
+                print("\n#37 Success Attachments count: \(response)")
                 
                 Attachments.get(session_test, id_user: nil, completionHandler: {
                     response, error in
                     if response != nil {
                         print("#38 Success ")
+                       
                         finish()
                         return
                     }else{
@@ -609,67 +609,11 @@ public class UnitTest {
     
     class func delete(){
         Paybook.api_key = UnitTest.api_key
-        
-        
-        
-        
-        User.delete("577458c40b212a2e208b4575", completionHandler: {
+
+        User.delete("ID_USER", completionHandler: {
             response, error in
             print(response)
         })
-        User.delete("577459360b212a78208b456e", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("577459c70c212a945f8b4571", completionHandler: {
-            response, error in
-            print(response)
-        })
-        
-        
-        User.delete("5774189d0c212a4e5f8b4567", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("57741bd10c212a9a5f8b4567", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("57743b7a0b212a85208b4569", completionHandler: {
-            response, error in
-            print(response)
-        })
-        
-        
-        
-        User.delete("57743ead0b212a98208b4569", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("577440980b212a9b208b4569", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("5774423d0b212a88208b456e", completionHandler: {
-            response, error in
-            print(response)
-        })
-        
-        
-        
-        User.delete("577443610b212a63208b456f", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("57744e190c212a565f8b456e", completionHandler: {
-            response, error in
-            print(response)
-        })
-        User.delete("577456120c212a825f8b456b", completionHandler: {
-            response, error in
-            print(response)
-        })
-        
     }
     
 }

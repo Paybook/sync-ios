@@ -23,15 +23,19 @@ public class Paybook {
     // ** MARK Class Methods
     
     public class func call (method: String, endpoint: String, parameters: NSDictionary?, completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
-        var data : [String: AnyObject] = ["api_key" : api_key]
-        
+        var data = [String: AnyObject]()
         if(parameters != nil){
-            // Add parameters in request data
-            data.update(parameters as! Dictionary<String, AnyObject>)
+            if parameters!["token"] != nil {
+                data = (parameters as? [String: AnyObject])!
+            }else{
+                data = ["api_key" : api_key]
+                // Add parameters in request data
+                data.update(parameters as! Dictionary<String, AnyObject>)
+            }
+        }else{
+            data = ["api_key" : api_key]
         }
         
-        
-        //let url = "\(baseURLString)\(endpoint)"
         let url = endpoint
         
         switch method {
@@ -126,11 +130,14 @@ public class Paybook {
 }
 
 
+
+
 extension Dictionary {
     mutating func update(other:Dictionary) {
         for (key,value) in other {
             self.updateValue(value, forKey:key)
         }
     }
+
 }
 

@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (3.4.1)
-  - Paybook (1.0.5):
+  - Paybook (1.0.7):
     - Alamofire (~> 3.4)
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  Paybook: 4cf167a8ceee3178bee463301886c032f3181043
+  Paybook: 2af1a653f249282ca813176e81c7d8170700a2c4
 
 PODFILE CHECKSUM: 2229641f67771d06232030092cc8c3144cebefae
 

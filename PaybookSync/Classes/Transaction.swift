@@ -60,32 +60,47 @@ public class Transaction : Paybook {
      })
      */
     
-    public class func get_count( session : Session,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
+    public class func get_count( session : Session?,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/transactions/count"
-        let data = [
-            "token" : session.token
-        ]
+        var data = [String: AnyObject]()
         
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
             
-            if response != nil {
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
                 
-                if let responseObject = response!["response"] as? NSDictionary{
+                if response != nil {
                     
-                    if completionHandler != nil {
-                        completionHandler!(responseObject["count"] as? Int,nil)
+                    if let responseObject = response!["response"] as? NSDictionary{
+                        
+                        if completionHandler != nil {
+                            completionHandler!(responseObject["count"] as? Int,nil)
+                        }
+                        
                     }
                     
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
                 }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
-            }
-        })
+            })
+        }
+        
 
         
     }
@@ -99,36 +114,52 @@ public class Transaction : Paybook {
      })
      */
     
-    public class func get(session: Session,id_user: String?, completionHandler: (([Transaction]?, PaybookError?) -> ())?){
+    public class func get(session: Session?,id_user: String?, completionHandler: (([Transaction]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/transactions"
-        let data = [
-            "token" : session.token
-        ]
+        var data = [String: AnyObject]()
         
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
-            
-            if response != nil {
-                var array = [Transaction]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Transaction(dict: value as! NSDictionary))
-                    }
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
             }
-        })
+        }else{
+            
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Transaction]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Transaction(dict: value as! NSDictionary))
+                        }
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+            })
+        }
+
+        
     }
     
     

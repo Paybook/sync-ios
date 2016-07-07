@@ -29,7 +29,7 @@ public class Credentials : Paybook {
     })
      */
     
-    public convenience init (session : Session ,id_user : String? , id_site: String, credentials: NSDictionary , completionHandler: ((Credentials?, PaybookError?) -> ())?){
+    public convenience init (session : Session? ,id_user : String? , id_site: String, credentials: NSDictionary , completionHandler: ((Credentials?, PaybookError?) -> ())?){
         
         
         
@@ -39,42 +39,62 @@ public class Credentials : Paybook {
         self.id_site_organization = credentials["id_site_organization"] as? String
         self.id_site_organization_type = credentials["id_site_organization_type"] as? String
         // Create user in API
-        let data = [
-            "token" : session.token,
-            "id_site" : id_site,
-            "credentials" : credentials
-        ]
         
         let url = "https://sync.paybook.com/v1/credentials"
+
+        var data = [String: AnyObject]()
         
-        Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
+            
+            data = [
+                "id_site" : id_site,
+                "credentials" : credentials
+            ]
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
             
             
-            if response != nil {
-                if let responseObject = response!["response"] as? NSDictionary{
-                    
-                    self.id_credential = responseObject["id_credential"] as? String
-                    self.username = responseObject["username"] as? String
-                    self.ws = responseObject["ws"] as? String
-                    self.status = responseObject["status"] as? String
-                    self.twofa = responseObject["twofa"] as? String
-                    
-                    if completionHandler != nil {
-                        completionHandler!(self,error)
+            Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                
+                if response != nil {
+                    if let responseObject = response!["response"] as? NSDictionary{
+                        
+                        self.id_credential = responseObject["id_credential"] as? String
+                        self.username = responseObject["username"] as? String
+                        self.ws = responseObject["ws"] as? String
+                        self.status = responseObject["status"] as? String
+                        self.twofa = responseObject["twofa"] as? String
+                        
+                        if completionHandler != nil {
+                            completionHandler!(self,error)
+                        }
+                        
+                        
                     }
                     
                     
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
                 }
                 
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
-            }
+            })
             
-        })
+            
+        }
 
         
         
@@ -107,69 +127,103 @@ public class Credentials : Paybook {
    
     
     // [NSDictionary]
-    public func get_status( session : Session,id_user : String?, completionHandler: (([NSDictionary]?, PaybookError?) -> ())? ){
+    public func get_status( session : Session?,id_user : String?, completionHandler: (([NSDictionary]?, PaybookError?) -> ())? ){
         
         let url = self.status
-        let data = [
-            "token" : session.token
-        ]
+        var data = [String: AnyObject]()
         
-        Paybook.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
             
-            if response != nil {
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            Paybook.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
                 
-                if let responseObject = response!["response"] as? [NSDictionary]{
+                if response != nil {
                     
-                    if completionHandler != nil {
-                        completionHandler!(responseObject,nil)
+                    if let responseObject = response!["response"] as? [NSDictionary]{
+                        
+                        if completionHandler != nil {
+                            completionHandler!(responseObject,nil)
+                        }
+                    }else{
+                        if completionHandler != nil {
+                            completionHandler!(nil,error)
+                        }
                     }
+                    
                 }else{
                     if completionHandler != nil {
                         completionHandler!(nil,error)
                     }
                 }
                 
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
-            }
+            })
             
-        })
+        }
 
+        
     }
     
     // Bool
-    public func set_twofa( session : Session,id_user : String?,params: NSDictionary ,completionHandler: ((Bool?, PaybookError?) -> ())? ){
+    public func set_twofa( session : Session?,id_user : String?,params: NSDictionary ,completionHandler: ((Bool?, PaybookError?) -> ())? ){
         
         let url = self.twofa
-        let data = [
-            "token" : session.token,
-            "twofa": params
-        ]
         
-        Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        var data = [String: AnyObject]()
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
+            data =  [
+                "twofa": params
+            ]
             
-            if response != nil{
-                if response!["code"] as! Int == 200{
-                    if completionHandler != nil {
-                        completionHandler!(true,error)
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil{
+                    if response!["code"] as! Int == 200{
+                        if completionHandler != nil {
+                            completionHandler!(true,error)
+                        }
+                    }else{
+                        if completionHandler != nil {
+                            completionHandler!(false,error)
+                        }
                     }
+                    
                 }else{
                     if completionHandler != nil {
-                        completionHandler!(false,error)
+                        completionHandler!(nil,error)
                     }
                 }
                 
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
-            }
+            })
             
-        })
+        }
+        
         
     }
     
@@ -177,38 +231,49 @@ public class Credentials : Paybook {
     // ** MARK Class Methods
     
     // Bool deleted
-    public class func delete( session : Session,id_user : String? ,id_credential: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
-        
-        
-        let data = [
-            "token" : session.token
-        ]
+    public class func delete( session : Session?,id_user : String? ,id_credential: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/credentials/\(id_credential)"
+        var data = [String: AnyObject]()
         
-        self.call("DELETE", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
             
-            if response != nil{
-                if response!["code"] as! Int == 200{
-                    if completionHandler != nil {
-                        completionHandler!(true,error)
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            self.call("DELETE", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil{
+                    if response!["code"] as! Int == 200{
+                        if completionHandler != nil {
+                            completionHandler!(true,error)
+                        }
+                    }else{
+                        if completionHandler != nil {
+                            completionHandler!(false,error)
+                        }
                     }
+                    
                 }else{
                     if completionHandler != nil {
-                        completionHandler!(false,error)
+                        completionHandler!(nil,error)
                     }
                 }
                 
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
-            }
+            })
             
-        })
-        
-        
+        }
 
     }
     
@@ -222,36 +287,54 @@ public class Credentials : Paybook {
         print(" \(response), \(error)")
      })
      */
-    public class func get(session: Session,id_user: String?, completionHandler: (([Credentials]?, PaybookError?) -> ())?){
+    public class func get(session: Session?,id_user: String?, completionHandler: (([Credentials]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/credentials"
-        let data = [
-            "token" : session.token
-        ]
+        var data = [String: AnyObject]()
         
-        self.call("GET", endpoint: url, parameters: data, completionHandler: {
-            response, error in
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
             
-            if response != nil {
-                var array = [Credentials]()
-                
-                if let responseArray = response!["response"] as? NSArray{
-                    
-                    for (value) in responseArray{
-                        array.append(Credentials(dict: value as! NSDictionary))
-                    }
-                    if completionHandler != nil {
-                        completionHandler!(array,error)
-                    }
-                }
-                
-            }else{
-                if completionHandler != nil {
-                    completionHandler!(nil,error)
-                }
+            
+            if session != nil{
+                data.update(["token" : session!.token])
             }
             
-        })
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Credentials]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Credentials(dict: value as! NSDictionary))
+                        }
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+                
+            })
+            
+        }
+
+        
+        
         
     }
     

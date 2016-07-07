@@ -50,7 +50,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     }
     
     func getCatalogueSite(){
-        Catalogues.get_sites(self.session, id_user: nil, is_test: nil, completionHandler: {
+        Catalogues.get_sites(session, id_user: nil, is_test: nil, completionHandler: {
             sites_array, error in
             
             if sites_array != nil{
@@ -71,6 +71,8 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                     self.createCredential()
                 }
                 
+            }else{
+                print("No se pudo cargar el catalago de sites: \(error?.message)")
             }
             
         })
@@ -151,7 +153,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                 for transaction in transaction_array! {
                     print("\(transaction.description), $\(transaction.amount) ")
                 }
-                
+                self.getAttachments()
             }else{
                 print("Problemas al consultar las transacciones: \(error?.message)")
             }
@@ -159,7 +161,21 @@ class Quickstart_normal_bank_ViewController: UIViewController {
         })
     }
     
-    
+    func getAttachments(){
+        Attachments.get(session, id_user: nil, completionHandler: {
+            attachments_array, error in
+            if attachments_array != nil {
+                print("\nAttachments: ")
+                for attachment in attachments_array! {
+                    print("Attachment type : \(attachment.id_attachment), id_transaction: \(attachment.id_transaction) ")
+                }
+                
+                
+            }else{
+                print("Problemas al consultar los attachments: \(error?.message)")
+            }
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
