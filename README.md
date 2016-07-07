@@ -68,7 +68,7 @@ method_type returned_value_type x = class_or_instance.get(attr1:attr1_type,...,a
 6. attrX_type: es el tipo de dato del atributo X
 
 **Importante:** Todos los metodos necesitan un medio de auntentificación ya sea por medio del id_user o una session y regresan valores por medio de una función completionHandler que recibe el tipo de dato a retornar en caso de que el request sea exitoso o un error en caso de fallar e.g:
-``` 
+``` swift
 Account.get([mySession], id_user: nil, completionHandler: {
     response, error in
     print("\(response), \(error)")
