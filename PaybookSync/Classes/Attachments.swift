@@ -163,9 +163,8 @@ public class Attachments : Paybook {
     
     
     
-    /* En desarrollo
      
-    public class func get(session: Session?,id_user: String?, id_attachment: String ,completionHandler: (([Attachments]?, PaybookError?) -> ())?){
+    public class func get(session: Session?,id_user: String?, id_attachment: String ,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/attachments/\(id_attachment)"
@@ -184,28 +183,21 @@ public class Attachments : Paybook {
             if id_user != nil{
                 data.update(["id_user": id_user!])
             }
-            print("url: \(url), params: \(data)")
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            
+            
+            self.get_file("GET", endpoint: url, parameters: data, completionHandler: {
                 response, error in
-                
                 if response != nil {
-                    var array = [Attachments]()
-                    
-                    if let responseArray = response!["response"] as? NSArray{
-                        
-                        for (value) in responseArray{
-                            array.append(Attachments(dict: value as! NSDictionary))
-                        }
-                        if completionHandler != nil {
-                            completionHandler!(array,error)
-                        }
+                    if completionHandler != nil {
+                        completionHandler!(response!,error)
                     }
-                    
                 }else{
                     if completionHandler != nil {
                         completionHandler!(nil,error)
                     }
                 }
+
+
             })
             
         }
@@ -213,10 +205,10 @@ public class Attachments : Paybook {
         
     }
 
-    public class func get(session: Session?,id_user: String?, id_attachment: String, extra: Bool ,completionHandler: (([Attachments]?, PaybookError?) -> ())?){
+    public class func get(session: Session?,id_user: String?, id_attachment: String, extra: Bool ,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         
         
-        let url = "https://sync.paybook.com/v1/attachments/\(id_attachment)/\(extra)"
+        let url = "https://sync.paybook.com/v1/attachments/\(id_attachment)/extra"
         var data = [String: AnyObject]()
         
         if session == nil && id_user == nil{
@@ -235,32 +227,23 @@ public class Attachments : Paybook {
             
             self.call("GET", endpoint: url, parameters: data, completionHandler: {
                 response, error in
-                
                 if response != nil {
-                    var array = [Attachments]()
-                    
-                    if let responseArray = response!["response"] as? NSArray{
-                        
-                        for (value) in responseArray{
-                            array.append(Attachments(dict: value as! NSDictionary))
-                        }
-                        if completionHandler != nil {
-                            completionHandler!(array,error)
-                        }
+                    if completionHandler != nil {
+                        completionHandler!(response!["response"] as? NSDictionary,error)
                     }
-                    
                 }else{
                     if completionHandler != nil {
                         completionHandler!(nil,error)
                     }
                 }
+                
+                
             })
             
         }
         
         
-    }*/
-    
+    }
     
     
 }

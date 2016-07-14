@@ -18,9 +18,6 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     var session : Session!
     var site : Site!
     var credential : Credentials!
-    var sat_sync_completed = false
-    
-    
     
     
     func getUsers(){
@@ -50,7 +47,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     }
     
     func getCatalogueSite(){
-        Catalogues.get_sites(session, id_user: nil, is_test: nil, completionHandler: {
+        Catalogues.get_sites(session, id_user: nil, is_test: true, completionHandler: {
             sites_array, error in
             
             if sites_array != nil{
@@ -58,7 +55,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                 print("\nCatalago de Sites:")
                 for site in sites_array!{
                     
-                    if site.name == "SuperNET Particulares" {
+                    if site.name == "Normal" { //"SuperNET Particulares"
                         print ("* Bank site: \(site.name) \(site.id_site)")
                         self.site = site
                     }else{
@@ -167,7 +164,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
             if attachments_array != nil {
                 print("\nAttachments: ")
                 for attachment in attachments_array! {
-                    print("Attachment type : \(attachment.id_attachment), id_transaction: \(attachment.id_transaction) ")
+                    print("Attachment type : \(attachment.id_attachment_type), id_transaction: \(attachment.id_transaction) ")
                 }
                 
                 
@@ -176,6 +173,12 @@ class Quickstart_normal_bank_ViewController: UIViewController {
             }
         })
     }
+    
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

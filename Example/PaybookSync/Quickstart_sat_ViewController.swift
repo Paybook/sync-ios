@@ -18,10 +18,9 @@ class Quickstart_sat_ViewController: UIViewController {
     var session : Session!
     var site : Site!
     var credential : Credentials!
-    var sat_sync_completed = false
     
     
-    
+    @IBOutlet weak var webview: UIWebView!
     
     
     
@@ -184,22 +183,45 @@ class Quickstart_sat_ViewController: UIViewController {
         })
     }
     
-    
     func getAttachments(){
         Attachments.get(session, id_user: nil, completionHandler: {
             attachments_array, error in
             if attachments_array != nil {
                 print("\nAttachments: ")
                 for attachment in attachments_array! {
-                    print("Attachment type : \(attachment.id_attachment_type), id_transaction: \(attachment.id_transaction) ")
+                    print("Attachment type : \(attachment.id_attachment), id_transaction: \(attachment.id_transaction) ")
                 }
                 
+                print("\nAttachment id: \(attachments_array![0].id_attachment)")
+                Attachments.get(self.session, id_user: nil, id_attachment: attachments_array![0].id_attachment, completionHandler: {
+                    response, error in
+                    
+                    if response != nil{
+                        print("Charging file...")
+                        self.loadAttachment(response!["destination"] as! NSURL)
+                        
+                    }else{
+                        print("error:" , error?.code)
+                        
+                    }
+                    
+                    
+                    
+                })
                 
             }else{
                 print("Problemas al consultar los attachments: \(error?.message)")
             }
         })
     }
+    
+    func loadAttachment(path: NSURL) {
+        
+        let url = path
+        let urlRequest = NSURLRequest(URL: url)
+        webview.loadRequest(urlRequest)
+    }
+    
     
     
     override func viewDidLoad() {

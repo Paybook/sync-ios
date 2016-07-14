@@ -256,6 +256,49 @@ func getAttachments(){
     }
 ```
 
+En nuestra clase Attchments tenemos un metodo get al cual le podemos pasar el id_attachment, este metodo se encargara de descargar nuestro archivo pdf o xml y darnos el path donde se encuentra para asi poder desplegarlo en pantalla o hacer lo que el desarrollador desee con el. En nuestro ejemplo hemos agregado una webview en nuestro controlador y en el mostraremos el primer attachments que hemos obtenido, para esto agregaremos el siguiente codigo dentro del completionHandler de la funcion anterior por lo que la función "getAttachments" deverá lucir así:
+
+```swift
+func getAttachments(){
+    Attachments.get(session, id_user: nil, completionHandler: {
+        attachments_array, error in
+            if attachments_array != nil {
+                print("\nAttachments: ")
+                for attachment in attachments_array! {
+                    print("Attachment type : \(attachment.id_attachment), id_transaction: \(attachment.id_transaction) ")
+                }
+
+                print("\nAttachment id: \(attachments_array![0].id_attachment)")
+                Attachments.get(self.session, id_user: nil, id_attachment: attachments_array![0].id_attachment, completionHandler: {
+                    response, error in
+
+                    if response != nil{
+                        print("Charging file...")
+                        self.loadAttachment(response!["destination"] as! NSURL)
+                    }else{
+                        print("error:" , error?.code)
+                    }
+
+                })
+
+            }else{
+                print("Problemas al consultar los attachments: \(error?.message)")
+            }
+    })
+}
+
+```
+por ultimo solo nos falta agregar nuestra función "loadAttachment" que cargara nuestro archivo dentro de la webview.
+
+```swift
+func loadAttachment(path: NSURL) {
+    let url = path
+    let urlRequest = NSURLRequest(URL: url)
+    webview.loadRequest(urlRequest)
+}
+```
+
+
 ¡Felicidades! has terminado con este tutorial. 
 
 ### Siguientes Pasos
