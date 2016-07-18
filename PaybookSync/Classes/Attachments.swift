@@ -163,7 +163,22 @@ public class Attachments : Paybook {
     
     
     
+    // Return (NSDictionary) in completionHandler
+    /** Example to get Attachments
      
+     Attachments.get([mySession], id_user: nil,id_attachment: [id_attachment] completionHandler: {
+        response, error in
+        print("array: \(response), \(error)")
+     })
+     
+     
+     Example response: 
+     
+     response = [
+        destination     : "file_path",
+        mime            : "application/pdf"
+     ]
+     */
     public class func get(session: Session?,id_user: String?, id_attachment: String ,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         
         

@@ -256,7 +256,7 @@ func getAttachments(){
     }
 ```
 
-En nuestra clase Attchments tenemos un metodo get al cual le podemos pasar el id_attachment, este metodo se encargara de descargar nuestro archivo pdf o xml y darnos el path donde se encuentra para asi poder desplegarlo en pantalla o hacer lo que el desarrollador desee con el. En nuestro ejemplo hemos agregado una webview en nuestro controlador y en el mostraremos el primer attachments que hemos obtenido, para esto agregaremos el siguiente codigo dentro del completionHandler de la funcion anterior por lo que la función "getAttachments" deverá lucir así:
+En nuestra clase Attchments tenemos un metodo get al cual le podemos pasar el id_attachment, este metodo se encargara de descargar nuestro archivo pdf o xml y nos devolbera un NSDictionary con el path y el mime type de nuestro archivo para asi poder desplegarlo en pantalla. En nuestro ejemplo hemos agregado una webview en nuestro controlador y en el mostraremos el primer attachments que hemos obtenido, para esto agregaremos el siguiente codigo dentro del completionHandler de la funcion anterior por lo que la función "getAttachments" deverá lucir así:
 
 ```swift
 func getAttachments(){
@@ -287,8 +287,18 @@ func getAttachments(){
     })
 }
 
+/*Respuesta de Attachment.get con id_attachment
+    response = [
+        destination   : "file_path",
+        mime          : "aplication/pdf"
+    ]
+*/
+
 ```
-por ultimo solo nos falta agregar nuestra función "loadAttachment" que cargara nuestro archivo dentro de la webview.
+**Importante**: El archivo se guardara en directorio principal de nuestra app, y el desarrollador debe de encargarse de gestionar el almacenamiento de estos archivos.
+
+
+Por ultimo solo nos falta agregar nuestra función "loadAttachment" que cargara nuestro archivo dentro de la webview.
 
 ```swift
 func loadAttachment(path: NSURL) {

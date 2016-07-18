@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Paybook'
-  s.version          = '1.0.7'
+  s.version          = '1.0.8'
   s.summary          = 'Paybook is a library to take advantage of the Paybook Financial API (Sync).'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/Paybook/sync-ios'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Gabriel Villarreal' => 'gabriel@paybook.me' }
+  s.author           = { 'Paybook Inc.' => 'gabriel@paybook.me' }
   s.source           = { :git => 'https://github.com/Paybook/sync-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
