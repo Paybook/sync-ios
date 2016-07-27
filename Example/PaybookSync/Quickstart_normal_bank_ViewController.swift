@@ -47,7 +47,8 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     }
     
     func getCatalogueSite(){
-        Catalogues.get_sites(session, id_user: nil, is_test: true, completionHandler: {
+        
+        Catalogues.get_sites(session, id_user: nil,id_site_organization: "5731fb37784806a6118b4568", is_test: nil,  completionHandler: {
             sites_array, error in
             
             if sites_array != nil{
@@ -55,7 +56,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                 print("\nCatalago de Sites:")
                 for site in sites_array!{
                     
-                    if site.name == "Normal" { //"SuperNET Particulares"
+                    if site.name == "SuperNET Particulares" {
                         print ("* Bank site: \(site.name) \(site.id_site)")
                         self.site = site
                     }else{
@@ -73,13 +74,43 @@ class Quickstart_normal_bank_ViewController: UIViewController {
             }
             
         })
+        
+        
+        
+        /*
+        Catalogues.get_sites(session, id_user: nil, is_test: nil, completionHandler: {
+            sites_array, error in
+            
+            if sites_array != nil{
+                
+                print("\nCatalago de Sites:")
+                for site in sites_array!{
+                    
+                    if site.name == "SuperNET Particulares" {
+                        print ("* Bank site: \(site.name) \(site.id_site)")
+                        self.site = site
+                    }else{
+                        print(site.name)
+                    }
+                    
+                }
+                
+                if self.site != nil{
+                    self.createCredential()
+                }
+                
+            }else{
+                print("No se pudo cargar el catalago de sites: \(error?.message)")
+            }
+            
+        })*/
     }
     
     
     func createCredential(){
         let dataCredentials = [
-            "username" : "YOUR_BANK_USERNAME",
-            "password" : "YOUR_BANK_PASSWORD"
+            "username" : "YOUR_USERNAME",
+            "password" : "YOUR_PASSWORD"
         ]
         
         _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: dataCredentials, completionHandler: {

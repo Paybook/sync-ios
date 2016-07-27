@@ -67,7 +67,7 @@ class Quickstart_token_bank_ViewController: UIViewController {
     }
     
     func getCatalogueSite(){
-        Catalogues.get_sites(self.session, id_user: nil, is_test: true, completionHandler: {
+        Catalogues.get_sites(self.session, id_user: nil, is_test: nil, completionHandler: {
             sites_array, error in
             
             if sites_array != nil{
