@@ -39,6 +39,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
             if session_response != nil {
                 self.session = session_response
                 self.getCatalogueSite()
+                
             }else{
                 print("No se pudo crear la session: \(error?.message)")
             }
@@ -48,36 +49,6 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     
     func getCatalogueSite(){
         
-        Catalogues.get_sites(session, id_user: nil,id_site_organization: "5731fb37784806a6118b4568", is_test: nil,  completionHandler: {
-            sites_array, error in
-            
-            if sites_array != nil{
-                
-                print("\nCatalago de Sites:")
-                for site in sites_array!{
-                    
-                    if site.name == "SuperNET Particulares" {
-                        print ("* Bank site: \(site.name) \(site.id_site)")
-                        self.site = site
-                    }else{
-                        print(site.name)
-                    }
-                    
-                }
-                
-                if self.site != nil{
-                    self.createCredential()
-                }
-                
-            }else{
-                print("No se pudo cargar el catalago de sites: \(error?.message)")
-            }
-            
-        })
-        
-        
-        
-        /*
         Catalogues.get_sites(session, id_user: nil, is_test: nil, completionHandler: {
             sites_array, error in
             
@@ -103,7 +74,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                 print("No se pudo cargar el catalago de sites: \(error?.message)")
             }
             
-        })*/
+        })
     }
     
     
@@ -208,7 +179,42 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     
     
     
-    
+    func getAccounts(){
+        /*
+        var opt = Account.get_options()
+        opt["id_site_organization"] = "56cf4ff5784806152c8b4568"
+        */
+        var opt = ["id_site_organization" : "56cf4ff5784806152c8b4567"]
+        
+        Account.get(session, id_user: nil, options: opt, completionHandler: {
+            response, error in
+            if response != nil {
+                print("\nAccounts id: ")
+                for account in response! {
+                    print(account.name, account.id_account, account.id_site_organization)
+                }
+                
+                
+            }else{
+                print("Problemas al consultar los attachments: \(error?.message)")
+            }
+        })
+        
+        
+        Account.get(session, id_user: nil, completionHandler: {
+            response, error in
+            if response != nil {
+                print("\nAccounts: ")
+                for account in response! {
+                    print(account.name, account.id_account, account.id_site_organization)
+                }
+                
+                
+            }else{
+                print("Problemas al consultar los attachments: \(error?.message)")
+            }
+        })
+    }
     
     
     override func viewDidLoad() {

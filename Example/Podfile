@@ -1,11 +1,11 @@
 use_frameworks!
 
 target 'Paybook_Example' do
-  pod 'Paybook', :path => '../'
-
-  target 'Paybook_Tests' do
-    inherit! :search_paths
-
+    pod 'Paybook', :path => '../'
     
-  end
+    target 'Paybook_Tests' do
+        inherit! :search_paths
+        
+        
+    end
 end

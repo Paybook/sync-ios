@@ -514,6 +514,10 @@ public class UnitTest: NSObject {
             response, error in
             if response != nil {
                 print("\n#34 Success")
+                print("\nAccounts:")
+                for i in response!{
+                    print(i.name,i.id_account,i.id_site_organization)
+                }
                 testTransactions()
             }else{
                 print("#34 Fail")

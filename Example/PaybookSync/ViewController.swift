@@ -8,8 +8,6 @@
 
 import UIKit
 import Paybook
-import Pods_Paybook_Tests
-
 
 
 class ViewController: UIViewController, UITextViewDelegate {

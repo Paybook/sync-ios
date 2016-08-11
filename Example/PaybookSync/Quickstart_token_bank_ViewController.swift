@@ -25,7 +25,7 @@ class Quickstart_token_bank_ViewController: UIViewController {
     
     @IBAction func sendToken(sender: AnyObject) {
         
-        let params : [String:String] = ["Banorte en su empresa": tokenInput.text!]
+        let params : [String:String] = ["token": tokenInput.text!]
         print("Send token: \(params)")
         self.credential.set_twofa(self.session, id_user: nil, params: params, completionHandler: {
             response, error in

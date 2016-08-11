@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 public class Account : Paybook {
     
     public var id_account : String!
@@ -40,9 +39,15 @@ public class Account : Paybook {
         self.id_site_organization = dict["id_site_organization"] as? String
         self.name = dict["name"] as? String
         self.number = dict["number"] as? String
-        self.balance = dict["balance"] as! Double
+        
         self.site = dict["site"] as? String
         self.dt_refresh = dict["dt_refresh"] as? String
+        
+        if let balance = dict["balance"] as? Double{
+            self.balance = balance
+        }else{
+            self.balance = 0
+        }
     }
     
     
@@ -79,6 +84,8 @@ public class Account : Paybook {
                 data.update(["id_user": id_user!])
             }
             
+           
+            
             self.call("GET", endpoint: url, parameters: data, completionHandler: {
                 response, error in
                 
@@ -108,6 +115,92 @@ public class Account : Paybook {
     }
     
     
+    
+    // ** MARK Class Methods
+    
+    
+    // Return ([Account],NSError) in completionHandler
+    /** Example to get accounts
+     
+     Account.get(<mySession>, id_user: nil,options: <account_options> ,completionHandler: {
+     response, error in
+     print("\(response), \(error)")
+     })
+     */
+    
+    public class func get(session: Session?,id_user: String?,options: [String:AnyObject],completionHandler: (([Account]?, PaybookError?) -> ())?){
+        
+        let url = "https://sync.paybook.com/v1/accounts"
+        var data = [String: AnyObject]()
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
+            
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            
+            data.update(options)
+            
+            
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Account]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Account(dict: value as! NSDictionary))
+                        }
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+            })
+        }
+        
+        
+        
+    }
+    
+    
+    
+   
+    
+    public class func get_options() -> [String:AnyObject]{
+        
+        
+        let dict : [String:AnyObject] = [
+            "id_account" :	"String",               //Account ID.
+            "id_credential" :	"String",           //Credentials ID.
+            "id_site" :	"String",                   //Site ID.
+            "id_site_organization" : "String",      //Site Organization ID.
+            "id_site_organization_type" : "String", //Site Organization Type ID.
+            "fields" :	"String",                   //Select fields to be returned.
+            "limit" : "Int",                        //Limit the number of rows to be returned.
+            "skip" : "Int",                         //Skip rows to be returned.
+            "order" : "String"                      //Order the rows to be returned.
+        ]
+ 
+        return dict
+    }
     
     
 }
