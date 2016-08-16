@@ -163,6 +163,72 @@ public class Transaction : Paybook {
     }
     
     
+    public class func get(session: Session?,id_user: String?, options: [String:AnyObject],completionHandler: (([Transaction]?, PaybookError?) -> ())?){
+        
+        
+        let url = "https://sync.paybook.com/v1/transactions"
+        var data = [String: AnyObject]()
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
+            
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            data.update(options)
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Transaction]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Transaction(dict: value as! NSDictionary))
+                        }
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+            })
+        }
+        
+        
+    }
+
+    
+    public class func get_options() -> [String:AnyObject]{
+        
+        let dict : [String:AnyObject] = [
+            "id_account" :	"String",                   //Filters by account ID.
+            "id_credential" :	"String",               //Credentials ID.
+            "id_site" :	"String",                       //Filters by site ID.
+            "id_site_organization" :	"String",       //Filters by site organization ID.
+            "id_site_organization_type" :	"String",   //Filters by site organization type ID.
+            "is_disable" :	"Number",                   //Filters by disable transaction.
+            "dt_refresh_from" :	"Timestamp",            //Filters by transaction refresh date, expected UNIX timestamp.
+            "dt_refresh_to" :	"Timestamp",            //Filters by transaction refresh date, expected UNIX timestamp.
+            "dt_transaction_from" :	"Timestamp",        //Filters by transaction date, expected UNIX timestamp.
+            "dt_transaction_to" :	"Timestamp"         //Filters by transaction date, expected UNIX timestamp.
+        ]
+        
+        return dict
+    }
     
     
 }

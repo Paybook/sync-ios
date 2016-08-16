@@ -1,15 +1,23 @@
 //
-//  Quickstart_normal_bank_ViewController.swift
+//  UnitTestNew.swift
+//  Paybook
 //
-//  Created by Gabriel Villarreal on 30/06/16.
-//  Copyright © 2016 Paybook.Inc. All rights reserved.
+//  Created by Gabriel Villarreal on 15/08/16.
+//  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import Paybook
 
-class Quickstart_normal_bank_ViewController: UIViewController {
-
+class UnitTestNew : UIViewController {
+    
+    @IBAction func test(sender: AnyObject) {
+        Paybook.api_key = input_API_KEY.text!
+        getUsers()
+        
+    }
+    
+    @IBOutlet weak var input_API_KEY: UITextField!
     var timer : NSTimer!
     var count = 1
     
@@ -49,7 +57,14 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     
     func getCatalogueSite(){
         
-        Catalogues.get_sites(session, id_user: nil, is_test: nil, completionHandler: {
+        
+        print("\nAccount_type options", Account_type.get_options())
+        print("\nAttachment_type options", Attachment_type.get_options())
+        print("\nCountry options", Country.get_options())
+        print("\nSite options", Site.get_options())
+        print("\nSite_organization options", Site_organization.get_options())
+        
+        Catalogues.get_sites(session, id_user: nil, is_test: true,completionHandler: {
             sites_array, error in
             
             if sites_array != nil{
@@ -57,11 +72,11 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                 print("\nCatalago de Sites:")
                 for site in sites_array!{
                     
-                    if site.name == "SuperNET Particulares" {
-                        print ("* Bank site: \(site.name) \(site.id_site)")
+                    if site.name == "Normal" {//"SuperNET Particulares"
+                        print ("* Bank site: \(site.name) \(site.id_site)", site.id_site_organization)
                         self.site = site
                     }else{
-                        print(site.name)
+                        print(site.name, site.id_site_organization)
                     }
                     
                 }
@@ -75,13 +90,83 @@ class Quickstart_normal_bank_ViewController: UIViewController {
             }
             
         })
+        
+        /*
+        Catalogues.get_account_types(session, id_user: nil, options: ["order":"name", "limit": 5] ,completionHandler: {
+            response, error in
+            
+            if response != nil{
+                
+                print("\nCatalago de Account type:")
+                for site in response!{
+                    print(site.name)
+                    
+                }
+                
+            }else{
+                
+            }
+            
+        })
+        
+        Catalogues.get_countries(session, id_user: nil, options: ["order":"name","limit": 5] ,completionHandler: {
+            response, error in
+            
+            if response != nil{
+                
+                print("\nCatalago de Countries:")
+                for site in response!{
+                    print(site.name)
+                    
+                }
+                
+            }else{
+                
+            }
+        })
+        
+        Catalogues.get_attachment_types(session, id_user: nil, options: ["order":"name","limit": 5] ,completionHandler: {
+            response, error in
+            
+            if response != nil{
+                
+                print("\nCatalago de Attachments type:")
+                for site in response!{
+                    print(site.name)
+                    
+                }
+                
+            }else{
+                
+            }
+        })
+        
+        Catalogues.get_site_organizations(session, id_user: nil, options: ["order":"name","limit": 5] ,completionHandler: {
+            response, error in
+            
+            if response != nil{
+                
+                print("\nCatalago de Site_organizations :")
+                for site in response!{
+                    print(site.name)
+                    
+                }
+                
+            }else{
+                
+            }
+            
+        })
+ 
+ */
+        
     }
     
     
     func createCredential(){
         let dataCredentials = [
-            "username" : "YOUR_USERNAME",
-            "password" : "YOUR_PASSWORD"
+            "username" : "test",//"YOUR_USERNAME"
+            "password" : "test"//"YOUR_PASSWORD"
         ]
         
         _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: dataCredentials, completionHandler: {
@@ -142,7 +227,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
         })
         
     }
-
+    
     
     func getTransactions(){
         Transaction.get(self.session, id_user: nil, completionHandler: {
@@ -150,7 +235,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
             if transaction_array != nil {
                 print("\nTransactions: ")
                 for transaction in transaction_array! {
-                    print("\(transaction.description), $\(transaction.amount) ")
+                    print("\(transaction.description), $\(transaction.amount) ", transaction.id_account)
                 }
                 self.getAttachments()
             }else{
@@ -161,7 +246,8 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     }
     
     func getAttachments(){
-        Attachments.get(session, id_user: nil, completionHandler: {
+        
+        Attachments.get(session, id_user: nil ,completionHandler: {
             attachments_array, error in
             if attachments_array != nil {
                 print("\nAttachments: ")
@@ -169,7 +255,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                     print("Attachment type : \(attachment.id_attachment_type), id_transaction: \(attachment.id_transaction) ")
                 }
                 
-                
+                self.getAccounts()
             }else{
                 print("Problemas al consultar los attachments: \(error?.message)")
             }
@@ -179,21 +265,38 @@ class Quickstart_normal_bank_ViewController: UIViewController {
     
     
     
+    func getAccounts(){
+        
+        print("\nAccount : ")
+        
+        Account.get(session, id_user: nil, completionHandler: {
+            response, error in
+            if response != nil {
+                print("\nAccounts: ")
+                for account in response! {
+                    print(account.name, account.id_account, account.id_site_organization)
+                }
+                
+            }else{
+                print("Problemas al consultar los attachments: \(error?.message)")
+            }
+        })
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Paybook.api_key = "YOUR_API_KEY"
-        getUsers()
+        
+        
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-   
-
+    
+    
+    
 }

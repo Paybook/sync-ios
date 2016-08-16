@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2aA-u3-wHG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2SS-uE-6s1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -48,7 +48,49 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="432"/>
+            <point key="canvasLocation" x="317" y="449"/>
+        </scene>
+        <!--Unit Test New-->
+        <scene sceneID="SGH-Fj-goy">
+            <objects>
+                <viewController id="2SS-uE-6s1" customClass="UnitTestNew" customModule="Paybook_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oeV-sF-3uX"/>
+                        <viewControllerLayoutGuide type="bottom" id="KLM-uf-fGH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DtD-4P-nZe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="API KEY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wXA-Lb-B8z">
+                                <rect key="frame" x="195" y="133" width="210" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6UJ-CC-Una">
+                                <rect key="frame" x="195" y="191" width="210" height="30"/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.62745098040000002" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Test">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="test:" destination="2SS-uE-6s1" eventType="touchUpInside" id="7RE-6f-u9c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wXA-Lb-B8z" firstAttribute="centerX" secondItem="DtD-4P-nZe" secondAttribute="centerX" id="ZGG-zx-l3w"/>
+                            <constraint firstItem="6UJ-CC-Una" firstAttribute="centerX" secondItem="DtD-4P-nZe" secondAttribute="centerX" id="tAc-d9-UXt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="input_API_KEY" destination="wXA-Lb-B8z" id="mck-3a-HfB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WcR-tI-QCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="317" y="1109"/>
         </scene>
         <!--Quickstart sat View Controller-->
         <scene sceneID="l0N-LB-75e">

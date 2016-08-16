@@ -104,6 +104,10 @@ public class Attachments : Paybook {
         
     }
     
+    
+    
+    
+    
     // Return ([Attachments]) # Attachments in completionHandler
     /** Example to get Attachments
      
@@ -160,6 +164,73 @@ public class Attachments : Paybook {
         
        
     }
+    
+    
+    
+    
+    
+    // Return ([Attachments]) # Attachments in completionHandler
+    /** Example to get Attachments
+     
+     Attachments.get([mySession], id_user: nil, completionHandler: {
+     response, error in
+     print("array: \(response), \(error)")
+     })
+     */
+    
+    public class func get(session: Session?,id_user: String?,options: [String:AnyObject] ,completionHandler: (([Attachments]?, PaybookError?) -> ())?){
+        
+        
+        let url = "https://sync.paybook.com/v1/attachments"
+        var data = [String: AnyObject]()
+        
+        if session == nil && id_user == nil{
+            if completionHandler != nil {
+                completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
+            }
+        }else{
+            
+            if session != nil{
+                data.update(["token" : session!.token])
+            }
+            
+            if id_user != nil{
+                data.update(["id_user": id_user!])
+            }
+            
+            data.update(options)
+            
+            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+                response, error in
+                
+                if response != nil {
+                    var array = [Attachments]()
+                    
+                    if let responseArray = response!["response"] as? NSArray{
+                        
+                        for (value) in responseArray{
+                            array.append(Attachments(dict: value as! NSDictionary))
+                        }
+                        if completionHandler != nil {
+                            completionHandler!(array,error)
+                        }
+                    }
+                    
+                }else{
+                    if completionHandler != nil {
+                        completionHandler!(nil,error)
+                    }
+                }
+            })
+            
+        }
+        
+        
+    }
+    
+
+    
+    
     
     
     
@@ -258,6 +329,55 @@ public class Attachments : Paybook {
         }
         
         
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Return (Dictionary [String:AnyObject])
+    /** Example to get options
+     
+     var dict = Attachments.get_options()
+     
+     //Example response:
+     dict = [
+        "id_account" :	"String"                    //Filters by account ID.
+        "id_attachment_type" :	"String"            //Attachment Type ID.
+        "id_credential" : "String"                  //Credential ID.
+        "id_transaction" :	"String"                //Transaction ID.
+        "is_valid" : "Number"                       //Is attachment valid.
+        "dt_refresh_from" :	"Timestamp"             //Filters by transaction refresh date, expected UNIX timestamp.
+        "dt_refresh_to" :	"Timestamp"             //Filters by transaction refresh date, expected UNIX timestamp.
+        "fields" :	"String"                        //Select fields to be returned.
+        "limit" :	"Number"                        //Limit the number of rows to be returned.
+        "skip" :	"Number"                        //Skip rows to be returned.
+        "order" :	"String"                        //Order the rows to be returned.
+     ]
+     */
+
+    public class func get_options() -> [String:AnyObject]{
+        
+        let dict : [String:AnyObject] = [
+            "id_account" :	"String",                   //Filters by account ID.
+            "id_attachment_type" :	"String",           //Attachment Type ID.
+            "id_credential" : "String",                 //Credential ID.
+            "id_transaction" :	"String",               //Transaction ID.
+            "is_valid" : "Number",                      //Is attachment valid.
+            "dt_refresh_from" :	"Timestamp",            //Filters by transaction refresh date, expected UNIX timestamp.
+            "dt_refresh_to" :	"Timestamp",            //Filters by transaction refresh date, expected UNIX timestamp.
+            "fields" :	"String",                       //Select fields to be returned.
+            "limit" :	"Number",                       //Limit the number of rows to be returned.
+            "skip" :	"Number",                       //Skip rows to be returned.
+            "order" :	"String"                        //Order the rows to be returned.
+        ]
+        
+        return dict
     }
     
     
