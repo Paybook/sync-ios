@@ -1,4 +1,4 @@
-# Paybook iOS Library V1.0.9
+# Paybook iOS Library V1.1.0
 
 Esta es la librería de Paybook para iOS. Mediante esta librería usted puede implementar el API REST de Paybook de manera rapida y sencilla a través de sus clases y métodos.
 
@@ -32,7 +32,7 @@ use_frameworks!
 
 target 'YOUR_PROJECT_NAME' do
 use_frameworks!
-pod 'Paybook', '~> 1.0.9'
+pod 'Paybook', '~> 1.1.0'
 end
 ```
 
@@ -81,7 +81,7 @@ Estructura de los atributos de la clase:
 
 | Account         |                                  
 | -------------- | 
-| + str id_account <br> + str id_external <br> + str id_user <br> + str id_credential <br> + str id_site <br> + str id_site_organization <br> + str name <br> + str number <br> + float balance <br> + str site <br> + str dt_refresh  |
+| + str id_account <br> + str id_external <br> + str id_user <br> + str id_credential <br> + str id_site <br> + str id_site_organization <br> + str name <br> + str number <br> + float balance <br> + str site <br> + int dt_refresh  |
 
 Descripción de los métodos de la clase:
 
@@ -95,7 +95,7 @@ Estructura de los atributos de la clase:
 
 | Attachments         |                                  
 | -------------- | 
-| + str id_account <br> + str id_external <br> + str id_user <br> + str id_attachment_type <br> + str id_transaction <br> + str file <br> + str extra <br> + str url <br> + str dt_refresh |
+| + str id_account <br> + str id_external <br> + str id_user <br> + str id_attachment_type <br> + str id_transaction <br> + str file <br> + str extra <br> + str url <br> + int dt_refresh |
 
 Descripción de los métodos de la clase:
 
@@ -169,7 +169,7 @@ Estructura de los atributos de la clase:
 
 | Transactions         |                                  
 | -------------- | 
-| + str id_transaction <br> + str id_user <br> + str id_external <br> + str id_site <br> + str id_site_organization <br> + str id_site_organization_type <br> + str id_account <br> + str id_account_type <br> + str is_disable <br> + str description <br> + float amount <br> + str dt_transaction <br> + str dt_refresh   |
+| + str id_transaction <br> + str id_user <br> + str id_external <br> + str id_site <br> + str id_site_organization <br> + str id_site_organization_type <br> + str id_account <br> + str id_account_type <br> + str is_disable <br> + str description <br> + float amount <br> + int dt_transaction <br> + int dt_refresh   |
 
 Descripción de los métodos de la clase:
 
@@ -185,7 +185,7 @@ Estructura de los atributos de la clase:
 
 | User         |                                  
 | -------------- | 
-| + str name <br> + str id_user <br> + str id_external <br> + str dt_create <br> + str dt_modify   |
+| + str name <br> + str id_user <br> + str id_external <br> + int dt_create <br> + int dt_modify   |
 
 Descripción de los métodos de la clase:
 

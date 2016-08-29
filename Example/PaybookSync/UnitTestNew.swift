@@ -230,7 +230,9 @@ class UnitTestNew : UIViewController {
     
     
     func getTransactions(){
-        Transaction.get(self.session, id_user: nil, completionHandler: {
+      
+        
+        Transaction.get(self.session, id_user: nil ,completionHandler: {
             transaction_array, error in
             if transaction_array != nil {
                 print("\nTransactions: ")
