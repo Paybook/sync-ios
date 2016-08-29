@@ -21,7 +21,7 @@ public class Attachments : Paybook {
     public var extra : String!
     public var url : String!
     public var mime : String!
-    public var dt_refresh : String!
+    public var dt_refresh : Int!
    
     
     // Attachments
@@ -38,7 +38,7 @@ public class Attachments : Paybook {
         self.file = dict["file"] as? String
         self.extra = dict["extra"] as? String
         self.url = dict["url"] as? String
-        self.dt_refresh = dict["dt_refresh"] as? String
+        self.dt_refresh = dict["dt_refresh"] as? Int
         
     }
     

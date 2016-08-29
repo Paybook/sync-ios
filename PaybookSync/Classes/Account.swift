@@ -21,7 +21,7 @@ public class Account : Paybook {
     public var number : String!
     public var balance : Double = 0.0
     public var site : String!
-    public var dt_refresh : String!
+    public var dt_refresh : Int!
     
     
     
@@ -41,7 +41,7 @@ public class Account : Paybook {
         self.number = dict["number"] as? String
         
         self.site = dict["site"] as? String
-        self.dt_refresh = dict["dt_refresh"] as? String
+        self.dt_refresh = dict["dt_refresh"] as? Int
         
         if let balance = dict["balance"] as? Double{
             self.balance = balance

@@ -33,7 +33,7 @@ class UnitTestNew : UIViewController {
             response,error in
             if response != nil {
                 self.user = response![0]
-                print("User: \(self.user.name) \(self.user.id_user)")
+                print("User: \(self.user.name) \(self.user.id_user) \(self.user.dt_create)")
                 self.createSession()
             }
         }
@@ -236,6 +236,7 @@ class UnitTestNew : UIViewController {
                 print("\nTransactions: ")
                 for transaction in transaction_array! {
                     print("\(transaction.description), $\(transaction.amount) ", transaction.id_account)
+                    print("Date",transaction.dt_transaction)
                 }
                 self.getAttachments()
             }else{

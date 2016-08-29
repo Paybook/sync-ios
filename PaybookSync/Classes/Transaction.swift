@@ -22,8 +22,8 @@ public class Transaction : Paybook {
     public var is_disable : String!
     public var description : String!
     public var amount : Double = 0.0
-    public var dt_transaction : String!
-    public var dt_refresh : String!
+    public var dt_transaction : Int!
+    public var dt_refresh : Int!
     
     
     
@@ -42,8 +42,8 @@ public class Transaction : Paybook {
         self.is_disable = dict["is_disable"] as? String
         self.description = dict["description"] as? String
         self.amount = dict["amount"] as! Double
-        self.dt_transaction = dict["dt_transaction"] as? String
-        self.dt_refresh = dict["dt_refresh"] as? String
+        self.dt_transaction = dict["dt_transaction"] as! Int
+        self.dt_refresh = dict["dt_refresh"] as! Int
     }
     
     

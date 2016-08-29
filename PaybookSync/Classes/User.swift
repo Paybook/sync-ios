@@ -15,8 +15,8 @@ public class User : Paybook {
     public var id_user : String!
     public var id_external : String!
     public var name : String!
-    public var dt_create : NSDate!
-    public var dt_modify : NSDate!
+    public var dt_create : Int!
+    public var dt_modify : Int!
     
     
     
@@ -36,8 +36,8 @@ public class User : Paybook {
         
         self.id_user = dic["id_user"] as? String
         self.id_external = dic["id_external"] as? String
-        self.dt_create = dic["dt_create"] as? NSDate
-        self.dt_modify = dic["dt_modify"] as? NSDate
+        self.dt_create = dic["dt_create"] as? Int
+        self.dt_modify = dic["dt_modify"] as? Int
         
     }
     
@@ -70,8 +70,8 @@ public class User : Paybook {
                         if let user = responseObject[0] as? NSDictionary {
                             self.id_user = user["id_user"] as? String
                             self.id_external = user["id_external"] as? String
-                            self.dt_create = user["dt_create"] as? NSDate
-                            self.dt_modify = user["dt_modify"] as? NSDate
+                            self.dt_create = user["dt_create"] as? Int
+                            self.dt_modify = user["dt_modify"] as? Int
                             self.name = user["name"] as? String
                             
                             if completionHandler != nil {
@@ -109,8 +109,8 @@ public class User : Paybook {
                     if let responseObject = response!["response"] as? NSDictionary{
                         self.id_user = responseObject["id_user"] as? String
                         self.id_external = responseObject["id_external"] as? String
-                        self.dt_create = responseObject["dt_create"] as? NSDate
-                        self.dt_modify = responseObject["dt_modify"] as? NSDate
+                        self.dt_create = responseObject["dt_create"] as? Int
+                        self.dt_modify = responseObject["dt_modify"] as? Int
                         
                         if completionHandler != nil {
                             completionHandler!(self,error)

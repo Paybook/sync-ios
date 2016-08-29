@@ -20,7 +20,6 @@
 		3EA8F215C9C1432D74E5CCA4834AA8C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2959D264574F227296E36F7CDF2E4F4F /* ResponseSerialization.swift */; };
 		4081EA628AF0B73AC51FFB9D7AB3B89E /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101C763FD5409006D69EDB82815E4A61 /* Manager.swift */; };
 		4754AD20D35E594DC21C69BBD2976060 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53957CF9716F76388CF6C28A34CCAB /* Error.swift */; };
-		4E542DA23DC06BAD48F403F84FBD7864 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395FBE4CE9C0D6BAEBAF8907F0C9C46 /* Options.swift */; };
 		5BC19E6E0F199276003F0AF96838BCE5 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DC3EB7B14F56C5823591E484CC06DC /* Upload.swift */; };
 		5CB05FBCB32D21E194B5ECF680CB6AE0 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BCAC7849E43619A0E6BA6D3291D195 /* Download.swift */; };
 		62E8346F03C03E7F4D631361F325689E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC2C7A48545D8C54D52554343225FB8 /* Response.swift */; };
@@ -122,7 +121,6 @@
 		9F309393ECFC0276662157DECA991DDA /* Paybook.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Paybook.modulemap; sourceTree = "<group>"; };
 		9FD74E0A1B7122513F9BCD2B66B65219 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		A149BF2819128352A98494A4402603EE /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		A395FBE4CE9C0D6BAEBAF8907F0C9C46 /* Options.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		AB714D2EF499EE0EF3E1957151533A5D /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		AE6827D6CBD3F8B59B79641ABF6ED159 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		B9EA7256AEB7B7D95A23701FA29AF2B2 /* Pods-Paybook_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Paybook_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -341,7 +339,6 @@
 				CFFA3D0B72C6559FD0ACC29B69D15448 /* Catalogues.swift */,
 				DE46B51A5DB349C0A237135AAD526E1E /* Credentials.swift */,
 				CA53957CF9716F76388CF6C28A34CCAB /* Error.swift */,
-				A395FBE4CE9C0D6BAEBAF8907F0C9C46 /* Options.swift */,
 				67E1B90F2AF2F8F12E2CC029BBA6BAE1 /* Paybook.swift */,
 				CF7986199A02B957D647B87262393815 /* Session.swift */,
 				5B451AA7963B06F348580FFC5E411A1F /* Transaction.swift */,
@@ -549,7 +546,6 @@
 				C39DFF92BD3644BCF011D44B9EEA577B /* Catalogues.swift in Sources */,
 				E08EC9A416EDE5EDFE2DB4C1F5F46DF5 /* Credentials.swift in Sources */,
 				4754AD20D35E594DC21C69BBD2976060 /* Error.swift in Sources */,
-				4E542DA23DC06BAD48F403F84FBD7864 /* Options.swift in Sources */,
 				0C0A551A2EB55FD6A8B5B421A2AC70CD /* Paybook-dummy.m in Sources */,
 				9A9376DE205A2744844F4C871AA588AD /* Paybook.swift in Sources */,
 				7E1E44BF441D67B3D26DB6FC169E6585 /* Session.swift in Sources */,

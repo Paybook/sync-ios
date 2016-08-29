@@ -151,6 +151,7 @@ class Quickstart_normal_bank_ViewController: UIViewController {
                 print("\nTransactions: ")
                 for transaction in transaction_array! {
                     print("\(transaction.description), $\(transaction.amount) ")
+                    
                 }
                 self.getAttachments()
             }else{
