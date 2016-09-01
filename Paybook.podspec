@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Paybook'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'Paybook is a library to take advantage of the Paybook Financial API (Sync).'
 
 # This description is used to generate tags and improve search results.

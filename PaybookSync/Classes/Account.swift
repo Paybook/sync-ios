@@ -18,9 +18,9 @@ public class Account : Paybook {
     public var id_site : String!
     public var id_site_organization : String!
     public var name : String!
-    public var number : String!
+    public var number : Int!
     public var balance : Double = 0.0
-    public var site : String!
+    public var site : AnyObject!
     public var dt_refresh : Int!
     
     
@@ -38,16 +38,21 @@ public class Account : Paybook {
         self.id_site = dict["id_site"] as? String
         self.id_site_organization = dict["id_site_organization"] as? String
         self.name = dict["name"] as? String
-        self.number = dict["number"] as? String
-        
-        self.site = dict["site"] as? String
+        self.number = dict["number"] as? Int
         self.dt_refresh = dict["dt_refresh"] as? Int
+        
+        if dict["site"] != nil {
+            self.site = dict["site"]! as AnyObject
+        }
         
         if let balance = dict["balance"] as? Double{
             self.balance = balance
         }else{
             self.balance = 0
         }
+        
+        
+        
     }
     
     

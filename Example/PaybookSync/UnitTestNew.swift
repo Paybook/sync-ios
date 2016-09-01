@@ -47,7 +47,7 @@ class UnitTestNew : UIViewController {
             if session_response != nil {
                 self.session = session_response
                 self.getCatalogueSite()
-                
+                //self.getAccounts()
             }else{
                 print("No se pudo crear la session: \(error?.message)")
             }
@@ -237,7 +237,7 @@ class UnitTestNew : UIViewController {
             if transaction_array != nil {
                 print("\nTransactions: ")
                 for transaction in transaction_array! {
-                    print("\(transaction.description), $\(transaction.amount) ", transaction.id_account)
+                    print("\(transaction.description), $\(transaction.amount) ", transaction.id_account, transaction.is_disable)
                     print("Date",transaction.dt_transaction)
                 }
                 self.getAttachments()
@@ -277,7 +277,7 @@ class UnitTestNew : UIViewController {
             if response != nil {
                 print("\nAccounts: ")
                 for account in response! {
-                    print(account.name, account.id_account, account.id_site_organization)
+                    print(account.name, account.id_account, "\(account.number)", account.site.valueForKey("avatar"))
                 }
                 
             }else{

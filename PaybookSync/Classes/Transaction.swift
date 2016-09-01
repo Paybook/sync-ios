@@ -19,7 +19,7 @@ public class Transaction : Paybook {
     public var id_site_organization_type : String!
     public var id_account : String!
     public var id_account_type : String!
-    public var is_disable : String!
+    public var is_disable : Bool!
     public var description : String!
     public var amount : Double = 0.0
     public var dt_transaction : Int!
@@ -39,7 +39,7 @@ public class Transaction : Paybook {
         self.id_site_organization_type = dict["id_site_organization_type"] as? String
         self.id_account = dict["id_account"] as? String
         self.id_account_type = dict["id_account_type"] as? String
-        self.is_disable = dict["is_disable"] as? String
+        self.is_disable = dict["is_disable"] as? Bool
         self.description = dict["description"] as? String
         self.amount = dict["amount"] as! Double
         self.dt_transaction = dict["dt_transaction"] as! Int
