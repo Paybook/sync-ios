@@ -29,6 +29,13 @@ class ViewController: UIViewController, UITextViewDelegate {
         textView.endEditing(true)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        Test(self)
+        
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

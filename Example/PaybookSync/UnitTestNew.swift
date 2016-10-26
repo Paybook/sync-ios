@@ -9,7 +9,7 @@
 import UIKit
 import Paybook
 
-class UnitTestNew : UIViewController {
+class UnitTestNew : UIViewController, UITextFieldDelegate {
     
     @IBAction func test(sender: AnyObject) {
         Paybook.api_key = input_API_KEY.text!
@@ -270,22 +270,46 @@ class UnitTestNew : UIViewController {
     
     func getAccounts(){
         
-        print("\nAccount : ")
+       // print("\nAccount : ")
         
         Account.get(session, id_user: nil, completionHandler: {
             response, error in
             if response != nil {
                 print("\nAccounts: ")
                 for account in response! {
-                    print(account.name, account.id_account, "\(account.number)", account.site.valueForKey("avatar"))
+                    print(account.name, account.id_account, "\(account.number)", account.id_credential)
                 }
                 
             }else{
                 print("Problemas al consultar los attachments: \(error?.message)")
             }
         })
+        
+        
+        Credentials.get(session, id_user: nil, completionHandler: {
+            response, error in
+            if response != nil {
+                print("\nCredentials: ")
+                for account in response! {
+                    print(account.id_credential, account.id_site_organization_type)
+                }
+                
+            }else{
+                print("Problemas al consultar los attachments: \(error?.message)")
+            }
+            
+        })
+        
+    
     }
     
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        test(self)
+        
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

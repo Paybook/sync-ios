@@ -31,6 +31,9 @@ public class Account : Paybook {
     
     convenience init (dict: NSDictionary){
         self.init()
+        
+        print("Dict: ",dict["id_credential"] as? String)
+        
         self.id_account = dict["id_account"] as? String
         self.id_external = dict["id_external"] as? String
         self.id_user = dict["id_user"] as? String

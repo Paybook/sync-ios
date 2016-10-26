@@ -196,6 +196,13 @@ class Quickstart_token_bank_ViewController: UIViewController {
         })
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        sendToken(self)
+        
+        return false
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

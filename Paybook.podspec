@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Paybook'
-  s.version          = '1.1.1'
+  s.version          = '1.2.0'
   s.summary          = 'Paybook is a library to take advantage of the Paybook Financial API (Sync).'
 
 # This description is used to generate tags and improve search results.
@@ -37,5 +37,5 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-    s.dependency 'Alamofire', '~> 3.4'
+    s.dependency 'Alamofire', '~> 3.5.0'
 end
