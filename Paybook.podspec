@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Paybook'
-  s.version          = '1.3.1'
+  s.version          = '1.3.2'
   s.summary          = 'Paybook is a library to take advantage of the Paybook Financial API (Sync).'
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
