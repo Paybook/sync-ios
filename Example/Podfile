@@ -1,14 +1,16 @@
 use_frameworks!
-platform :ios, '10.0'
+platform :ios, '10.1'
 
 target 'Paybook_Example' do
     pod 'Paybook', :path => '../'
-    
+
     target 'Paybook_Tests' do
         inherit! :search_paths
         
     end
 end
+
+
 
 
 post_install do |installer|

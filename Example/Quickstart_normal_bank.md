@@ -40,7 +40,7 @@ use_frameworks!
 
 target 'YOUR_PROJECT_NAME' do
     use_frameworks!
-    pod 'Paybook', '~> 1.1.1'
+    pod 'Paybook', '~> 1.3.3'
 end
 ```
 

@@ -10,6 +10,7 @@
 		1414A2321D1B4DE90027A655 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1414A2311D1B4DE90027A655 /* UnitTest.swift */; };
 		141F55A31D6259AF00B4E8AB /* UnitTestNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141F55A21D6259AF00B4E8AB /* UnitTestNew.swift */; };
 		142B0AC61D272791005EC3AF /* Quickstart_sat_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142B0AC51D272791005EC3AF /* Quickstart_sat_ViewController.swift */; };
+		14CF80741EC2FD44001892C8 /* .swift-version in Resources */ = {isa = PBXBuildFile; fileRef = 14CF80731EC2FD44001892C8 /* .swift-version */; };
 		14E4434D1D2AFEB600152DF8 /* Quickstart_normal_bank.md in Sources */ = {isa = PBXBuildFile; fileRef = 14E4434C1D2AFEB600152DF8 /* Quickstart_normal_bank.md */; };
 		14E4434F1D2AFFB900152DF8 /* Quickstart_token_bank.md in Sources */ = {isa = PBXBuildFile; fileRef = 14E4434E1D2AFFB900152DF8 /* Quickstart_token_bank.md */; };
 		14E443511D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E443501D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift */; };
@@ -40,6 +41,7 @@
 		1414A2311D1B4DE90027A655 /* UnitTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		141F55A21D6259AF00B4E8AB /* UnitTestNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitTestNew.swift; sourceTree = "<group>"; };
 		142B0AC51D272791005EC3AF /* Quickstart_sat_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quickstart_sat_ViewController.swift; sourceTree = "<group>"; };
+		14CF80731EC2FD44001892C8 /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
 		14E4434C1D2AFEB600152DF8 /* Quickstart_normal_bank.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Quickstart_normal_bank.md; sourceTree = "<group>"; };
 		14E4434E1D2AFFB900152DF8 /* Quickstart_token_bank.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Quickstart_token_bank.md; sourceTree = "<group>"; };
 		14E443501D2B00F600152DF8 /* Quickstart_normal_bank_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quickstart_normal_bank_ViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				14E4434C1D2AFEB600152DF8 /* Quickstart_normal_bank.md */,
 				14E4434E1D2AFFB900152DF8 /* Quickstart_token_bank.md */,
 				AAC9480DB06646F8BF620775 /* LICENSE */,
+				14CF80731EC2FD44001892C8 /* .swift-version */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14CF80741EC2FD44001892C8 /* .swift-version in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -487,12 +491,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = "";
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -527,10 +531,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = "";
+				SWIFT_VERSION = 3.0.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -548,7 +552,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Paybook\"",
 				);
 				INFOPLIST_FILE = PaybookSync/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "PaybookSync-Example";
@@ -566,7 +570,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PaybookSync/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "PaybookSync-Example";
