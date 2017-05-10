@@ -9,19 +9,19 @@
 import Foundation
 
 
-public class Account : Paybook {
+open class Account : Paybook {
     
-    public var id_account : String!
-    public var id_external : String!
-    public var id_user : String!
-    public var id_credential : String!
-    public var id_site : String!
-    public var id_site_organization : String!
-    public var name : String!
-    public var number : Int!
-    public var balance : Double = 0.0
-    public var site : AnyObject!
-    public var dt_refresh : Int!
+    open var id_account : String!
+    open var id_external : String!
+    open var id_user : String!
+    open var id_credential : String!
+    open var id_site : String!
+    open var id_site_organization : String!
+    open var name : String!
+    open var number : Int!
+    open var balance : Double = 0.0
+    open var site : AnyObject!
+    open var dt_refresh : Int!
     
     
     
@@ -72,7 +72,7 @@ public class Account : Paybook {
      })
      */
     
-    public class func get(session: Session?,id_user: String?, completionHandler: (([Account]?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?, completionHandler: (([Account]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/accounts"
         var data = [String: AnyObject]()
@@ -84,17 +84,25 @@ public class Account : Paybook {
         }else{
             
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
-            
            
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate , completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -136,7 +144,7 @@ public class Account : Paybook {
      })
      */
     
-    public class func get(session: Session?,id_user: String?,options: [String:AnyObject],completionHandler: (([Account]?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?,options: [String:AnyObject],completionHandler: (([Account]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/accounts"
         var data = [String: AnyObject]()
@@ -147,20 +155,27 @@ public class Account : Paybook {
             }
         }else{
             
-            
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
-            
             
             data.update(options)
             
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate ,completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -192,17 +207,17 @@ public class Account : Paybook {
     
    
     
-    public class func get_options() -> [String:AnyObject]{
+    open class func get_options() -> [String:String]{
         
         
-        let dict : [String:AnyObject] = [
-            "id_account" :	"String",               //Account ID.
-            "id_credential" :	"String",           //Credentials ID.
-            "id_site" :	"String",                   //Site ID.
-            "id_site_organization" : "String",      //Site Organization ID.
-            "id_site_organization_type" : "String", //Site Organization Type ID.
+        let dict = [
+            "id_account" :	"String" ,               //Account ID.
+            "id_credential" :	"String" ,           //Credentials ID.
+            "id_site" :	"String" ,                   //Site ID.
+            "id_site_organization" : "String" ,      //Site Organization ID.
+            "id_site_organization_type" : "String" , //Site Organization Type ID.
             "fields" :	"String",                   //Select fields to be returned.
-            "limit" : "Int",                        //Limit the number of rows to be returned.
+            "limit" : "Int" ,                        //Limit the number of rows to be returned.
             "skip" : "Int",                         //Skip rows to be returned.
             "order" : "String"                      //Order the rows to be returned.
         ]

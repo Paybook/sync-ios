@@ -18,10 +18,10 @@ public struct Account_type {
     public static func get_options() -> [String:AnyObject]{
         
         let dict : [String:AnyObject] = [
-            "fields" :	"String",                   //Select fields to be returned.
-            "limit" :	"Number",                   //Limit the number of rows to be returned.
-            "skip" :	"Number",                   //Skip rows to be returned.
-            "order" :	"String"                    //Order the rows to be returned.
+            "fields" :	"String" as AnyObject,                   //Select fields to be returned.
+            "limit" :	"Number" as AnyObject,                   //Limit the number of rows to be returned.
+            "skip" :	"Number" as AnyObject,                   //Skip rows to be returned.
+            "order" :	"String" as AnyObject                    //Order the rows to be returned.
         ]
         
         return dict
@@ -35,10 +35,10 @@ public struct Attachment_type {
     
     public static func get_options() -> [String:AnyObject]{
         let dict : [String:AnyObject] = [
-            "fields" :	"String",                   //Select fields to be returned.
-            "limit" :	"Number",                   //Limit the number of rows to be returned.
-            "skip" :	"Number",                   //Skip rows to be returned.
-            "order" :	"String"                    //Order the rows to be returned.
+            "fields" :	"String" as AnyObject,                   //Select fields to be returned.
+            "limit" :	"Number" as AnyObject,                   //Limit the number of rows to be returned.
+            "skip" :	"Number" as AnyObject,                   //Skip rows to be returned.
+            "order" :	"String" as AnyObject                    //Order the rows to be returned.
         ]
         return dict
     }
@@ -51,10 +51,10 @@ public struct Country {
     
     public static func get_options() -> [String:AnyObject]{
         let dict : [String:AnyObject] = [
-            "fields" :	"String",                   //Select fields to be returned.
-            "limit" :	"Number",                   //Limit the number of rows to be returned.
-            "skip" :	"Number",                   //Skip rows to be returned.
-            "order" :	"String"                    //Order the rows to be returned.
+            "fields" :	"String" as AnyObject,                   //Select fields to be returned.
+            "limit" :	"Number" as AnyObject,                   //Limit the number of rows to be returned.
+            "skip" :	"Number" as AnyObject,                   //Skip rows to be returned.
+            "order" :	"String" as AnyObject                    //Order the rows to be returned.
         ]
         return dict
     }
@@ -69,13 +69,13 @@ public struct Site {
     
     public static func get_options() -> [String:AnyObject]{
         let dict : [String:AnyObject] = [
-            "id_site" :	"String",                       //Site ID.
-            "id_site_organization" : "String",          //Site Organization ID.
-            "id_site_organization_type" : "String",     //Site Organization Type ID.
-            "fields" :	"String",                       //Select fields to be returned.
-            "limit" :	"Number",                       //Limit the number of rows to be returned.
-            "skip" :	"Number",                       //Skip rows to be returned.
-            "order" :	"String"                        //Order the rows to be returned.
+            "id_site" :	"String" as AnyObject,                       //Site ID.
+            "id_site_organization" : "String" as AnyObject,          //Site Organization ID.
+            "id_site_organization_type" : "String" as AnyObject,     //Site Organization Type ID.
+            "fields" :	"String" as AnyObject,                       //Select fields to be returned.
+            "limit" :	"Number" as AnyObject,                       //Limit the number of rows to be returned.
+            "skip" :	"Number" as AnyObject,                       //Skip rows to be returned.
+            "order" :	"String" as AnyObject                        //Order the rows to be returned.
         ]
         return dict
     }
@@ -101,13 +101,13 @@ public struct Site_organization {
     
     public static func get_options() -> [String:AnyObject]{
         let dict : [String:AnyObject] = [
-            "id_site_organization" : "String",          //Site Organization ID.
-            "id_site_organization_type" : "String",     //Site Organization Type ID.
-            "id_country" : "String",                    //Country ID.
-            "fields" :	"String",                       //Select fields to be returned.
-            "limit" :	"Number",                       //Limit the number of rows to be returned.
-            "skip" :	"Number",                       //Skip rows to be returned.
-            "order" :	"String"                        //Order the rows to be returned.
+            "id_site_organization" : "String" as AnyObject,          //Site Organization ID.
+            "id_site_organization_type" : "String" as AnyObject,     //Site Organization Type ID.
+            "id_country" : "String" as AnyObject,                    //Country ID.
+            "fields" :	"String" as AnyObject,                       //Select fields to be returned.
+            "limit" :	"Number" as AnyObject,                       //Limit the number of rows to be returned.
+            "skip" :	"Number" as AnyObject,                       //Skip rows to be returned.
+            "order" :	"String" as AnyObject                        //Order the rows to be returned.
         ]
         return dict
     }
@@ -116,7 +116,7 @@ public struct Site_organization {
 
 
 
-public class Catalogues : Paybook {
+open class Catalogues : Paybook {
     
     
     // ** MARK Class Methods
@@ -134,7 +134,7 @@ public class Catalogues : Paybook {
 
     */
     
-    public class func get_account_types(session: Session?, id_user: String?,completionHandler: (([Account_type]?, PaybookError?) -> ())?){
+    open class func get_account_types(_ session: Session?, id_user: String?,completionHandler: (([Account_type]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/catalogues/account_types"
         var data = [String: AnyObject]()
@@ -146,25 +146,35 @@ public class Catalogues : Paybook {
         }else{
             
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Account_type]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
-                        for (value) in responseArray{
-                            array.append(Account_type(id_account_type: value["id_account_type"] as! String, name: value["name"] as! String))
+                        for (item) in responseArray{
+                            //array.append(Account_type(id_account_type: value["id_account_type"] as! String, name: value["name"] as! String))
+                            array.append(Account_type(id_account_type: item.value(forKey: "id_account_type") as? String ?? "", name: item.value(forKey: "name") as? String ?? ""))
                         }
                         
                         if completionHandler != nil {
@@ -185,7 +195,7 @@ public class Catalogues : Paybook {
        
     }
     
-    public class func get_account_types(session: Session?, id_user: String?,options: [String:AnyObject],completionHandler: (([Account_type]?, PaybookError?) -> ())?){
+    open class func get_account_types(_ session: Session?, id_user: String?,options: [String:AnyObject],completionHandler: (([Account_type]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/catalogues/account_types"
         var data = [String: AnyObject]()
@@ -197,22 +207,32 @@ public class Catalogues : Paybook {
         }else{
             
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
+            
             data.update(options)
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Account_type]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Account_type(id_account_type: value["id_account_type"] as! String, name: value["name"] as! String))
@@ -249,7 +269,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_attachment_types(session: Session?, id_user: String?,completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
+    open class func get_attachment_types(_ session: Session?, id_user: String?,completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/catalogues/attachment_types"
         var data = [String: AnyObject]()
@@ -261,22 +281,31 @@ public class Catalogues : Paybook {
         }else{
             
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Attachment_type]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Attachment_type(id_attachment_type: value["id_attachment_type"] as? String, name: value["name"] as? String))
@@ -300,7 +329,7 @@ public class Catalogues : Paybook {
         
     }
     
-    public class func get_attachment_types(session: Session?, id_user: String?, options: [String:AnyObject],completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
+    open class func get_attachment_types(_ session: Session?, id_user: String?, options: [String:AnyObject],completionHandler: (([Attachment_type]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/catalogues/attachment_types"
         var data = [String: AnyObject]()
@@ -312,22 +341,31 @@ public class Catalogues : Paybook {
         }else{
             
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             data.update(options)
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Attachment_type]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Attachment_type(id_attachment_type: value["id_attachment_type"] as? String, name: value["name"] as? String))
@@ -365,7 +403,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_countries(session: Session?, id_user: String?,completionHandler: (([Country]?, PaybookError?) -> ())?){
+    open class func get_countries(_ session: Session?, id_user: String?,completionHandler: (([Country]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/countries"
@@ -377,23 +415,31 @@ public class Catalogues : Paybook {
             }
         }else{
             
-            
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Country]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Country(id_country: value["id_country"] as! String, name: value["name"] as! String, code: value["code"] as! String))
@@ -416,7 +462,7 @@ public class Catalogues : Paybook {
 
     }
     
-    public class func get_countries(session: Session?, id_user: String?, options: [String:AnyObject],completionHandler: (([Country]?, PaybookError?) -> ())?){
+    open class func get_countries(_ session: Session?, id_user: String?, options: [String:AnyObject],completionHandler: (([Country]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/countries"
@@ -428,23 +474,32 @@ public class Catalogues : Paybook {
             }
         }else{
             
-            
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
+            
             data.update(options)
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Country]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Country(id_country: value["id_country"] as! String, name: value["name"] as! String, code: value["code"] as! String))
@@ -480,7 +535,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_sites(session: Session?, id_user: String?,is_test: Bool?,completionHandler: (([Site]?, PaybookError?) -> ())?){
+    open class func get_sites(_ session: Session?, id_user: String?,is_test: Bool?,completionHandler: (([Site]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/sites"
@@ -493,25 +548,34 @@ public class Catalogues : Paybook {
             }
         }else{
             if is_test != nil{
-                data.update(["is_test" : is_test!])
+                data.update(["is_test" : is_test! as AnyObject])
             }
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Site]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Site(id_site: value["id_site"] as? String, id_site_organization: value["id_site_organization"] as? String, id_site_organization_type: value["id_site_organization_type"] as? String, name: value["name"] as? String, credentials: value["credentials"] as? NSArray))
@@ -536,7 +600,7 @@ public class Catalogues : Paybook {
         
     }
     
-    public class func get_sites(session: Session?, id_user: String?,is_test: Bool?,options: [String:AnyObject],completionHandler: (([Site]?, PaybookError?) -> ())?){
+    open class func get_sites(_ session: Session?, id_user: String?,is_test: Bool?,options: [String:AnyObject],completionHandler: (([Site]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/sites"
@@ -549,25 +613,35 @@ public class Catalogues : Paybook {
             }
         }else{
             if is_test != nil{
-                data.update(["is_test" : is_test!])
+                data.update(["is_test" : is_test! as AnyObject])
             }
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
+            
             data.update(options)
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Site]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Site(id_site: value["id_site"] as? String, id_site_organization: value["id_site_organization"] as? String, id_site_organization_type: value["id_site_organization_type"] as? String, name: value["name"] as? String, credentials: value["credentials"] as? NSArray))
@@ -604,7 +678,7 @@ public class Catalogues : Paybook {
      })
      
      */
-    public class func get_site_organizations(session: Session?, id_user: String?,completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
+    open class func get_site_organizations(_ session: Session?, id_user: String?,completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/site_organizations"
@@ -617,22 +691,31 @@ public class Catalogues : Paybook {
         }else{
             
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Site_organization]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Site_organization(
@@ -665,7 +748,7 @@ public class Catalogues : Paybook {
         
     }
     
-    public class func get_site_organizations(session: Session?, id_user: String?, options: [String:AnyObject],completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
+    open class func get_site_organizations(_ session: Session?, id_user: String?, options: [String:AnyObject],completionHandler: (([Site_organization]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/catalogues/site_organizations"
@@ -677,23 +760,31 @@ public class Catalogues : Paybook {
             }
         }else{
             
-            
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             data.update(options)
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
                     var array = [Site_organization]()
                     
-                    if let responseArray = response!["response"] as? NSArray{
+                    if let responseArray = response!["response"] as? [AnyObject]{
                         
                         for (value) in responseArray{
                             array.append(Site_organization(

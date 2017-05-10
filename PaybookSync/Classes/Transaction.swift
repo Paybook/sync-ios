@@ -9,21 +9,21 @@
 import Foundation
 
 
-public class Transaction : Paybook {
+open class Transaction : Paybook {
     
-    public var id_transaction : String!
-    public var id_user : String!
-    public var id_external : String!
-    public var id_site : String!
-    public var id_site_organization : String!
-    public var id_site_organization_type : String!
-    public var id_account : String!
-    public var id_account_type : String!
-    public var is_disable : Bool!
-    public var description : String!
-    public var amount : Double = 0.0
-    public var dt_transaction : Int!
-    public var dt_refresh : Int!
+    open var id_transaction : String!
+    open var id_user : String!
+    open var id_external : String!
+    open var id_site : String!
+    open var id_site_organization : String!
+    open var id_site_organization_type : String!
+    open var id_account : String!
+    open var id_account_type : String!
+    open var is_disable : Bool!
+    open var description : String!
+    open var amount : Double = 0.0
+    open var dt_transaction : Int!
+    open var dt_refresh : Int!
     
     
     
@@ -60,7 +60,7 @@ public class Transaction : Paybook {
      })
      */
     
-    public class func get_count( session : Session?,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
+    open class func get_count( _ session : Session?,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/transactions/count"
         var data = [String: AnyObject]()
@@ -72,15 +72,15 @@ public class Transaction : Paybook {
         }else{
             
             
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
-            
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data,authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -114,7 +114,7 @@ public class Transaction : Paybook {
      })
      */
     
-    public class func get(session: Session?,id_user: String?, completionHandler: (([Transaction]?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?, completionHandler: (([Transaction]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/transactions"
@@ -127,15 +127,16 @@ public class Transaction : Paybook {
         }else{
             
             
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data,authenticate: authenticate ,completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -163,7 +164,7 @@ public class Transaction : Paybook {
     }
     
     
-    public class func get(session: Session?,id_user: String?, options: [String:AnyObject],completionHandler: (([Transaction]?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?, options: [String:AnyObject],completionHandler: (([Transaction]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/transactions"
@@ -175,16 +176,16 @@ public class Transaction : Paybook {
             }
         }else{
             
-            
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             data.update(options)
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate,completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -212,13 +213,13 @@ public class Transaction : Paybook {
     }
 
     
-    public class func get_options() -> [String:AnyObject]{
+    open class func get_options() -> [String:String]{
         
-        let dict : [String:AnyObject] = [
-            "id_account" :	"String",                   //Filters by account ID.
-            "id_credential" :	"String",               //Credentials ID.
+        let dict  = [
+            "id_account" :	"String" ,                   //Filters by account ID.
+            "id_credential" :	"String" ,               //Credentials ID.
             "id_site" :	"String",                       //Filters by site ID.
-            "id_site_organization" :	"String",       //Filters by site organization ID.
+            "id_site_organization" : "String",       //Filters by site organization ID.
             "id_site_organization_type" :	"String",   //Filters by site organization type ID.
             "is_disable" :	"Number",                   //Filters by disable transaction.
             "dt_refresh_from" :	"Timestamp",            //Filters by transaction refresh date, expected UNIX timestamp.

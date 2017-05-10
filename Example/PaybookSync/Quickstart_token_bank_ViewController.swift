@@ -10,9 +10,8 @@ import Paybook
 
 class Quickstart_token_bank_ViewController: UIViewController {
 
-    var timer : NSTimer!
+    var timer : Timer!
     var count = 1
-    
     
     var user : User!
     var session : Session!
@@ -23,14 +22,15 @@ class Quickstart_token_bank_ViewController: UIViewController {
     
     @IBOutlet weak var tokenInput: UITextField!
     
-    @IBAction func sendToken(sender: AnyObject) {
+    @IBAction func sendToken(_ sender: AnyObject) {
         
-        let params : [String:String] = ["token": tokenInput.text!]
+        let params : NSDictionary = ["token": tokenInput.text ?? ""]
         print("Send token: \(params)")
+        
         self.credential.set_twofa(self.session, id_user: nil, params: params, completionHandler: {
             response, error in
             if response != nil && response == true{
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
             }else{
                 print("\(error?.message)")
             }
@@ -76,7 +76,7 @@ class Quickstart_token_bank_ViewController: UIViewController {
                 for site in sites_array!{
                     
                     if site.name == "Banorte en su empresa" {
-                        print ("SAT site: \(site.name) \(site.id_site)")
+                        print ("selected: \(site.name) \(site.id_site)")
                         self.site = site
                     }else{
                         print(site.name)
@@ -102,13 +102,13 @@ class Quickstart_token_bank_ViewController: UIViewController {
             "password" : "YOUR_BANK_PASSWORD"
         ]
         
-        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: data, completionHandler: {
+        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: data as NSDictionary, completionHandler: {
             credential_response , error in
             if credential_response != nil {
                 
                 self.credential = credential_response
                 print("\nCheck Status:")
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
                 
             }else{
@@ -123,6 +123,8 @@ class Quickstart_token_bank_ViewController: UIViewController {
         
         credential.get_status(self.session, id_user: nil, completionHandler: {
             response, error in
+            
+            print("response status:",response,"error",error)
             if response != nil{
                 
                 let status = response![response!.count-1]
@@ -137,14 +139,14 @@ class Quickstart_token_bank_ViewController: UIViewController {
                     self.getTransactions()
                     break
                 case 401,405,406,411:
-                    print("User Error \(status["code"])")
+                    print("User Error \(status)")
                     self.timer.invalidate()
                     break
                 case 410:
                     print("Waiting for two-fa \(status["code"])")
                     self.timer.invalidate()
                     break
-                case 500,501,504,505:
+                case 500,501,504,505,508:
                     print("System Error \(status["code"])")
                     self.timer.invalidate()
                     break
@@ -196,7 +198,7 @@ class Quickstart_token_bank_ViewController: UIViewController {
         })
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         sendToken(self)
         

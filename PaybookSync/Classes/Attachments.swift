@@ -8,20 +8,20 @@
 
 import Foundation
 
-public class Attachments : Paybook {
+open class Attachments : Paybook {
     
-    public var id_attachment : String!
-    public var id_account : String!
-    public var id_external : String!
-    public var id_user : String!
-    public var id_attachment_type : String!
-    public var id_transaction : String!
-    public var is_valid : Bool!
-    public var file : String!
-    public var extra : String!
-    public var url : String!
-    public var mime : String!
-    public var dt_refresh : Int!
+    open var id_attachment : String!
+    open var id_account : String!
+    open var id_external : String!
+    open var id_user : String!
+    open var id_attachment_type : String!
+    open var id_transaction : String!
+    open var is_valid : Bool!
+    open var file : String!
+    open var extra : String!
+    open var url : String!
+    open var mime : String!
+    open var dt_refresh : Int!
    
     
     // Attachments
@@ -56,7 +56,7 @@ public class Attachments : Paybook {
      })
      */
     
-    public class func get_count( session : Session?,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
+    open class func get_count( _ session : Session?,id_user : String? , completionHandler: ((Int?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/attachments/count"
         var data = [String: AnyObject]()
@@ -68,15 +68,25 @@ public class Attachments : Paybook {
         }else{
             
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 
@@ -117,7 +127,7 @@ public class Attachments : Paybook {
      })
      */
     
-    public class func get(session: Session?,id_user: String?, completionHandler: (([Attachments]?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?, completionHandler: (([Attachments]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/attachments"
@@ -129,15 +139,24 @@ public class Attachments : Paybook {
             }
         }else{
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -178,7 +197,7 @@ public class Attachments : Paybook {
      })
      */
     
-    public class func get(session: Session?,id_user: String?,options: [String:AnyObject] ,completionHandler: (([Attachments]?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?,options: [String:AnyObject] ,completionHandler: (([Attachments]?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/attachments"
@@ -190,17 +209,19 @@ public class Attachments : Paybook {
             }
         }else{
             
+           
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             data.update(options)
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate,completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -250,28 +271,33 @@ public class Attachments : Paybook {
         mime            : "application/pdf"
      ]
      */
-    public class func get(session: Session?,id_user: String?, id_attachment: String ,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?, id_attachment: String ,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/attachments/\(id_attachment)"
-        var data = [String: AnyObject]()
         
+        var data = ["id_attachment": id_attachment,
+                    "token": ["token" : session!.token]
+        ] as [String : Any]
         if session == nil && id_user == nil{
             if completionHandler != nil {
                 completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
             }
         }else{
             
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             
-            self.get_file("GET", endpoint: url, parameters: data, completionHandler: {
+            
+            
+            self.call("GET", endpoint: url, parameters: nil, authenticate: authenticate,completionHandler: {
                 response, error in
                 if response != nil {
                     if completionHandler != nil {
@@ -291,11 +317,13 @@ public class Attachments : Paybook {
         
     }
 
-    public class func get(session: Session?,id_user: String?, id_attachment: String, extra: Bool ,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?, id_attachment: String, extra: Bool ,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         
         
         let url = "https://sync.paybook.com/v1/attachments/\(id_attachment)/extra"
-        var data = [String: AnyObject]()
+        var data = ["id_attachment": id_attachment,
+                    "token": ["token" : session!.token]
+                    ] as [String : Any]
         
         if session == nil && id_user == nil{
             if completionHandler != nil {
@@ -303,15 +331,23 @@ public class Attachments : Paybook {
             }
         }else{
             
+            
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            /*
+            self.get_file("GET", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: { (response, error) in
+                
+            })
+            */
+            
+            self.call("GET", endpoint: url, parameters: nil, authenticate: authenticate,completionHandler: {
                 response, error in
                 if response != nil {
                     if completionHandler != nil {
@@ -361,13 +397,13 @@ public class Attachments : Paybook {
      ]
      */
 
-    public class func get_options() -> [String:AnyObject]{
+    open class func get_options() -> [String:String]{
         
-        let dict : [String:AnyObject] = [
+        let dict  = [
             "id_account" :	"String",                   //Filters by account ID.
             "id_attachment_type" :	"String",           //Attachment Type ID.
             "id_credential" : "String",                 //Credential ID.
-            "id_transaction" :	"String",               //Transaction ID.
+            "id_transaction" :	"String" ,               //Transaction ID.
             "is_valid" : "Number",                      //Is attachment valid.
             "dt_refresh_from" :	"Timestamp",            //Filters by transaction refresh date, expected UNIX timestamp.
             "dt_refresh_to" :	"Timestamp",            //Filters by transaction refresh date, expected UNIX timestamp.

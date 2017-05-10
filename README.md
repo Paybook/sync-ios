@@ -1,10 +1,10 @@
-# Paybook iOS Library V1.2.0
+# Paybook iOS Library V1.3.1
 
 Esta es la librería de Paybook para iOS. Mediante esta librería usted puede implementar el API REST de Paybook de manera rapida y sencilla a través de sus clases y métodos.
 
 ### Requerimientos
 
-1. Xcode 7.3+
+1. Xcode 8.1+
 2. Gestor de dependencias CocoaPods ($ gem install cocoapods)
 
 ### Instalación
@@ -32,7 +32,7 @@ use_frameworks!
 
 target 'YOUR_PROJECT_NAME' do
 use_frameworks!
-pod 'Paybook', '~> 1.2.0'
+pod 'Paybook', '~> 1.3.1'
 end
 ```
 
@@ -40,6 +40,7 @@ end
 
 - Swift 2.2-   ->   Paybook 1.1.1
 - Swift 2.3    ->   Paybook 1.2.0
+- Swift 3.0+   ->   Paybook 1.3.1
 
 
 

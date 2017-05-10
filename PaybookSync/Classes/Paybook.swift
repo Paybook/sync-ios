@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-public class Paybook {
+open class Paybook {
     
-    public static var api_key = "[your_API_key]"
+    open static var api_key = "[your_API_key]"
     static let baseURLString = "https://sync.paybook.com/v1/"
     
     
@@ -22,44 +22,62 @@ public class Paybook {
 
     // ** MARK Class Methods
     
-    public class func call (method: String, endpoint: String, parameters: NSDictionary?,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
-        var data = [String: AnyObject]()
-        if(parameters != nil){
-            if parameters!["token"] != nil {
-                data = (parameters as? [String: AnyObject])!
-            }else{
-                data = ["api_key" : api_key]
-                // Add parameters in request data
-                data.update(parameters as! Dictionary<String, AnyObject>)
+    open class func call (_ method: String, endpoint: String, parameters: [String:AnyObject]?,authenticate: [String:String]?,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
+        
+       
+        var headers : [String:String] = [
+            "Authorization" : "API_KEY api_key=\(api_key)",
+            "Content-Type": "application/json; charset=utf-8"
+        ]
+        
+        if(authenticate != nil){
+            if authenticate!["token"] != nil {
+                
+                headers = [
+                    "Authorization" : "TOKEN token=\(authenticate!["token"]!)",
+                    "Content-Type": "application/json; charset=utf-8"
+                ]
+                
+                
+            }else if authenticate!["id_user"] != nil {
+                headers = [
+                    "Authorization" : "API_KEY api_key=\(api_key),id_user=\(authenticate!["id_user"]!)",
+                    "Content-Type": "application/json; charset=utf-8"
+                ]
+                
             }
-        }else{
-            data = ["api_key" : api_key]
         }
         
         let url = endpoint
+        let data = parameters
+        
+        
         
         switch method {
         case "GET" :
+           
             
-            
-            Alamofire.request(.GET, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
+            Alamofire.request(url, method: .get, parameters: data, encoding: JSONEncoding.default , headers: headers).responseJSON { response in
                 switch response.result {
-                case .Success(let value):
+                case .success(let value):
                     
-                    if value["code"] as! Int == 200 {
+                    let resp = value as AnyObject
+                    
+                    if resp.value(forKey: "code") as! Int == 200 {
                         
                         if(completionHandler != nil){
                             completionHandler!(value as? NSDictionary, nil)
                         }
                     }else{
                         if(completionHandler != nil){
-                            let error = PaybookError(code: value["code"] as! Int, message: value["message"] as? String, response: value["status"] as? NSDictionary, status: value["status"] as! Bool)
+                            let error = PaybookError(code: resp.value(forKey: "code") as! Int, message: resp.value(forKey: "message") as? String, response: resp.value(forKey: "response") as? NSDictionary, status: resp.value(forKey: "status") as! Bool)
                             completionHandler!(nil, error)
                         }
                     }
                     
-                case .Failure(let error):
-                    let perror = PaybookError(code: error.code, message: error.description, response:nil, status: false)
+                case .failure(let error):
+                    
+                    let perror = PaybookError(code: 400, message: error.localizedDescription, response:nil, status: false)
                     if(completionHandler != nil){
                         completionHandler!(nil, perror)
                     }
@@ -70,53 +88,63 @@ public class Paybook {
             
             break
         case "POST" :
-            Alamofire.request(.POST, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
+            
+            
+            Alamofire.request(url, method: .post, parameters: data, encoding: JSONEncoding.default , headers: headers).responseJSON { response in
                 switch response.result {
-                case .Success(let value):
+                case .success(let value):
                     
-                    if value["code"] as! Int == 200 {
+                    let resp = value as AnyObject
+                    
+                    if resp.value(forKey: "code") as! Int == 200 {
                         
                         if(completionHandler != nil){
                             completionHandler!(value as? NSDictionary, nil)
                         }
                     }else{
                         if(completionHandler != nil){
-                            let error = PaybookError(code: value["code"] as! Int, message: value["message"] as? String, response: value["status"] as? NSDictionary, status: value["status"] as! Bool)
+                            let error = PaybookError(code: resp.value(forKey: "code") as! Int, message: resp.value(forKey: "message") as? String, response: resp.value(forKey: "response") as? NSDictionary, status: resp.value(forKey: "status") as! Bool)
                             completionHandler!(nil, error)
                         }
                     }
                     
-                case .Failure(let error):
-                    let perror = PaybookError(code: error.code, message: error.description, response:nil, status: false)
+                case .failure(let error):
+                    
+                    let perror = PaybookError(code: 400, message: error.localizedDescription, response:nil, status: false)
                     if(completionHandler != nil){
                         completionHandler!(nil, perror)
                     }
                 }
+                
             }
+            
             break
         case "DELETE" :
-            Alamofire.request(.DELETE, url, parameters: data, encoding: .JSON , headers: ["Content-Type": "application/json; charset=utf-8"]).responseJSON { response in
+            Alamofire.request(url, method: .delete, parameters: data, encoding: JSONEncoding.default , headers: headers).responseJSON { response in
                 switch response.result {
-                case .Success(let value):
+                case .success(let value):
                     
-                    if value["code"] as! Int == 200 {
+                    let resp = value as AnyObject
+                    
+                    if resp.value(forKey: "code") as! Int == 200 {
                         
                         if(completionHandler != nil){
                             completionHandler!(value as? NSDictionary, nil)
                         }
                     }else{
                         if(completionHandler != nil){
-                            let error = PaybookError(code: value["code"] as! Int, message: value["message"] as? String, response: value["status"] as? NSDictionary, status: value["status"] as! Bool)
+                            let error = PaybookError(code: resp.value(forKey: "code") as! Int, message: resp.value(forKey: "message") as? String, response: resp.value(forKey: "response") as? NSDictionary, status: resp.value(forKey: "status") as! Bool)
                             completionHandler!(nil, error)
                         }
                     }
+                case .failure(let error):
                     
-                case .Failure(let error):
-                    let perror = PaybookError(code: error.code, message: error.description, response:nil, status: false)
+                    let perror = PaybookError(code: 400, message: error.localizedDescription, response:nil, status: false)
                     if(completionHandler != nil){
                         completionHandler!(nil, perror)
                     }
                 }
+                
             }
             break
         default :
@@ -128,31 +156,62 @@ public class Paybook {
         
     }
     
-    
-    public class func get_file (method: String, endpoint: String, parameters: NSDictionary?,completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
+    /*
+    open class func get_file (_ method: String, endpoint: String, parameters: NSDictionary?,authenticate: NSDictionary?, completionHandler: ((NSDictionary?, PaybookError?) -> ())?){
         var data = [String: AnyObject]()
-        if(parameters != nil){
-            if parameters!["token"] != nil {
-                data = (parameters as? [String: AnyObject])!
-            }else{
-                data = ["api_key" : api_key]
-                // Add parameters in request data
-                data.update(parameters as! Dictionary<String, AnyObject>)
-            }
-        }else{
-            data = ["api_key" : api_key]
-        }
         
+        
+        var headers : [String:String] = [
+            "Authorization" : "API_KEY api_key=\(api_key)",
+            "Content-Type": "application/json; charset=utf-8"
+        ]
+        
+        if(authenticate != nil){
+            if authenticate!["token"] != nil {
+                
+                headers = [
+                    "Authorization" : "TOKEN token=\(authenticate!["token"]!)",
+                    "Content-Type": "application/json; charset=utf-8"
+                ]
+                
+                
+            }else if authenticate!["id_user"] != nil {
+                headers = [
+                    "Authorization" : "API_KEY api_key=\(api_key),id_user=\(authenticate!["id_user"]!)",
+                    "Content-Type": "application/json; charset=utf-8"
+                ]
+                
+            }
+        }
         let url = endpoint
         
         switch method {
         case "GET" :
            
-            var localPath: NSURL?
+            var localPath: URL?
             
-            Alamofire.request(.GET, url, parameters: data, encoding: .JSON).response { request, response, _, error in
+            Alamofire.request(url, method: .post, parameters: data, encoding: JSONEncoding.default , headers: headers).responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    
+                    if(completionHandler != nil){
+                        completionHandler!(value as? NSDictionary, nil)
+                    }
+                    
+                case .failure(let error):
+                    
+                    let perror = PaybookError(code: 400, message: error.localizedDescription, response:nil, status: false)
+                    if(completionHandler != nil){
+                        completionHandler!(nil, perror)
+                    }
+                }
+                
+            }
+            Alamofire.request(url, method: .get, parameters: data, encoding: JSONEncoding.default , headers: headers).response { request, response, _, error in
                 
                 if response?.statusCode == 200 {
+                    
+                    
                     Alamofire.download(.GET, url,parameters: data, destination: { (temporaryURL, response) in
                         let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
                         let pathComponent = response.suggestedFilename
@@ -203,8 +262,8 @@ public class Paybook {
             
             break
         case "POST" :
-            var localPath: NSURL?
-            Alamofire.request(.POST, url, parameters: data, encoding: .JSON).response { request, response, _, error in
+            var localPath: URL?
+            Alamofire.request(.POST, url, parameters: data, encoding: .JSON,headers: headers).response { request, response, _, error in
                 
                 if response?.statusCode == 200 {
                     Alamofire.download(.POST, url,parameters: data, destination: { (temporaryURL, response) in
@@ -245,8 +304,6 @@ public class Paybook {
                     }
                 }
                 
-                
-                
             }
             
             
@@ -259,6 +316,8 @@ public class Paybook {
         
         
     }
+ 
+ */
     
 }
 
@@ -266,7 +325,7 @@ public class Paybook {
 
 
 extension Dictionary {
-    mutating func update(other:Dictionary) {
+    mutating func update(_ other:Dictionary) {
         for (key,value) in other {
             self.updateValue(value, forKey:key)
         }

@@ -10,7 +10,7 @@ import Paybook
 
 class Quickstart_normal_bank_ViewController: UIViewController {
 
-    var timer : NSTimer!
+    var timer : Timer!
     var count = 1
     
     
@@ -84,13 +84,13 @@ class Quickstart_normal_bank_ViewController: UIViewController {
             "password" : "YOUR_PASSWORD"
         ]
         
-        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: dataCredentials, completionHandler: {
+        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: dataCredentials as NSDictionary, completionHandler: {
             credential_response , error in
             if credential_response != nil {
                 
                 self.credential = credential_response
                 print("\nCheck Status:")
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
                 
             }else{

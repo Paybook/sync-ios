@@ -9,16 +9,16 @@
 import Foundation
 
 
-public class Credentials : Paybook {
+open class Credentials : Paybook {
     
-    public var id_credential : String!
-    public var id_site : String!
-    public var username : String!
-    public var id_site_organization : String!
-    public var id_site_organization_type : String!
-    public var ws : String!
-    public var status : String!
-    public var twofa : String!
+    open var id_credential : String!
+    open var id_site : String!
+    open var username : String!
+    open var id_site_organization : String!
+    open var id_site_organization_type : String!
+    open var ws : String!
+    open var status : String!
+    open var twofa : String!
     
     
     // Return a Credentials in completionHandler.
@@ -51,20 +51,30 @@ public class Credentials : Paybook {
         }else{
             
             data = [
-                "id_site" : id_site,
+                "id_site" : id_site as AnyObject,
                 "credentials" : credentials
             ]
             
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
             
-            Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+            
+            Paybook.call("POST", endpoint: url, parameters: data, authenticate: authenticate, completionHandler: {
                 response, error in
                 
                 
@@ -127,7 +137,7 @@ public class Credentials : Paybook {
    
     
     // [NSDictionary]
-    public func get_status( session : Session?,id_user : String?, completionHandler: (([NSDictionary]?, PaybookError?) -> ())? ){
+    open func get_status( _ session : Session?,id_user : String?, completionHandler: (([NSDictionary]?, PaybookError?) -> ())? ){
         
         let url = self.status
         var data = [String: AnyObject]()
@@ -136,18 +146,19 @@ public class Credentials : Paybook {
             if completionHandler != nil {
                 completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
             }
-        }else{
+        }else if url != nil{
             
-            
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            Paybook.call("GET", endpoint: url, parameters: data, completionHandler: {
+            
+            Paybook.call("GET", endpoint: url!, parameters: data, authenticate: authenticate,completionHandler: {
                 response, error in
                 
                 if response != nil {
@@ -170,6 +181,7 @@ public class Credentials : Paybook {
                 }
                 
             })
+
             
         }
 
@@ -177,7 +189,7 @@ public class Credentials : Paybook {
     }
     
     // Bool
-    public func set_twofa( session : Session?,id_user : String?,params: NSDictionary ,completionHandler: ((Bool?, PaybookError?) -> ())? ){
+    open func set_twofa( _ session : Session?,id_user : String?,params: NSDictionary ,completionHandler: ((Bool?, PaybookError?) -> ())? ){
         
         let url = self.twofa
         
@@ -187,20 +199,22 @@ public class Credentials : Paybook {
             if completionHandler != nil {
                 completionHandler!(nil,PaybookError(code: 401, message: "Unauthorized", response: nil, status: false))
             }
-        }else{
+        }else if url != nil{
             data =  [
                 "twofa": params
             ]
             
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+            
+            Paybook.call("POST", endpoint: url!, parameters: data, authenticate: authenticate,completionHandler: {
                 response, error in
                 
                 if response != nil{
@@ -231,7 +245,7 @@ public class Credentials : Paybook {
     // ** MARK Class Methods
     
     // Bool deleted
-    public class func delete( session : Session?,id_user : String? ,id_credential: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
+    open class func delete( _ session : Session?,id_user : String? ,id_credential: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/credentials/\(id_credential)"
         var data = [String: AnyObject]()
@@ -242,16 +256,24 @@ public class Credentials : Paybook {
             }
         }else{
             
-            
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            self.call("DELETE", endpoint: url, parameters: data, completionHandler: {
+            self.call("DELETE", endpoint: url, parameters: data, authenticate: authenticate,completionHandler: {
                 response, error in
                 
                 if response != nil{
@@ -287,7 +309,7 @@ public class Credentials : Paybook {
         print(" \(response), \(error)")
      })
      */
-    public class func get(session: Session?,id_user: String?, completionHandler: (([Credentials]?, PaybookError?) -> ())?){
+    open class func get(_ session: Session?,id_user: String?, completionHandler: (([Credentials]?, PaybookError?) -> ())?){
         
         let url = "https://sync.paybook.com/v1/credentials"
         var data = [String: AnyObject]()
@@ -298,16 +320,24 @@ public class Credentials : Paybook {
             }
         }else{
             
-            
+            /*
+             if session != nil{
+             data.update(["token" : session!.token])
+             }
+             
+             if id_user != nil{
+             data.update(["id_user": id_user!])
+             }*/
+            var authenticate : [String:String] = [:]
             if session != nil{
-                data.update(["token" : session!.token])
+                authenticate.update(["token" : session!.token])
             }
             
             if id_user != nil{
-                data.update(["id_user": id_user!])
+                authenticate.update(["id_user": id_user!])
             }
             
-            self.call("GET", endpoint: url, parameters: data, completionHandler: {
+            self.call("GET", endpoint: url, parameters: data, authenticate: authenticate,completionHandler: {
                 response, error in
                 
                 if response != nil {

@@ -7,10 +7,12 @@
 
 import UIKit
 import Paybook
+import Alamofire
+
 
 class Quickstart_sat_ViewController: UIViewController {
 
-    var timer : NSTimer!
+    var timer : Timer!
     var count = 1
     
     
@@ -40,6 +42,7 @@ class Quickstart_sat_ViewController: UIViewController {
     }
     
     func getUsers(){
+        
         User.get(){
             response,error in
             if response != nil {
@@ -96,7 +99,6 @@ class Quickstart_sat_ViewController: UIViewController {
             
         })
         
-        
     }
     
     
@@ -106,13 +108,13 @@ class Quickstart_sat_ViewController: UIViewController {
             "password" : "YOUR_CIEC"
         ]
         
-        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: data, completionHandler: {
+        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: data as NSDictionary, completionHandler: {
             credential_response , error in
             if credential_response != nil {
                 
                 self.credential = credential_response
                 print("\nCheck Status:")
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
                 
             }else{
@@ -186,28 +188,29 @@ class Quickstart_sat_ViewController: UIViewController {
     func getAttachments(){
         Attachments.get(session, id_user: nil, completionHandler: {
             attachments_array, error in
-            if attachments_array != nil {
+            if attachments_array != nil  {
                 print("\nAttachments: ")
-                for attachment in attachments_array! {
-                    print("Attachment type : \(attachment.id_attachment), id_transaction: \(attachment.id_transaction) ")
-                }
                 
-                print("\nAttachment id: \(attachments_array![0].id_attachment)")
-                Attachments.get(self.session, id_user: nil, id_attachment: attachments_array![0].id_attachment, completionHandler: {
-                    response, error in
-                    
-                    if response != nil{
-                        print("Charging file...")
-                        self.loadAttachment(response!["destination"] as! NSURL)
-                        
-                    }else{
-                        print("error:" , error?.code)
-                        
+                if attachments_array!.count > 0{
+                    for attachment in attachments_array! {
+                        print("Attachment type : \(attachment.id_attachment), id_transaction: \(attachment.id_transaction) ")
                     }
                     
-                    
-                    
-                })
+                    Attachments.get(self.session, id_user: nil, id_attachment: attachments_array![0].id_attachment, completionHandler: {
+                        response, error in
+                        print("File fail", response)
+                        if response != nil{
+                            print("Charging file...")
+                            self.loadAttachment(response!["destination"] as! URL)
+                            
+                        }else{
+                            print("error:" , error)
+                            
+                        }
+                        
+                    })
+                }
+                
                 
             }else{
                 print("Problemas al consultar los attachments: \(error?.message)")
@@ -215,10 +218,10 @@ class Quickstart_sat_ViewController: UIViewController {
         })
     }
     
-    func loadAttachment(path: NSURL) {
+    func loadAttachment(_ path: URL) {
         
         let url = path
-        let urlRequest = NSURLRequest(URL: url)
+        let urlRequest = URLRequest(url: url)
         webview.loadRequest(urlRequest)
     }
     
@@ -226,7 +229,7 @@ class Quickstart_sat_ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         Paybook.api_key = "YOUR_API_KEY"
         createUser()
         

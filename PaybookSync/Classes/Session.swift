@@ -10,10 +10,10 @@ import Foundation
 import Alamofire
 
 
-public class Session: Paybook {
+open class Session: Paybook {
     
-    public var token : String!
-    public var id_user : String!
+    open var token : String!
+    open var id_user : String!
     
     
     
@@ -43,7 +43,7 @@ public class Session: Paybook {
         let url = "https://sync.paybook.com/v1/sessions"
         
         
-        Paybook.call("POST", endpoint: url, parameters: data, completionHandler: {
+        Paybook.call("POST", endpoint: url, parameters: data as [String : AnyObject]?,authenticate: nil, completionHandler: {
             response, error in
             
             if response != nil {
@@ -83,13 +83,14 @@ public class Session: Paybook {
      
      */
     
-    public class func delete(token: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
+    open class func delete(_ token: String, completionHandler: ((Bool?, PaybookError?) -> ())?){
         
         
-        
+        var authenticate : [String:String] = ["token": token]
         let url = "https://sync.paybook.com/v1/sessions/\(token)"
         
-        self.call("DELETE", endpoint: url, parameters: nil, completionHandler: {
+        
+        self.call("DELETE", endpoint: url, parameters: nil, authenticate: authenticate, completionHandler: {
             response, error in
             
             if response != nil{
@@ -133,13 +134,13 @@ public class Session: Paybook {
     
     */
     
-    public func validate(completionHandler: ((Bool?, PaybookError?) -> ())?) {//-> [User]?{
+    open func validate(_ completionHandler: ((Bool?, PaybookError?) -> ())?) {//-> [User]?{
+        
+        var authenticate : [String:String] = ["token": token]
+        let url = "https://sync.paybook.com/v1/sessions/\(self.token!)/verify"
         
         
-        let url = "https://sync.paybook.com/v1/sessions/\(self.token)/verify"
-        
-        
-        Paybook.call("GET", endpoint: url, parameters: nil, completionHandler: {
+        Paybook.call("GET", endpoint: url, parameters: nil,authenticate: authenticate, completionHandler: {
             response, error in
             
             if response != nil{

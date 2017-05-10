@@ -11,14 +11,14 @@ import Paybook
 
 class UnitTestNew : UIViewController, UITextFieldDelegate {
     
-    @IBAction func test(sender: AnyObject) {
+    @IBAction func test(_ sender: AnyObject) {
         Paybook.api_key = input_API_KEY.text!
         getUsers()
         
     }
     
     @IBOutlet weak var input_API_KEY: UITextField!
-    var timer : NSTimer!
+    var timer : Timer!
     var count = 1
     
     
@@ -165,17 +165,17 @@ class UnitTestNew : UIViewController, UITextFieldDelegate {
     
     func createCredential(){
         let dataCredentials = [
-            "username" : "test",//"YOUR_USERNAME"
-            "password" : "test"//"YOUR_PASSWORD"
+            "username" : "YOUR_USERNAME",
+            "password" : "YOUR_PASSWORD"
         ]
         
-        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: dataCredentials, completionHandler: {
+        _ = Credentials(session: self.session, id_user: nil, id_site: site.id_site, credentials: dataCredentials as NSDictionary, completionHandler: {
             credential_response , error in
             if credential_response != nil {
                 
                 self.credential = credential_response
                 print("\nCheck Status:")
-                self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(self.checkStatus), userInfo: nil, repeats: true)
                 
                 
             }else{
@@ -304,7 +304,7 @@ class UnitTestNew : UIViewController, UITextFieldDelegate {
     }
     
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         test(self)
         

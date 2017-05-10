@@ -19,17 +19,17 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var imputText: UITextField!
     
     
-    @IBAction func Test(sender: AnyObject) {
+    @IBAction func Test(_ sender: AnyObject) {
         UnitTest.test_library(imputText.text!)
     }
     
     
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         textView.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         Test(self)
         

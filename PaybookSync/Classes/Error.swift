@@ -9,12 +9,12 @@
 import Foundation
 
 
-public class PaybookError {
+open class PaybookError: NSObject {
     
-    public var code : Int
-    public var message : String!
-    public var response : NSDictionary!
-    public var status : Bool
+    open var code : Int
+    open var message : String!
+    open var response : NSDictionary!
+    open var status : Bool
     
     
     
@@ -23,6 +23,14 @@ public class PaybookError {
         self.message = message
         self.response = response
         self.status = status
+    }
+    
+    override open var description : String {
+        return "**** Error: [\n   code : \(self.code),\n  status : \(self.status),\n  message : \(self.message)]"
+    }
+    
+    override open var debugDescription : String {
+        return  "**** Error: [\n   code : \(self.code),\n  status : \(self.status),\n  message : \(self.message)]"
     }
    
     
